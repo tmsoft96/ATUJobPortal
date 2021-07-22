@@ -1,3 +1,5 @@
+from students.controllers.jobDetials import jobDetailsController
+from students.controllers.jobListing import jobListingController
 from django.shortcuts import render
 
 
@@ -6,7 +8,7 @@ def index(request):
 
 
 def jobListing(request):
-    return render(request, 'jobListing.html', {'heading': "Job Listing"})
+    return jobListingController(request)
 
 def jobDetails(request):
-    return render(request, 'jobDetails.html', {'heading': "Job Details"})
+    return jobDetailsController(request)
