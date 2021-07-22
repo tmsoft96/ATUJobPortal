@@ -1,5 +1,6 @@
-from students.controllers.jobDetials import jobDetailsController
-from students.controllers.jobListing import jobListingController
+from students.controllers.aboutController import aboutController
+from students.controllers.jobDetialsController import jobDetailsController
+from students.controllers.jobListingController import jobListingController
 from django.shortcuts import render
 
 
@@ -12,3 +13,6 @@ def jobListing(request):
 
 def jobDetails(request):
     return jobDetailsController(request)
+
+def aboutUs(request):
+    return aboutController(request)
