@@ -1,3 +1,4 @@
+from students.controllers.contactController import contactUsController
 from students.controllers.aboutController import aboutController
 from students.controllers.jobDetialsController import jobDetailsController
 from students.controllers.jobListingController import jobListingController
@@ -16,3 +17,6 @@ def jobDetails(request):
 
 def aboutUs(request):
     return aboutController(request)
+
+def contactUs(request):
+    return contactUsController(request)
