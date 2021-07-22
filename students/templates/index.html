@@ -66,7 +66,7 @@
                             <span class="flaticon-tour"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Design & Creative</a></h5>
+                            <h5><a href="{% url 'jobListings' %}">Design & Creative</a></h5>
                             <span>(653)</span>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                             <span class="flaticon-cms"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Design & Development</a></h5>
+                            <h5><a href="{% url 'jobListings' %}">Design & Development</a></h5>
                             <span>(658)</span>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                             <span class="flaticon-report"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Sales & Marketing</a></h5>
+                            <h5><a href="{% url 'jobListings' %}">Sales & Marketing</a></h5>
                             <span>(658)</span>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                             <span class="flaticon-app"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Mobile Application</a></h5>
+                            <h5><a href="{% url 'jobListings' %}">Mobile Application</a></h5>
                             <span>(658)</span>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                             <span class="flaticon-helmet"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Construction</a></h5>
+                            <h5><a href="{% url 'jobListings' %}">Construction</a></h5>
                             <span>(658)</span>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                             <span class="flaticon-high-tech"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Information Technology</a></h5>
+                            <h5><a href="{% url 'jobListings' %}">Information Technology</a></h5>
                             <span>(658)</span>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                             <span class="flaticon-real-estate"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Real Estate</a></h5>
+                            <h5><a href="{% url 'jobListings' %}">Real Estate</a></h5>
                             <span>(658)</span>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                             <span class="flaticon-content"></span>
                         </div>
                         <div class="services-cap">
-                            <h5><a href="job_listing.html">Content Writer</a></h5>
+                            <h5><a href="{% url 'jobListings' %}">Content Writer</a></h5>
                             <span>(658)</span>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="browse-btn2 text-center mt-50">
-                        <a href="/job-listings" class="border-btn2">Browse All Sectors</a>
+                        <a href="/{% url 'jobListings' %}" class="border-btn2">Browse All Sectors</a>
                     </div>
                 </div>
             </div>
@@ -195,10 +195,10 @@
                     <div class="single-job-items mb-30">
                         <div class="job-items">
                             <div class="company-img">
-                                <a href="job_details.html"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                                <a href="{% url 'jobDetails' %}"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
                             </div>
                             <div class="job-tittle">
-                                <a href="job_details.html">
+                                <a href="{% url 'jobDetails' %}">
                                     <h4>Digital Marketer</h4>
                                 </a>
                                 <ul>
@@ -209,7 +209,7 @@
                             </div>
                         </div>
                         <div class="items-link f-right">
-                            <a href="job_details.html">Full Time</a>
+                            <a href="{% url 'jobDetails' %}">Full Time</a>
                             <span>7 hours ago</span>
                         </div>
                     </div>
@@ -217,10 +217,10 @@
                     <div class="single-job-items mb-30">
                         <div class="job-items">
                             <div class="company-img">
-                                <a href="job_details.html"><img src="{% static 'img/icon/job-list2.png' %}" alt=""></a>
+                                <a href="{% url 'jobDetails' %}"><img src="{% static 'img/icon/job-list2.png' %}" alt=""></a>
                             </div>
                             <div class="job-tittle">
-                                <a href="job_details.html">
+                                <a href="{% url 'jobDetails' %}">
                                     <h4>Digital Marketer</h4>
                                 </a>
                                 <ul>
@@ -231,7 +231,7 @@
                             </div>
                         </div>
                         <div class="items-link f-right">
-                            <a href="job_details.html">Full Time</a>
+                            <a href="{% url 'jobDetails' %}">Full Time</a>
                             <span>7 hours ago</span>
                         </div>
                     </div>
@@ -239,10 +239,10 @@
                     <div class="single-job-items mb-30">
                         <div class="job-items">
                             <div class="company-img">
-                                <a href="job_details.html"><img src="{% static 'img/icon/job-list3.png' %}" alt=""></a>
+                                <a href="{% url 'jobDetails' %}"><img src="{% static 'img/icon/job-list3.png' %}" alt=""></a>
                             </div>
                             <div class="job-tittle">
-                                <a href="job_details.html">
+                                <a href="{% url 'jobDetails' %}">
                                     <h4>Digital Marketer</h4>
                                 </a>
                                 <ul>
@@ -253,7 +253,7 @@
                             </div>
                         </div>
                         <div class="items-link f-right">
-                            <a href="job_details.html">Full Time</a>
+                            <a href="{% url 'jobDetails' %}">Full Time</a>
                             <span>7 hours ago</span>
                         </div>
                     </div>
@@ -261,10 +261,10 @@
                     <div class="single-job-items mb-30">
                         <div class="job-items">
                             <div class="company-img">
-                                <a href="job_details.html"><img src="{% static 'img/icon/job-list4.png' %}" alt=""></a>
+                                <a href="{% url 'jobDetails' %}"><img src="{% static 'img/icon/job-list4.png' %}" alt=""></a>
                             </div>
                             <div class="job-tittle">
-                                <a href="job_details.html">
+                                <a href="{% url 'jobDetails' %}">
                                     <h4>Digital Marketer</h4>
                                 </a>
                                 <ul>
@@ -275,7 +275,7 @@
                             </div>
                         </div>
                         <div class="items-link f-right">
-                            <a href="job_details.html">Full Time</a>
+                            <a href="{% url 'jobDetails' %}">Full Time</a>
                             <span>7 hours ago</span>
                         </div>
                     </div>

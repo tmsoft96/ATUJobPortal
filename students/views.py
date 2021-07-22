@@ -7,3 +7,6 @@ def index(request):
 
 def jobListing(request):
     return render(request, 'jobListing.html', {'heading': "Job Listing"})
+
+def jobDetails(request):
+    return render(request, 'jobDetails.html', {'heading': "Job Details"})
