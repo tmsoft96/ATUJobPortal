@@ -26,6 +26,68 @@
 </head>
 
 <body>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'img/logo/logo.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area header-transparrent">
+            <div class="headder-top header-sticky">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-2">
+                            <!-- Logo -->
+                            <div class="logo">
+                                <a href=""><img src="{% static 'img/logo/logo.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <div class="menu-wrapper">
+                                <!-- Main-menu -->
+                                <div class="main-menu">
+                                    <nav class="d-none d-lg-block">
+                                        <ul id="navigation">
+                                            <li><a href="">Home</a></li>
+                                            <li><a href="job_listing.html">Find a Jobs </a></li>
+                                            <li><a href="about.html">About</a></li>
+                                            <li><a href="#">Page</a>
+                                                <ul class="submenu">
+                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="single-blog.html">Blog Details</a></li>
+                                                    <li><a href="elements.html">Elements</a></li>
+                                                    <li><a href="job_details.html">job Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- Header-btn -->
+                                <div class="header-btn d-none f-right d-lg-block">
+                                    <a href="#" class="btn head-btn1">Register</a>
+                                    <a href="#" class="btn head-btn2">Login</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
     <!-- body -->
     {% block body %} {% endblock %}
 
@@ -40,7 +102,8 @@
                                 <div class="footer-tittle">
                                     <h4>About Us</h4>
                                     <div class="footer-pera">
-                                        <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so behold.
+                                        <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so
+                                            behold.
                                         </p>
                                     </div>
                                 </div>
@@ -87,10 +150,15 @@
                                 <!-- Form -->
                                 <div class="footer-form">
                                     <div id="mc_embed_signup">
-                                        <form target="_blank" action="" method="get" class="subscribe_form relative mail_part">
-                                            <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address" class="placeholder hide-on-focus" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Email Address '">
+                                        <form target="_blank" action="" method="get"
+                                            class="subscribe_form relative mail_part">
+                                            <input type="email" name="email" id="newsletter-form-email"
+                                                placeholder="Email Address" class="placeholder hide-on-focus"
+                                                onfocus="this.placeholder = ''"
+                                                onblur="this.placeholder = ' Email Address '">
                                             <div class="form-icon">
-                                                <button type="submit" name="submit" id="newsletter-submit" class="email_icon newsletter-submit button-contactForm"><img
+                                                <button type="submit" name="submit" id="newsletter-submit"
+                                                    class="email_icon newsletter-submit button-contactForm"><img
                                                         src="{% static 'img/icon/form.png' %}" alt=""></button>
                                             </div>
                                             <div class="mt-10 info"></div>
@@ -144,7 +212,9 @@
                                     Copyright &copy;
                                     <script>
                                         document.write(new Date().getFullYear());
-                                    </script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                    </script> All rights reserved | This template is made with <i class="fa fa-heart"
+                                        aria-hidden="true"></i> by <a href="https://colorlib.com"
+                                        target="_blank">Colorlib</a>
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </p>
                             </div>
