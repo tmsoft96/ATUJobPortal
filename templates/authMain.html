@@ -32,7 +32,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="{% static 'img/logo/logo.png' %}" alt="">
+                    <img src="{% static 'img/logo/logo.png' %}" alt="" >
                 </div>
             </div>
         </div>
@@ -47,9 +47,7 @@
                         <div class="col-lg-3 col-md-2">
                             <!-- Logo -->
                             <div class="logo">
-                                <a href="{% url 'home' %}">
-                                    <img src="{% static 'img/logo/logo.png' %}" alt="" style="width:240px;">
-                                </a>
+                                <a href="{% url 'home' %}"><img src="{% static 'img/logo/logo.png' %}" alt="" style="width:240px;"></a>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9">
@@ -61,22 +59,9 @@
                                             <li><a href="{% url 'home' %}">Home</a></li>
                                             <li><a href="{% url 'jobListings' %}">Find a Jobs </a></li>
                                             <li><a href="{% url 'about' %}">About</a></li>
-                                            <!-- <li><a href="#">Page</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="job_details.html">job Details</a></li>
-                                                </ul>
-                                            </li> -->
                                             <li><a href="{% url 'contact' %}">Contact</a></li>
                                         </ul>
                                     </nav>
-                                </div>
-                                <!-- Header-btn -->
-                                <div class="header-btn d-none f-right d-lg-block">
-                                    <a href="{% url 'register' %}" class="btn head-btn1">Register</a>
-                                    <a href="{% url 'login' %}" class="btn head-btn2">Login</a>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +76,7 @@
         <!-- Header End -->
     </header>
     <!-- body -->
-    {% block body %}
+    {% block body %} 
     {% endblock %}
 
     <footer>
@@ -141,62 +126,6 @@
                                     <li><a href="#">Support</a></li>
                                 </ul>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Newsletter</h4>
-                                <div class="footer-pera footer-pera2">
-                                    <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
-                                </div>
-                                <!-- Form -->
-                                <div class="footer-form">
-                                    <div id="mc_embed_signup">
-                                        <form target="_blank" action="" method="get"
-                                            class="subscribe_form relative mail_part">
-                                            <input type="email" name="email" id="newsletter-form-email"
-                                                placeholder="Email Address" class="placeholder hide-on-focus"
-                                                onfocus="this.placeholder = ''"
-                                                onblur="this.placeholder = ' Email Address '">
-                                            <div class="form-icon">
-                                                <button type="submit" name="submit" id="newsletter-submit"
-                                                    class="email_icon newsletter-submit button-contactForm"><img
-                                                        src="{% static 'img/icon/form.png' %}" alt=""></button>
-                                            </div>
-                                            <div class="mt-10 info"></div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--  -->
-                <div class="row footer-wejed justify-content-between">
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <!-- logo -->
-                        <div class="footer-logo mb-20">
-                            <a href=""><img src="{% static 'img/logo/logo2_footer.png' %}" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="footer-tittle-bottom">
-                            <span>5000+</span>
-                            <p>Talented Hunter</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <div class="footer-tittle-bottom">
-                            <span>451</span>
-                            <p>Talented Hunter</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
-                        <!-- Footer Bottom Tittle -->
-                        <div class="footer-tittle-bottom">
-                            <span>568</span>
-                            <p>Talented Hunter</p>
                         </div>
                     </div>
                 </div>

@@ -13,3 +13,8 @@
     color: white;
     text-shadow: 2px 2px black;
 }
+
+#loginTable td {
+    align-items: flex-start;
+    vertical-align: top;
+}
