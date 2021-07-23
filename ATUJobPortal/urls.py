@@ -13,8 +13,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from ATUJobPortal.authControllers.loginController import loginController
-from ATUJobPortal.authControllers.registerController import registerController
 from django.contrib import admin
 from django.urls import path, include
 
@@ -22,6 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('students.urls')),
-    path('register', registerController, name="register"),
-    path('login', loginController, name="login"),
+    path('', include('authentication.urls')),
 ]
