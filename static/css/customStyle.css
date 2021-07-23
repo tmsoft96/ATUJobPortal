@@ -8,3 +8,8 @@
     line-height: 54px;
     border: 0;
 }
+
+#homeText {
+    color: white;
+    text-shadow: 2px 2px black;
+}
