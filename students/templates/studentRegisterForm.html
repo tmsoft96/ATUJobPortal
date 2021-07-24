@@ -53,7 +53,7 @@
                     <div class="col">
                         <div class="select-form border">
                             <div class="select-itms">
-                                <select name="day" id="select1" required>
+                                <select name="day" class="form-select form-control" required>
                                     <option value="Select" selected>Select</option>
                                     {% for day in dob.day %}
                                     <option value="{{ day }}">{{ day }}</option>
@@ -65,7 +65,7 @@
                     <div class="col">
                         <div class="select-form border">
                             <div class="select-itms">
-                                <select name="month" id="select1" required>
+                                <select name="month" class="form-select form-control" required>
                                     <option value="Select" selected>Select</option>
                                     {% for month in dob.month %}
                                     <option value="{{ month }}">{{ month }}</option>
@@ -77,7 +77,7 @@
                     <div class="col">
                         <div class="select-form border">
                             <div class="select-itms">
-                                <select name="year" id="select1" required>
+                                <select name="year" class="form-select form-control" required>
                                     <option value="Select" selected>Select</option>
                                     {% for year in dob.year %}
                                     <option value="{{ year }}">{{ year }}</option>
@@ -93,7 +93,7 @@
                         <label>Gender</label>
                         <div class="select-form border">
                             <div class="select-itms">
-                                <select name="gender" id="select1" required>
+                                <select name="gender" class="form-select form-control" required>
                                     <option value="Select" selected>Select</option>
                                     <option value="M">Male</option>
                                     <option value="F">Female</option>
@@ -105,7 +105,7 @@
                         <label>Nationality</label>
                         <div class="select-form border">
                             <div class="select-itms">
-                                <select name="nationality" id="select1" required>
+                                <select name="nationality" class="form-select form-control" required>
                                     <option value="Select" selected>Select</option>
                                     {% for nationality in nationalities %}
                                     <option value="{{ nationality }}">{{ nationality }}</option>
@@ -143,7 +143,7 @@
                         <label>Highest Qualification</label>
                         <div class="select-form border">
                             <div class="select-itms">
-                                <select name="qualification" id="select1" required>
+                                <select name="qualification" class="form-select form-control" required>
                                     <option value="Select" selected>Select</option>
                                     {% for qualification in qualifications %}
                                     <option value="{{ qualification }}">{{ qualification }}</option>
@@ -156,7 +156,7 @@
                         <label>Current Job Function</label>
                         <div class="select-form border">
                             <div class="select-itms">
-                                <select name="currentJobFunction" id="select1" required>
+                                <select name="currentJobFunction" class="form-select form-control" required>
                                     <option value="Select" selected>Select</option>
                                     {% for currentJob in currentJobs %}
                                     <option value="{{ currentJob }}">{{ currentJob }}</option>
@@ -172,7 +172,7 @@
                         <label>Years of Experience</label>
                         <div class="select-form border">
                             <div class="select-itms">
-                                <select name="yearExperience" id="select1" required>
+                                <select name="yearExperience" class="form-select form-control" required>
                                     <option value="Select" selected>Select</option>
                                     <option value="No Experience/Less than 1 year">No Experience/Less than 1 year</option>
                                     {% for year in yearExperiences %}

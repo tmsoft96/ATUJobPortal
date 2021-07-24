@@ -52,7 +52,7 @@
                         <label>Position in Company</label>
                         <div class="select-form border">
                             <div class="select-itms">
-                                <select name="position" id="select1" required>
+                                <select name="position" class="form-select form-control" required>
                                     <option value="Select" selected>Select</option>
                                     {% for position in positions %}
                                     <option value="{{ position }}">{{ position }}</option>
@@ -88,7 +88,7 @@
                         <label>Industry</label>
                         <div class="select-form border">
                             <div class="select-itms">
-                                <select name="position" id="select1" required>
+                                <select name="position" class="form-select form-control" required>
                                     <option value="Select" selected>Select</option>
                                     {% for industry in industries %}
                                     <option value="{{ industry }}">{{ industry }}</option>
@@ -96,6 +96,45 @@
                                 </select>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Number of Employees</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="position" class="form-select form-control" required>
+                                    <option value="Select" selected>Select</option>
+                                    {% for employeesNumber in employeesNumbers %}
+                                    <option value="{{ employeesNumber }}">{{ employeesNumber }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Type of Employer</label>
+                        <div class="select-form">
+                            <div class="select-itms">
+                                <select name="position" class="form-select form-control" required>
+                                    <option value="Select" selected>Select</option>
+                                    {% for employerType in employerTypes %}
+                                    <option value="{{ employerType }}">{{ employerType }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <label>Website</label>
+                        <input type="url" id="website" class="form-control" placeholder="Website">
+                    </div>
+                    <div class="col">
+                        <label>Address</label>
+                        <input type="url" id="address" class="form-control" placeholder="address">
                     </div>
                 </div>
                 <hr>
@@ -108,13 +147,7 @@
                 <div class="form-check">
                     <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault" checked>
                     <label class="form-check-label" for="flexCheckDefault">
-                        I would like to receive top jobs and career tips
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" name="jobAlert" type="checkbox" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                        Sign me up for Job alerts.
+                        Email me high quality articles on HR and recruiting
                     </label>
                 </div>
                 <hr>
