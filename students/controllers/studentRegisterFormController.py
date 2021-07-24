@@ -12,6 +12,7 @@ qualificationsList = ['Degree',
                       'Vocational',
                       'Others']
 
+
 currentJobsFunctionList = ['Accounting, Auditing & Finance',
                            'Admin & Office',
                            'Building & Architecture',
