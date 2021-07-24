@@ -27,6 +27,6 @@ def employerRegisterFormController(request):
 
     return render(request,
                   'employerRegisterForm.html',
-                  {"heading": "Create a Job Seeker Account | ATU Job Portal",
+                  {"heading": "Create an Employer Account | ATU Job Portal",
                    "dob": dobMap,
-                   "nationalities": nationalitiesList,})
+                   "nationalities": nationalitiesList, })

@@ -138,62 +138,7 @@
                 <span>This is information pertaining to your past work experience and your qualifications</span>
             </div>
             <div class="col-8">
-                <div class="row">
-                    <div class="col">
-                        <label>Highest Qualification</label>
-                        <div class="select-form border">
-                            <div class="select-itms">
-                                <select name="qualification" id="select1" required>
-                                    <option value="Select" selected>Select</option>
-                                    {% for qualification in qualifications %}
-                                    <option value="{{ qualification }}">{{ qualification }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <label>Current Job Function</label>
-                        <div class="select-form border">
-                            <div class="select-itms">
-                                <select name="currentJobFunction" id="select1" required>
-                                    <option value="Select" selected>Select</option>
-                                    {% for currentJob in currentJobs %}
-                                    <option value="{{ currentJob }}">{{ currentJob }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col">
-                        <label>Years of Experience</label>
-                        <div class="select-form border">
-                            <div class="select-itms">
-                                <select name="yearExperience" id="select1" required>
-                                    <option value="Select" selected>Select</option>
-                                    <option value="No Experience/Less than 1 year">No Experience/Less than 1 year</option>
-                                    {% for year in yearExperiences %}
-                                    <option value="{{ year }} years">{{ year }} years</option>
-                                    {% endfor %}
-                                    <option value="More than 5 years">More than 5 years</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                    </div>
-                </div>
-                <hr>
-                <div class="mb-3">
-                    <input class="form-control" type="file" id="formFile" name="cv" accept=".pdf, .doc, .docx, .rtf">
-                    <label for="formFile" class="form-label">Optionally upload a CV no larger than 10MB for file types
-                        .pdf .doc .docx .rtf</label>
-                    <span>Please note: You will need to upload a CV to apply for jobs, however you can skip the CV
-                        upload on sign up.</span>
-                </div>
+               
                 <hr>
                 By clicking "Create Your Account", you agree to our <a href="#" style="color: #83811D;">TERMS &
                     CONDITIONS</a> and <a href="#" style="color: #83811D;">PRIVACY POLICY</a>
