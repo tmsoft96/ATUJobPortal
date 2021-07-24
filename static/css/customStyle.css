@@ -19,6 +19,10 @@
     vertical-align: top;
 }
 
+.center {
+    text-align: center;
+}
+
 @media (min-width:200px){
     #tableData1 {
         width: 0;

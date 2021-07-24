@@ -2,5 +2,78 @@
 
 {% load static %}
 {% block body %}
-
+<br><br>
+<div class="container">
+    <div class="center">
+        <h3>Create a Job Seeker Account</h3>
+        <h6>Your new career is one click away</h6>
+        <h3>STEP 1 of 2</h3>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-3">
+            <h4>Personal Information</h4>
+            <span>This is information pertaining to you as an individual</span>
+        </div>
+        <div class="col-8">
+            <form action="#" class="form-contact contact_form">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" id="fname" class="form-control" required placeholder="First Name">
+                    </div>
+                    <div class="col">
+                        <input type="text" id="lname" class="form-control" required placeholder="Last Name">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <input type="email" id="email" class="form-control" required placeholder="Email">
+                    </div>
+                    <div class="col">
+                        <input type="password" id="password" class="form-control" required
+                            placeholder="Create Password">
+                    </div>
+                </div>
+                <hr>
+                <label>Date of Birth</label>
+                <div class="row">
+                    <div class="col">
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="day" id="select1" required>
+                                    {% for day in dob.day %}
+                                    <option value="{{ day }}">{{ day }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="month" id="select1" required>
+                                    {% for month in dob.month %}
+                                    <option value="{{ month }}">{{ month }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="year" id="select1" required>
+                                    {% for year in dob.year %}
+                                    <option value="{{ year }}">{{ year }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
