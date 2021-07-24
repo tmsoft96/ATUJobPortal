@@ -54,6 +54,7 @@
                         <div class="select-form border">
                             <div class="select-itms">
                                 <select name="day" id="select1" required>
+                                    <option value="Select" selected>Select</option>
                                     {% for day in dob.day %}
                                     <option value="{{ day }}">{{ day }}</option>
                                     {% endfor %}
@@ -65,6 +66,7 @@
                         <div class="select-form border">
                             <div class="select-itms">
                                 <select name="month" id="select1" required>
+                                    <option value="Select" selected>Select</option>
                                     {% for month in dob.month %}
                                     <option value="{{ month }}">{{ month }}</option>
                                     {% endfor %}
@@ -76,6 +78,7 @@
                         <div class="select-form border">
                             <div class="select-itms">
                                 <select name="year" id="select1" required>
+                                    <option value="Select" selected>Select</option>
                                     {% for year in dob.year %}
                                     <option value="{{ year }}">{{ year }}</option>
                                     {% endfor %}
@@ -91,6 +94,7 @@
                         <div class="select-form border">
                             <div class="select-itms">
                                 <select name="gender" id="select1" required>
+                                    <option value="Select" selected>Select</option>
                                     <option value="M">Male</option>
                                     <option value="F">Female</option>
                                 </select>
@@ -102,6 +106,7 @@
                         <div class="select-form border">
                             <div class="select-itms">
                                 <select name="nationality" id="select1" required>
+                                    <option value="Select" selected>Select</option>
                                     {% for nationality in nationalities %}
                                     <option value="{{ nationality }}">{{ nationality }}</option>
                                     {% endfor %}
@@ -139,7 +144,10 @@
                         <div class="select-form border">
                             <div class="select-itms">
                                 <select name="qualification" id="select1" required>
-                                    <option value="M">Qualification</option>
+                                    <option value="Select" selected>Select</option>
+                                    {% for qualification in qualifications %}
+                                    <option value="{{ qualification }}">{{ qualification }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -149,8 +157,9 @@
                         <div class="select-form border">
                             <div class="select-itms">
                                 <select name="currentJobFunction" id="select1" required>
-                                    {% for nationality in nationalities %}
-                                    <option value="{{ nationality }}">{{ nationality }}</option>
+                                    <option value="Select" selected>Select</option>
+                                    {% for currentJob in currentJobs %}
+                                    <option value="{{ currentJob }}">{{ currentJob }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -164,7 +173,12 @@
                         <div class="select-form border">
                             <div class="select-itms">
                                 <select name="yearExperience" id="select1" required>
-                                    <option value="M">Qualification</option>
+                                    <option value="Select" selected>Select</option>
+                                    <option value="No Experience/Less than 1 year">No Experience/Less than 1 year</option>
+                                    {% for year in yearExperiences %}
+                                    <option value="{{ year }} years">{{ year }} years</option>
+                                    {% endfor %}
+                                    <option value="More than 5 years">More than 5 years</option>
                                 </select>
                             </div>
                         </div>
@@ -174,7 +188,7 @@
                 </div>
                 <hr>
                 <div class="mb-3">
-                    <input class="form-control" type="file" id="formFile">
+                    <input class="form-control" type="file" id="formFile" name="cv" accept=".pdf, .doc, .docx, .rtf">
                     <label for="formFile" class="form-label">Optionally upload a CV no larger than 10MB for file types
                         .pdf .doc .docx .rtf</label>
                     <span>Please note: You will need to upload a CV to apply for jobs, however you can skip the CV
@@ -184,7 +198,7 @@
                 By clicking "Create Your Account", you agree to our <a href="#" style="color: #83811D;">TERMS &
                     CONDITIONS</a> and <a href="#" style="color: #83811D;">PRIVACY POLICY</a>
                 <br><br>
-                <b style="color: black;">Already have an account? <a href="#" style="color: #700000;">Log in</a></b>
+                <b style="color: black;">Already have an account? <a href="{% url 'login' %}" style="color: #700000;">Log in</a></b>
                 <br><br>
                 <div class="form-check">
                     <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault" checked>
