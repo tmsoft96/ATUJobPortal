@@ -33,6 +33,17 @@
                     <div class="col">
                         <input type="password" id="password" class="form-control" required
                             placeholder="Create Password">
+                        <div class="row">
+                            <div class="col">
+                                <span style="font-weight: 400; font-size: smaller;">Minimum 6 Characters</span>
+                            </div>
+                            <div class="col" style="text-align: end;">
+                                <!-- An element to toggle between password visibility -->
+                                <input type="checkbox" onclick="showPassword()">&nbsp;&nbsp;Show Password
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
                 <hr>
@@ -66,6 +77,32 @@
                                 <select name="year" id="select1" required>
                                     {% for year in dob.year %}
                                     <option value="{{ year }}">{{ year }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label>Gender</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="gender" id="select1" required>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Nationality</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="nationality" id="select1" required>
+                                    {% for nationality in nationalities %}
+                                    <option value="{{ nationality }}">{{ nationality }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
