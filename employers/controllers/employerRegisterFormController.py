@@ -11,27 +11,27 @@ positionList = ['C-level: CEO / COO / CIO / CFO / CTO / CPO',
                 'Middle Management: Supervisor / Unit Head',
                 'Junior Level: Associate / Officer', ]
 
-industriesList = ["Advertising, Media & Communications"
-                  "Agriculture, Fishing & Forestry"
-                  "Automotive & Aviation"
-                  "Banking, Finance & Insurance"
-                  "Construction"
-                  "Education"
-                  "Energy & Utilities"
-                  "Enforcement & Security"
-                  "Entertainment, Events & Sport"
-                  "Government"
-                  "Healthcare"
-                  "Hospitality & Hotel"
-                  "IT & Telecoms"
-                  "Law & Compliance"
-                  "Manufacturing & Warehousing"
-                  "Mining, Energy & Metals"
-                  "NGO, NPO & Charity"
-                  "Real Estate"
-                  "Recruitment"
-                  "Retail, Fashion & FMCG"
-                  "Shipping & Logistics"
+industriesList = ["Advertising, Media & Communications",
+                  "Agriculture, Fishing & Forestry",
+                  "Automotive & Aviation",
+                  "Banking, Finance & Insurance",
+                  "Construction",
+                  "Education",
+                  "Energy & Utilities",
+                  "Enforcement & Security",
+                  "Entertainment, Events & Sport",
+                  "Government",
+                  "Healthcare",
+                  "Hospitality & Hotel",
+                  "IT & Telecoms",
+                  "Law & Compliance",
+                  "Manufacturing & Warehousing",
+                  "Mining, Energy & Metals",
+                  "NGO, NPO & Charity",
+                  "Real Estate",
+                  "Recruitment",
+                  "Retail, Fashion & FMCG",
+                  "Shipping & Logistics",
                   "Tourism & Travel"]
 
 
