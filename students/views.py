@@ -2,6 +2,7 @@ from students.controllers.contactController import contactUsController
 from students.controllers.aboutController import aboutController
 from students.controllers.jobDetialsController import jobDetailsController
 from students.controllers.jobListingController import jobListingController
+from students.controllers.studentRegisterFormController import studentRegisterFormController
 from django.shortcuts import render
 
 
@@ -20,3 +21,6 @@ def aboutUs(request):
 
 def contactUs(request):
     return contactUsController(request)
+
+def studentRegisterForm(request):
+    return studentRegisterFormController(request)
