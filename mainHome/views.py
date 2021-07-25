@@ -1,8 +1,8 @@
-from students.controllers.contactController import contactUsController
-from students.controllers.aboutController import aboutController
-from students.controllers.jobDetialsController import jobDetailsController
-from students.controllers.jobListingController import jobListingController
-from students.controllers.studentRegisterFormController import studentRegisterFormController
+from mainHome.controllers.contactController import contactUsController
+from mainHome.controllers.aboutController import aboutController
+from mainHome.controllers.jobDetialsController import jobDetailsController
+from mainHome.controllers.jobListingController import jobListingController
+from mainHome.controllers.studentRegisterFormController import studentRegisterFormController
 from django.shortcuts import render
 
 
