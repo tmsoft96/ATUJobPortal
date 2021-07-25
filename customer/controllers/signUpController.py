@@ -41,7 +41,7 @@ currentJobsFunctionList = ['Accounting, Auditing & Finance',
                            'Trades & Services']
 
 
-def customerRegisterFormController(request):
+def signUpController(request):
     dayList = []
     yearList = []
     yearExperienceList = []
@@ -63,7 +63,7 @@ def customerRegisterFormController(request):
     }
 
     return render(request,
-                  'studentRegisterForm.html',
+                  'customerSignUp.html',
                   {"heading": "Create a Job Seeker Account | ATU Job Portal",
                    "dob": dobMap,
                    "nationalities": nationalitiesList,

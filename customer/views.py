@@ -1,5 +1,5 @@
-from customer.controllers.studentRegisterFormController import customerRegisterFormController
+from customer.controllers.signUpController import signUpController
 from django.shortcuts import render
 
-def customerRegisterForm(request):
-    return customerRegisterFormController(request)
+def signUp(request):
+    return signUpController(request)

@@ -1,5 +1,5 @@
-from employers.controllers.employerRegisterFormController import employerRegisterFormController
+from employers.controllers.signUpController import signUpController
 
 
-def employerRegisterForm(request):
-    return employerRegisterFormController(request)
+def signUp(request):
+    return signUpController(request)

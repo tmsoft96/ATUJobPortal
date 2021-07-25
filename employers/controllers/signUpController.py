@@ -35,9 +35,9 @@ employeesNumberList = ["1-10", "11-20", "21-30",
 employerTypeList = ["Direct Employer", "Recruitment Agency"]
 
 
-def employerRegisterFormController(request):
+def signUpController(request):
     return render(request,
-                  'employerRegisterForm.html',
+                  'employerSignUp.html',
                   {"heading": "Create an Employer Account | ATU Job Portal",
                    "positions": positionList,
                    "industries": industriesList,
