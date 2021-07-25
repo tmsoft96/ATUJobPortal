@@ -1,4 +1,4 @@
-{% extends 'studentMain.html' %}
+{% extends 'main.html' %}
 
 {% load static %}
 {% block body %}
@@ -213,7 +213,7 @@
                     </label>
                 </div>
                 <hr>
-                <a href="#" class="btn head-btn1">CREATE YOUR ACCOUNT</a>
+                <a href="{% url 'customerDashboard' %}" class="btn head-btn1">CREATE YOUR ACCOUNT</a>
             </div>
         </div>
     </div>

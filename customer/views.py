@@ -1,5 +1,8 @@
+from customer.controllers.dashboardController import dashboardController
 from customer.controllers.signUpController import signUpController
-from django.shortcuts import render
 
 def signUp(request):
     return signUpController(request)
+
+def dashboard(request):
+    return dashboardController(request)
