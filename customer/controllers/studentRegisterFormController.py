@@ -41,7 +41,7 @@ currentJobsFunctionList = ['Accounting, Auditing & Finance',
                            'Trades & Services']
 
 
-def studentRegisterFormController(request):
+def customerRegisterFormController(request):
     dayList = []
     yearList = []
     yearExperienceList = []

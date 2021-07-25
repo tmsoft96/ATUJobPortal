@@ -1,3 +1,5 @@
+from customer.controllers.studentRegisterFormController import customerRegisterFormController
 from django.shortcuts import render
 
-# Create your views here.
+def customerRegisterForm(request):
+    return customerRegisterFormController(request)
