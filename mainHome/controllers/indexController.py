@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from ATUJobPortal.config.auth import Auth
+from ATUJobPortal.config.authentication import Authentication
 
 
 def indexController(request):
-    auth = Auth(request)
+    auth = Authentication(request)
     return render(request, 'index.html',
                   {'heading': 'Home',
                    "auth": auth.authMap})

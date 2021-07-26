@@ -1,4 +1,4 @@
-class Auth:
+class Authentication:
     authMap = {
         "authorize": False,
         "userType": None,

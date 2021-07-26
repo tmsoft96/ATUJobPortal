@@ -1,11 +1,11 @@
-from ATUJobPortal.config.auth import Auth
+from ATUJobPortal.config.authentication import Authentication
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 
 
 def loginController(request):
     # checking if user sign in already
-    auth = Auth(request)
+    auth = Authentication(request)
     print(auth.authMap)
     if auth.authMap.get("authorize"):
         if auth.authMap.get("userType") == "customer":

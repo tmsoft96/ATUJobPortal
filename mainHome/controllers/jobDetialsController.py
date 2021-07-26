@@ -1,9 +1,9 @@
-from ATUJobPortal.config.auth import Auth
+from ATUJobPortal.config.authentication import Authentication
 from django.shortcuts import render
 
 
 def jobDetailsController(request):
-    auth = Auth(request)
+    auth = Authentication(request)
     return render(request, 'jobDetails.html',
                   {'heading': "Job Details",
                    "auth": auth.authMap})
