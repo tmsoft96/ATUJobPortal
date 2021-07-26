@@ -14,25 +14,27 @@
                     <h3>Log in and get productive</h3>
                 </center>
                 <br>
-                <form action="#" class="form-contact contact_form">
+                <form action="" method="POST" class="form-contact contact_form">
+                    {% csrf_token %}
                     <label class="form-label">Email address</label>
                     <div class="form-group">
                         <input class="form-control valid" name="email" id="email" type="email"
                             onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'"
-                            placeholder="Email">
+                            placeholder="Email" required>
                     </div>
                     <br>
                     <div class="mb-3">
                         <label class="form-label">Password</label>
                         <input class="form-control valid" name="password" type="password" id="password"
-                            placeholder="Password">
+                            placeholder="Password" required>
                     </div>
                     <br>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a href="" style="color: red; font-size: medium;">Forget Password?</a>
                     </div>
                     <br><br>
-                    <button class="btn btn-primary" type="button" style="width: 100%; font-size: large;">Login</button>
+                    <input type="hidden" name="button" value="logIn">
+                    <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">Login</button>
                 </form>
                 <br><br><br>
                 <center>
