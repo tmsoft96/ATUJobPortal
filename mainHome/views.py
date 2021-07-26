@@ -1,12 +1,12 @@
+from mainHome.controllers.indexController import indexController
 from mainHome.controllers.contactController import contactUsController
 from mainHome.controllers.aboutController import aboutController
 from mainHome.controllers.jobDetialsController import jobDetailsController
 from mainHome.controllers.jobListingController import jobListingController
-from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'index.html', {'heading': 'Home'})
+    return indexController(request)
 
 
 def jobListing(request):
