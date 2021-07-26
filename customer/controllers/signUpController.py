@@ -1,9 +1,11 @@
+from ATUJobPortal.config.authentication import Authentication
 from ATUJobPortal.config.dictionary import Dictionary
 from django.shortcuts import render
 
 
 def signUpController(request):
     dictionary = Dictionary()
+    auth = Authentication(request)
     dayList = []
     yearList = []
     yearExperienceList = []
@@ -31,4 +33,5 @@ def signUpController(request):
                    "nationalities": dictionary.nationalitiesList,
                    "qualifications": dictionary.qualificationsList,
                    "currentJobs": dictionary.currentJobsFunctionList,
-                   "yearExperiences": yearExperienceList})
+                   "yearExperiences": yearExperienceList,
+                   'auth': auth.authMap})
