@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/customStyle.css' %}">
     <link rel="stylesheet" href="{% static 'css/progressCircleStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dropdownStyle.css' %}">
 </head>
 
 <body>
@@ -75,12 +76,28 @@
                                     </nav>
                                 </div>
                                 <!-- Header-btn -->
-                                <div class="header-btn d-none f-right d-lg-block">
+                                <div class="header-btn d-none f-rightß d-lg-block">
                                     {% for key, value in auth.items %}
-                                        {% if key == "authorize" and not value %}
-                                            <a href="{% url 'register' %}" class="btn head-btn1">Register</a>
-                                            <a href="{% url 'login' %}" class="btn head-btn2">Login</a>
-                                        {% endif %}
+                                    {% if key == "authorize" and not value %}
+                                    <a href="{% url 'register' %}" class="btn head-btn1">Register</a>
+                                    <a href="{% url 'login' %}" class="btn head-btn2">Login</a>
+                                    {% elif key == "authorize" and value %}
+                                    <div class="dropdown">
+                                        <a href="#" class="dropbtn">
+                                            <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+                                                alt="Profile picture" height="50px"
+                                                class="border border-2 border-warning rounded-circle"
+                                                style="border-color: #11467f !important;">
+                                            <span style="font-size: larger; margin-left: 10px; color: #11467f;">Hi,
+                                                Michael</span>
+                                        </a>
+                                        <div class="dropdown-content">
+                                            <a href="#">Link 1</a>
+                                            <a href="#">Link 2</a>
+                                            <a href="#">Link 3</a>
+                                          </div>
+                                    </div>
+                                    {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>
