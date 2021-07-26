@@ -92,9 +92,9 @@
                                                 Michael</span>
                                         </a>
                                         <div class="dropdown-content">
-                                            <a href="#">Link 1</a>
-                                            <a href="#">Link 2</a>
-                                            <a href="#">Link 3</a>
+                                            <a href="{% url 'customerDashboard' %}">MY PROFILE</a>
+                                            <a href="#">ACCOUNT SETTING</a>
+                                            <a href="{% url 'logout' %}" style="color: tomato;">LOGOUT</a>
                                           </div>
                                     </div>
                                     {% endif %}
