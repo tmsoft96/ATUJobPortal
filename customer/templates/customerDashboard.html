@@ -2,12 +2,202 @@
 
 {% load static %}
 {% block body %}
-<div class="alert alert-primary" role="alert"
-    style="color: rgb(255, 255, 255); font-size: large; background-color: #001f38;">
+<div class="alert alert-primary noStyle" role="alert" style="background-color: #63696E;">
     Hi michael, Please verify your account.
     <a href="#" style="color: #DBD81A;">RESEND VERIFICATION EMAIL</a>
     or
     <a href="#" style="color: #DBD81A;">CHANGE EMAIL</a>
+</div>
+<div class="alert alert-primary noStyle" role="alert">
+    <form>
+        <div class="row">
+            <div class="col col-auto">
+                FIND A JOB
+            </div>
+            <div class="col">
+                <div class="select-form">
+                    <div class="select-itms">
+                        <select name="jobFunction" class="form-select form-control" required>
+                            <option value="" selected>All Job Functions</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="select-form">
+                    <div class="select-itms">
+                        <select name="industry" class="form-select form-control" required>
+                            <option value="" selected>All Industries</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <a href="" class="btn head-btn2 removeButtonStyle"
+                    style="background-color: white; color: #11467f; padding: 20px 44px;">SEARCH</a>
+            </div>
+        </div>
+    </form>
+</div>
+<br>
+<div class="container">
+    <h5>Hello Michael</h5>
+    <span>Welcome to your Dashboard. Check out what’s happening</span>
+    <br><br>
+    <div class="row">
+        <div class="col-8">
+            <div class="alert alert-primary noStyle" role="alert">
+                Jobs For You
+            </div>
+            <!-- single-job-content -->
+            <div class="single-job-items mb-30">
+                <div class="job-items">
+                    <div class="company-img">
+                        <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                    </div>
+                    <div class="job-tittle job-tittle2">
+                        <a href="#">
+                            <h4>Digital Marketer</h4>
+                        </a>
+                        <ul>
+                            <li>Creative Agency</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                            <li>$3500 - $4000</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="items-link items-link2 f-right">
+                    <a href="{% url 'jobDetails' %}">Full Time</a>
+                    <span>7 hours ago</span>
+                </div>
+            </div>
+            <!-- single-job-content -->
+            <div class="single-job-items mb-30">
+                <div class="job-items">
+                    <div class="company-img">
+                        <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                    </div>
+                    <div class="job-tittle job-tittle2">
+                        <a href="#">
+                            <h4>Digital Marketer</h4>
+                        </a>
+                        <ul>
+                            <li>Creative Agency</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                            <li>$3500 - $4000</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="items-link items-link2 f-right">
+                    <a href="{% url 'jobDetails' %}">Full Time</a>
+                    <span>7 hours ago</span>
+                </div>
+            </div>
+            <!-- single-job-content -->
+            <div class="single-job-items mb-30">
+                <div class="job-items">
+                    <div class="company-img">
+                        <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                    </div>
+                    <div class="job-tittle job-tittle2">
+                        <a href="#">
+                            <h4>Digital Marketer</h4>
+                        </a>
+                        <ul>
+                            <li>Creative Agency</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                            <li>$3500 - $4000</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="items-link items-link2 f-right">
+                    <a href="{% url 'jobDetails' %}">Full Time</a>
+                    <span>7 hours ago</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <a href="#">
+                <div class="alert alert-primary noStyle" role="alert">
+                    <!-- Percentage is base on the color blue-90, yellow-75, pink-60 and many more  -->
+                    <div class="progress yellow">
+                        <span class="progress-left">
+                            <span class="progress-bar"></span>
+                        </span>
+                        <span class="progress-right">
+                            <span class="progress-bar"></span>
+                        </span>
+                        <div class="progress-value">30%</div>
+                    </div>
+                    <br>
+                    Complete Your Profile
+                </div>
+            </a>
+            <br>
+            <div class="alert alert-primary noStyle" role="alert">
+                <div class="row">
+                    <div class="col">
+                        Job Application
+                    </div>
+                    <div class="col-auto">
+                        <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                    </div>
+                </div>
+            </div>
+            <div class="single-job-items mb-30">
+                <div class="job-items">
+                    <div class="company-img">
+                        <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                    </div>
+                    <div class="job-tittle job-tittle2">
+                        <a href="#">
+                            <h4>Digital Marketer</h4>
+                        </a>
+                        <ul>
+                            <li>Creative Agency</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                            <li>$3500 - $4000</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="items-link items-link2 f-right">
+                    <a href="{% url 'jobDetails' %}">PENDING</a>
+                    <span>7 hours ago</span>
+                </div>
+            </div>
+            <div class="alert alert-primary noStyle" role="alert">
+                <div class="row">
+                    <div class="col">
+                        Saved Jobs
+                    </div>
+                    <div class="col-auto">
+                        <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                    </div>
+                </div>
+            </div>
+            <div class="single-job-items mb-30">
+                <div class="job-items">
+                    <div class="company-img">
+                        <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                    </div>
+                    <div class="job-tittle job-tittle2">
+                        <a href="#">
+                            <h4>Digital Marketer</h4>
+                        </a>
+                        <ul>
+                            <li>Creative Agency</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                            <li>$3500 - $4000</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="items-link items-link2 f-right">
+                    <a href="{% url 'jobDetails' %}">PENDING</a>
+                    <span>7 hours ago</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <br><br>
 {% endblock %}
