@@ -33,6 +33,13 @@
     text-align: center;
 }
 
+.buttonWhite {
+    background-color: white;
+    color: #11467f;
+    padding: 20px 44px;
+    font-weight: bold;
+}
+
 @media (min-width:200px) {
     #tableData1 {
         width: 0;
@@ -68,4 +75,8 @@
 
 .removeButtonStyle::before {
     background: white;
+}
+
+.removeButtonStyle2::before {
+    background: #11467f;
 }
