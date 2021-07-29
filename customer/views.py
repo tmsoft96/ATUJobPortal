@@ -1,3 +1,4 @@
+from customer.controllers.careerProfileEmploymentController import careerProfileEmploymentController
 from customer.controllers.careerProfileController import careerProfileController
 from customer.controllers.dashboardController import dashboardController
 from customer.controllers.signUpController import signUpController
@@ -10,3 +11,6 @@ def dashboard(request):
 
 def careerProfile(request):
     return careerProfileController(request)
+
+def careerProfileEmployment(request):
+    return careerProfileEmploymentController(request)
