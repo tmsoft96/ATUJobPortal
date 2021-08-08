@@ -1,0 +1,206 @@
+{% extends 'findJobsDropdown.html' %}
+
+{% load static %}
+
+{% block submain %}
+<div class="row">
+    <div class="col-8">
+        <form action="#">
+            <div class="alert alert-primary noStyle" role="alert">
+                Add Education
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <label>Name of Educational Institution/School/etc.</label>
+                            <br>
+                            <input type="text" name="name" class="form-control" required placeholder="Name">
+                        </div>
+                        <div class="col">
+                            <label>Minimum Qualification</label>
+                            <br>
+                            <div class="select-form border">
+                                <div class="select-itms">
+                                    <select name="minimumQualification" class="form-select form-control" required>
+                                        <option value="Select" selected>Select</option>
+                                        {% for qualification in qualifications %}
+                                        <option value="{{ qualification }}">{{ qualification }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <label>Qualification</label>
+                            <br>
+                            <input type="text" name="qualification" class="form-control" required
+                                placeholder="Qualification">
+                        </div>
+                        <div class="col">
+                            <label>Start date</label>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="select-form border">
+                                        <div class="select-itms">
+                                            <select name="startMonth" class="form-select form-control" required>
+                                                <option value="Select" selected>Month</option>
+                                                {% for month in date.month %}
+                                                <option value="{{ month }}">{{ month }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="select-form border">
+                                        <div class="select-itms">
+                                            <select name="startYear" class="form-select form-control" required>
+                                                <option value="Select" selected>Year</option>
+                                                {% for year in date.year %}
+                                                <option value="{{ year }}">{{ year }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    I am still studying this
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label>End date</label>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="select-form border">
+                                        <div class="select-itms">
+                                            <select name="endMonth" class="form-select form-control" required>
+                                                <option value="Select" selected>Month</option>
+                                                {% for month in date.month %}
+                                                <option value="{{ month }}">{{ month }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="select-form border">
+                                        <div class="select-itms">
+                                            <select name="endYear" class="form-select form-control" required>
+                                                <option value="Select" selected>Year</option>
+                                                {% for year in date.year %}
+                                                <option value="{{ year }}">{{ year }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <label>Description</label>
+                    <br>
+                    <textarea class="form-control" name="description" id="" rows="10"></textarea>
+                </div>
+                <hr>
+                <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">SAVE</button>
+
+            </div>
+        </form>
+    </div>
+    <div class="col-4">
+        <a href="#">
+            <div class="alert alert-primary noStyle" role="alert">
+                <!-- Percentage is base on the color blue-90, yellow-75, pink-60 and many more  -->
+                <div class="progress yellow">
+                    <span class="progress-left">
+                        <span class="progress-bar"></span>
+                    </span>
+                    <span class="progress-right">
+                        <span class="progress-bar"></span>
+                    </span>
+                    <div class="progress-value">30%</div>
+                </div>
+                <br>
+                Complete Your Profile
+            </div>
+        </a>
+        <br>
+        <div class="alert alert-primary noStyle" role="alert">
+            <div class="row">
+                <div class="col">
+                    Job Application
+                </div>
+                <div class="col-auto">
+                    <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                </div>
+            </div>
+        </div>
+        <div class="single-job-items mb-30">
+            <div class="job-items">
+                <div class="company-img">
+                    <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                </div>
+                <div class="job-tittle job-tittle2">
+                    <a href="#">
+                        <h4>Digital Marketer</h4>
+                    </a>
+                    <ul>
+                        <li>Creative Agency</li>
+                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                        <li>$3500 - $4000</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="items-link items-link2 f-right">
+                <a href="{% url 'jobDetails' %}">PENDING</a>
+                <span>7 hours ago</span>
+            </div>
+        </div>
+        <div class="alert alert-primary noStyle" role="alert">
+            <div class="row">
+                <div class="col">
+                    Saved Jobs
+                </div>
+                <div class="col-auto">
+                    <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                </div>
+            </div>
+        </div>
+        <div class="single-job-items mb-30">
+            <div class="job-items">
+                <div class="company-img">
+                    <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                </div>
+                <div class="job-tittle job-tittle2">
+                    <a href="#">
+                        <h4>Digital Marketer</h4>
+                    </a>
+                    <ul>
+                        <li>Creative Agency</li>
+                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                        <li>$3500 - $4000</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="items-link items-link2 f-right">
+                <a href="{% url 'jobDetails' %}">PENDING</a>
+                <span>7 hours ago</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

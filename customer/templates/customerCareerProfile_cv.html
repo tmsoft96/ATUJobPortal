@@ -1,0 +1,119 @@
+{% extends 'findJobsDropdown.html' %}
+
+{% load static %}
+
+{% block submain %}
+<div class="row">
+    <div class="col-8">
+        <form action="#">
+            <div class="alert alert-primary noStyle" role="alert">
+                Add your CV
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <span>Upload and save your CV to our system. You can use your uploaded CV to quickly apply for a
+                        job.</span>
+                    <br><br>
+                    <label>Title</label>
+                    <br>
+                    <input type="text" name="title" class="form-control" required placeholder="Title">
+                    <br>
+                    <div class="mb-3">
+                        <input class="form-control" type="file" id="formFile" name="cv"
+                            accept=".pdf, .doc, .docx, .rtf">
+                        <br>
+                        <label for="formFile" class="form-label">Optionally upload a CV no larger than 10MB for file
+                            types
+                            .pdf .doc .docx .rtf</label>
+                        <br>
+                        <span>Uploading a new CV will overwrite your current one.</span>
+                    </div>
+                    <hr>
+                    <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">SAVE</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-4">
+        <a href="#">
+            <div class="alert alert-primary noStyle" role="alert">
+                <!-- Percentage is base on the color blue-90, yellow-75, pink-60 and many more  -->
+                <div class="progress yellow">
+                    <span class="progress-left">
+                        <span class="progress-bar"></span>
+                    </span>
+                    <span class="progress-right">
+                        <span class="progress-bar"></span>
+                    </span>
+                    <div class="progress-value">30%</div>
+                </div>
+                <br>
+                Complete Your Profile
+            </div>
+        </a>
+        <br>
+        <div class="alert alert-primary noStyle" role="alert">
+            <div class="row">
+                <div class="col">
+                    Job Application
+                </div>
+                <div class="col-auto">
+                    <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                </div>
+            </div>
+        </div>
+        <div class="single-job-items mb-30">
+            <div class="job-items">
+                <div class="company-img">
+                    <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                </div>
+                <div class="job-tittle job-tittle2">
+                    <a href="#">
+                        <h4>Digital Marketer</h4>
+                    </a>
+                    <ul>
+                        <li>Creative Agency</li>
+                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                        <li>$3500 - $4000</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="items-link items-link2 f-right">
+                <a href="{% url 'jobDetails' %}">PENDING</a>
+                <span>7 hours ago</span>
+            </div>
+        </div>
+        <div class="alert alert-primary noStyle" role="alert">
+            <div class="row">
+                <div class="col">
+                    Saved Jobs
+                </div>
+                <div class="col-auto">
+                    <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                </div>
+            </div>
+        </div>
+        <div class="single-job-items mb-30">
+            <div class="job-items">
+                <div class="company-img">
+                    <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                </div>
+                <div class="job-tittle job-tittle2">
+                    <a href="#">
+                        <h4>Digital Marketer</h4>
+                    </a>
+                    <ul>
+                        <li>Creative Agency</li>
+                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                        <li>$3500 - $4000</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="items-link items-link2 f-right">
+                <a href="{% url 'jobDetails' %}">PENDING</a>
+                <span>7 hours ago</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
