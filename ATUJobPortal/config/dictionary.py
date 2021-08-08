@@ -70,3 +70,5 @@ class Dictionary:
                            "31-40", "41-50", "50-100", "More than 100"]
 
     employerTypeList = ["Direct Employer", "Recruitment Agency"]
+
+    workTypeList = ["Contract", "Full Time", "Intenship & Graduate", "Part Time"]
