@@ -1,5 +1,5 @@
+from django.http.response import HttpResponseRedirect
 from ATUJobPortal.config.authentication import Authentication
-from django.shortcuts import render
 from django.contrib import auth
 
 
@@ -7,7 +7,4 @@ def logoutController(request):
     auth.logout(request)
     request.session["authorize"] = False
     request.session["userType"] = None
-    cusAuth = Authentication(request)
-    return render(request, 'login.html',
-                  {"heading": "login",
-                  'auth': cusAuth.authMap})
+    return HttpResponseRedirect("/account/login")

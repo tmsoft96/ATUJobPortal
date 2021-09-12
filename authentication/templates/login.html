@@ -3,6 +3,11 @@
 {% load static %}
 {% block body %}
 
+{% if wrongCredential %}
+<div class="alert alert-danger" role="alert">
+    Wrong email address and password
+</div>
+{% endif %}
 <table width="100%" id="loginTable">
     <tr>
         <td id="tableData1">
