@@ -13,4 +13,5 @@ urlpatterns = [
     path('profile/language', views.careerProfileLanguage, name="profileLanguage"),
     path('profile/cover-letter', views.careerProfileCoverLetter, name="profileCoverLetter"),
     path('profile/cv', views.careerProfileCv, name="profileCv"),
+    path('profile/profile/personal', views.profileUpdatePersonal, name="profileUpdatePersonal"),
 ]

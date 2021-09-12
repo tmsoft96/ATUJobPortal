@@ -1,3 +1,4 @@
+from customer.controllers.profileUpdate.profileUpdatePersonalController import profileUpdatePersonalController
 from customer.controllers.careerProfile.careerProfileCvController import careerProfileCvController
 from customer.controllers.careerProfile.careerProfileCoverLetterController import careerProfileCoverLetterController
 from customer.controllers.careerProfile.careerProfileLanguageController import careerProfileLanguageController
@@ -42,3 +43,6 @@ def careerProfileCoverLetter(request):
 
 def careerProfileCv(request):
     return careerProfileCvController(request)
+
+def profileUpdatePersonal(request):
+    return profileUpdatePersonalController(request)
