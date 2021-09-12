@@ -1,3 +1,6 @@
+from customer.controllers.profileUpdate.profileUpdateEmailController import profileUpdateEmailController
+from customer.controllers.profileUpdate.profileUpdatePhoneController import profileUpdatePhoneController
+from customer.controllers.profileUpdate.profileUpdatePasswordController import profileUpdatePasswordController
 from customer.controllers.profileUpdate.profileUpdatePersonalController import profileUpdatePersonalController
 from customer.controllers.careerProfile.careerProfileCvController import careerProfileCvController
 from customer.controllers.careerProfile.careerProfileCoverLetterController import careerProfileCoverLetterController
@@ -46,3 +49,12 @@ def careerProfileCv(request):
 
 def profileUpdatePersonal(request):
     return profileUpdatePersonalController(request)
+
+def profileUpdatePassword(request):
+    return profileUpdatePasswordController(request)
+
+def profileUpdatePhone(request):
+    return profileUpdatePhoneController(request)
+
+def profileUpdateEmail(request):
+    return profileUpdateEmailController(request)
