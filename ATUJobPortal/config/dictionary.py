@@ -85,3 +85,53 @@ class Dictionary:
 
     proficiencyList = ["Elementary proficiency", "Limited working proficiency",
                        "Professional working proficiency", "Full professional proficiency", "Native or bilingual proficiency"]
+
+    regionList = [
+        "Greater Accra & Tema Region",
+        "Ashanti Region",
+        "Brong-Ahafo Region",
+        "Central Region",
+        "Eastern Region",
+        "Northern Region",
+        "Upper East Region",
+        "Upper West Region",
+        "Volta Region",
+        "Western Region"
+    ]
+
+    currencyList = ["Ghana Cedi", "US Dollar"]
+
+    salaryList = [
+        "less than 180",
+        "180 - 300",
+        "300 - 600",
+        "600 - 900",
+        "900 - 1,200",
+        "1,200 - 1,500",
+        "1,500 - 1,800",
+        "1,800 - 2,100",
+        "2,100 - 2,400",
+        "2,400 - 3,000",
+        "3,000 - 3,600",
+        "3,600 - 4,200",
+        "4,200 - 4,800",
+        "4,800 - 5,300",
+        "5,400 - 6,000",
+        "6,000 - 7,200",
+        "7,200 - 8,400",
+        "8,400 - 9,600",
+        "9,600 - 10,799",
+        "10,800 - 12,000",
+        "12,000 - 18,000",
+        "18,000 - 24,000",
+        "24,000 - 30,000",
+        "30,000 - 40,000",
+        "40,000 - 50,000",
+        "50,000 - 60,000",
+        "60,000 - 70,000",
+        "70,000 - 80,000",
+        "80,000 - 90,000",
+        "90,000 - 100,000",
+        "More than 100,000+",
+        "Commission Only"
+    ]

@@ -62,8 +62,8 @@
                                         <ul id="navigation">
                                             {% for key, value in auth.items %}
                                             {% if key == "userType" and value == "employer" %}
-                                            <li><a href="#">POST A JOB</a></li>
-                                            <li><a href="#">DASHBOARD</a></li>
+                                            <li><a href="{% url 'jobPost' %}">POST A JOB</a></li>
+                                            <li><a href="{% url 'employerDashboard' %}">DASHBOARD</a></li>
                                             <li><a href="#">HELP CENTER</a></li>
                                             {% endif %}
                                             {% endfor %}
@@ -107,6 +107,7 @@
                                             {% for key, value in auth.items %}
                                             {% if key == "userType" and value == "employer" %}
                                             <a href="#">NOTIFICATION</a>
+                                            <a href="#">ACCOUNT SETTING</a>
                                             {% endif %}
                                             {% endfor %}
                                             
@@ -114,9 +115,10 @@
                                             {% if key == "userType" and value != "employer" %}
                                             <a href="{% url 'customerDashboard' %}">MY DASHBOARD</a>
                                             <a href="{% url 'careerProfile' %}">CAREER PROFILE</a>
+                                            <a href="{% url 'profileUpdatePersonal' %}">ACCOUNT SETTING</a>
                                             {% endif %}
                                             {% endfor %}
-                                            <a href="{% url 'profileUpdatePersonal' %}">ACCOUNT SETTING</a>
+
                                             <a href="{% url 'logout' %}" style="color: tomato;">LOGOUT</a>
                                           </div>
                                     </div>
