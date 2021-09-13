@@ -60,6 +60,16 @@
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
+                                            {% for key, value in auth.items %}
+                                            {% if key == "userType" and value == "employer" %}
+                                            <li><a href="#">POST A JOB</a></li>
+                                            <li><a href="#">DASHBOARD</a></li>
+                                            <li><a href="#">HELP CENTER</a></li>
+                                            {% endif %}
+                                            {% endfor %}
+
+                                            {% for key, value in auth.items %}
+                                            {% if key == "userType" and value != "employer" %}
                                             <li><a href="{% url 'home' %}">Home</a></li>
                                             <li><a href="{% url 'jobListings' %}">Find a Jobs </a></li>
                                             <li><a href="{% url 'about' %}">About</a></li>
@@ -72,6 +82,8 @@
                                                 </ul>
                                             </li> -->
                                             <li><a href="{% url 'contact' %}">Contact</a></li>
+                                            {% endif %}
+                                            {% endfor %}
                                         </ul>
                                     </nav>
                                 </div>
@@ -92,8 +104,18 @@
                                                 Michael</span>
                                         </a>
                                         <div class="dropdown-content">
+                                            {% for key, value in auth.items %}
+                                            {% if key == "userType" and value == "employer" %}
+                                            <a href="#">NOTIFICATION</a>
+                                            {% endif %}
+                                            {% endfor %}
+                                            
+                                            {% for key, value in auth.items %}
+                                            {% if key == "userType" and value != "employer" %}
                                             <a href="{% url 'customerDashboard' %}">MY DASHBOARD</a>
                                             <a href="{% url 'careerProfile' %}">CAREER PROFILE</a>
+                                            {% endif %}
+                                            {% endfor %}
                                             <a href="{% url 'profileUpdatePersonal' %}">ACCOUNT SETTING</a>
                                             <a href="{% url 'logout' %}" style="color: tomato;">LOGOUT</a>
                                           </div>
