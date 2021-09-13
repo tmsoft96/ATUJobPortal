@@ -5,6 +5,96 @@
 <div class="alert alert-primary noStyle" role="alert" style="background-color: #63696E;">
     Get qualified and ranked candidates, quickly, with the new and improved Best Match!
 </div>
-<br><br>
-
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-auto">
+            <img src="{% static 'img/icon/briefCase.svg' %}" alt="" width="100px">
+        </div>
+        <div class="col">
+            <br>
+            <h4>AlfaNuruAnsu Ventures</h4>
+            <span>P.O.Box Dk 31</span>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body text-center">
+                    <p>JOBS</p>
+                    <h1>0</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body text-center">
+                    <p>APPLICATIONS</p>
+                    <h1>0</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body text-center">
+                    <p>VIEWS</p>
+                    <h1>0</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <div class="alert alert-primary noStyle" role="alert">
+                Recent Job Listings
+            </div>
+            <br>
+            <div class="single-job-items mb-30">
+                <div class="job-items">
+                    <div class="company-img">
+                        <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                    </div>
+                    <div class="job-tittle job-tittle2">
+                        <a href="#">
+                            <h4>Digital Marketer</h4>
+                        </a>
+                        <ul>
+                            <li>Creative Agency</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                            <li>$3500 - $4000</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="items-link items-link2 f-right">
+                    <a href="{% url 'jobDetails' %}">Full Time</a>
+                    <span>7 hours ago</span>
+                </div>
+            </div>
+            <div class="single-job-items mb-30">
+                <div class="job-items">
+                    <div class="company-img">
+                        <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                    </div>
+                    <div class="job-tittle job-tittle2">
+                        <a href="#">
+                            <h4>Digital Marketer</h4>
+                        </a>
+                        <ul>
+                            <li>Creative Agency</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                            <li>$3500 - $4000</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="items-link items-link2 f-right">
+                    <a href="{% url 'jobDetails' %}">Full Time</a>
+                    <span>7 hours ago</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
 {% endblock %}
