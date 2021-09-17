@@ -3,7 +3,13 @@
 {% load static %}
 {% block body %}
 <br><br>
-<form action="" class="form-contact contact_form">
+{% if errorMessage %}
+<div class="alert alert-danger" role="alert">
+   {{ errorMessage }}
+</div>
+{% endif %}
+<form action="" class="form-contact contact_form" method="POST">
+    {% csrf_token %}
     <div class="container">
         <div class="center">
             <h3>Create a Job Seeker Account</h3>
@@ -20,10 +26,12 @@
 
                 <div class="row">
                     <div class="col">
-                        <input type="text" name="fname" id="fname" class="form-control" required placeholder="First Name">
+                        <input type="text" name="fname" id="fname" class="form-control" required
+                            placeholder="First Name">
                     </div>
                     <div class="col">
-                        <input type="text" name="lname" id="lname" class="form-control" required placeholder="Last Name">
+                        <input type="text" name="lname" id="lname" class="form-control" required
+                            placeholder="Last Name">
                     </div>
                 </div>
                 <br>
@@ -33,7 +41,7 @@
                     </div>
                     <div class="col">
                         <input type="password" name="password" id="password" class="form-control" required
-                            placeholder="Create Password">
+                            placeholder="Create Password" minlength="6">
                         <div class="row">
                             <div class="col">
                                 <span style="font-weight: 400; font-size: smaller;">Minimum 6 Characters</span>
@@ -116,7 +124,8 @@
                 <hr>
                 <div class="row">
                     <div class="col">
-                        <input type="text" name="location" id="location" class="form-control" required placeholder="Your location">
+                        <input type="text" name="location" id="location" class="form-control" required
+                            placeholder="Your location">
                     </div>
                     <div class="col">
                         <input type="tel" name="phone" id="phone" class="form-control" required placeholder="Phone">
@@ -172,7 +181,8 @@
                             <div class="select-itms">
                                 <select name="yearExperience" class="form-select form-control" required>
                                     <option value="Select" selected>Select</option>
-                                    <option value="No Experience/Less than 1 year">No Experience/Less than 1 year</option>
+                                    <option value="No Experience/Less than 1 year">No Experience/Less than 1 year
+                                    </option>
                                     {% for year in yearExperiences %}
                                     <option value="{{ year }} years">{{ year }} years</option>
                                     {% endfor %}
@@ -186,7 +196,8 @@
                 </div>
                 <hr>
                 <div class="mb-3">
-                    <input class="form-control" type="file" id="formFile" name="cvFile" accept=".pdf, .doc, .docx, .rtf">
+                    <input class="form-control" type="file" id="formFile" name="cvFile"
+                        accept=".pdf, .doc, .docx, .rtf">
                     <label for="formFile" class="form-label">Optionally upload a CV no larger than 10MB for file types
                         .pdf .doc .docx .rtf</label>
                     <span>Please note: You will need to upload a CV to apply for jobs, however you can skip the CV
@@ -196,7 +207,8 @@
                 By clicking "Create Your Account", you agree to our <a href="#" style="color: #83811D;">TERMS &
                     CONDITIONS</a> and <a href="#" style="color: #83811D;">PRIVACY POLICY</a>
                 <br><br>
-                <b style="color: black;">Already have an account? <a href="{% url 'login' %}" style="color: #700000;">Log in</a></b>
+                <b style="color: black;">Already have an account? <a href="{% url 'login' %}"
+                        style="color: #700000;">Log in</a></b>
                 <br><br>
                 <div class="form-check">
                     <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault" checked>
@@ -211,7 +223,7 @@
                     </label>
                 </div>
                 <hr>
-                <input type="hidden" name="button" value="signup">
+                <input type="hidden" name="button" value="signUp">
                 <button type="submit" class="btn head-btn1">CREATE YOUR ACCOUNT</button>
                 <!-- <a href="{% url 'customerDashboard' %}" class="btn head-btn1">CREATE YOUR ACCOUNT</a> -->
             </div>
