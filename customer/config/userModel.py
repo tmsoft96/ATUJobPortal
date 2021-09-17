@@ -28,6 +28,7 @@ class CustomerUserModel:
             "salaryExpectation": getData(userId, "salaryExpectation"),
             "tipsAlert": getData(userId, "tipsAlert"),
             "jobAlerts": getData(userId, "jobAlerts"),
+            "note": getData(userId, "note"),
         }
         return userDetail
 

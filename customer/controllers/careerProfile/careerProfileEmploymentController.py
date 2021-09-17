@@ -7,7 +7,6 @@ from customer.config.userModel import CustomerUserModel
 from datetime import datetime
 
 
-
 def careerProfileEmploymentController(request):
     auth = Authentication(request)
     dictionary = Dictionary()
@@ -34,7 +33,8 @@ def careerProfileEmploymentController(request):
         if request.GET.get("action") == "resend":
             try:
                 firebase.authe.send_email_verification(auth.authMap["idToken"])
-                msg = "Verification send successfully to " + userDetails.get("email")
+                msg = "Verification send successfully to " + \
+                    userDetails.get("email")
             except:
                 errorMessage = "Error occured while trying to send verification code"
 
@@ -56,13 +56,13 @@ def careerProfileEmploymentController(request):
 
             # updating the profile
             firebase.db.child("Users").child(userId).update(profile)
-            return HttpResponseRedirect("/customer/profile") 
+            return HttpResponseRedirect("/customer/profile")
 
     return render(request,
                   'customerCareerProfile_employment.html',
                   {"heading": "Job Seeker Profile | ATU Job Portal",
                    "auth": auth.authMap,
-                   "qualifications": dictionary.qualificationsList, 
+                   "qualifications": dictionary.qualificationsList,
                    "currentJobs": dictionary.currentJobsFunctionList,
                    "yearExperiences": yearExperienceList,
                    "workTypes": dictionary.workTypeList,

@@ -5,7 +5,8 @@
 {% block submain %}
 <div class="row">
     <div class="col-8">
-        <form action="#">
+        <form action="" class="form-contact contact_form" method="POST">
+            {% csrf_token %}
             <div class="alert alert-primary noStyle" role="alert">
                 About Me
             </div>
@@ -13,8 +14,9 @@
                 <div class="card-body">
                     <label>Give a short overview of your career history and skills.</label>
                     <br>
-                   <textarea class="form-control" name="note" id="" rows="10"></textarea>
+                    <textarea class="form-control" name="note" id="" rows="10">{{ userDetails.note }}</textarea>
                     <hr>
+                    <input type="hidden" name="button" value="save">
                     <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">SAVE</button>
                 </div>
             </div>
