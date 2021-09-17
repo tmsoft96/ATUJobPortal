@@ -6,6 +6,7 @@ from django.shortcuts import render
 def signUpController(request):
     dictionary = Dictionary()
     auth = Authentication(request)
+
     dayList = []
     yearList = []
     yearExperienceList = []
