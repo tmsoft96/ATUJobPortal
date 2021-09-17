@@ -22,6 +22,12 @@ class CustomerUserModel:
             "yearExperience": getData(userId, "yearExperience"),
             "cv": getData(userId, "cv"),
             "profilePicture": getData(userId, "profilePicture"),
+            "professionalHeadline": getData(userId, "professionalHeadline"),
+            "preferredJobFunction": getData(userId, "preferredJobFunction"),
+            "workType": getData(userId, "workType"),
+            "salaryExpectation": getData(userId, "salaryExpectation"),
+            "tipsAlert": getData(userId, "tipsAlert"),
+            "jobAlerts": getData(userId, "jobAlerts"),
         }
         return userDetail
 

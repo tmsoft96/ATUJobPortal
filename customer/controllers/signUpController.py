@@ -82,7 +82,7 @@ def signUpController(request):
                 "yearExperience": request.POST.get("yearExperience"),
                 "cv": request.POST.get("email"),
                 "tipsAlert": True if request.POST.get("tipsAlert") == "on" else False,
-                "jobAlerts": True if request.POST.get("jobAlerts") == "on" else False,
+                "jobAlerts": True if request.POST.get("jobAlert") == "on" else False,
                 "lastLoginDate": str(datetime.now()),
                 "createdDate": str(datetime.now()),
                 "editDate": str(datetime.now()),

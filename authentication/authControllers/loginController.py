@@ -3,6 +3,7 @@ from ATUJobPortal.config.constant import Constants
 from ATUJobPortal.config.authentication import Authentication
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
+from datetime import datetime
 
 
 def loginController(request):
@@ -27,6 +28,8 @@ def loginController(request):
             try:
                 user = firebase.authe.sign_in_with_email_and_password(
                     email, password)
+                firebase.db.child("Users").child(user["localId"]).update(
+                    {"lastLoginDate": str(datetime.now())})
             except:
                 return render(request, 'login.html',
                               {"heading": "login",
