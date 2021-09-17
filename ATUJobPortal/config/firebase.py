@@ -3,6 +3,7 @@ class Firebase:
     __firebaseConfig = {
         "apiKey": "AIzaSyD5-FOcfZTu_FeyMaZioPEz7MLpjSTYSfk",
         "authDomain": "atujobportal-33aba.firebaseapp.com",
+        "databaseURL": "https://atujobportal-33aba-default-rtdb.firebaseio.com",
         "projectId": "atujobportal-33aba",
         "storageBucket": "atujobportal-33aba.appspot.com",
         "messagingSenderId": "501965329940",

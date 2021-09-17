@@ -20,19 +20,19 @@
 
                 <div class="row">
                     <div class="col">
-                        <input type="text" id="fname" class="form-control" required placeholder="First Name">
+                        <input type="text" name="fname" id="fname" class="form-control" required placeholder="First Name">
                     </div>
                     <div class="col">
-                        <input type="text" id="lname" class="form-control" required placeholder="Last Name">
+                        <input type="text" name="lname" id="lname" class="form-control" required placeholder="Last Name">
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col">
-                        <input type="email" id="email" class="form-control" required placeholder="Email">
+                        <input type="email" name="email" id="email" class="form-control" required placeholder="Email">
                     </div>
                     <div class="col">
-                        <input type="password" id="password" class="form-control" required
+                        <input type="password" name="password" id="password" class="form-control" required
                             placeholder="Create Password">
                         <div class="row">
                             <div class="col">
@@ -116,10 +116,10 @@
                 <hr>
                 <div class="row">
                     <div class="col">
-                        <input type="text" id="location" class="form-control" required placeholder="Your location">
+                        <input type="text" name="location" id="location" class="form-control" required placeholder="Your location">
                     </div>
                     <div class="col">
-                        <input type="tel" id="phone" class="form-control" required placeholder="Phone">
+                        <input type="tel" name="phone" id="phone" class="form-control" required placeholder="Phone">
                     </div>
                 </div>
 
@@ -186,7 +186,7 @@
                 </div>
                 <hr>
                 <div class="mb-3">
-                    <input class="form-control" type="file" id="formFile" name="cv" accept=".pdf, .doc, .docx, .rtf">
+                    <input class="form-control" type="file" id="formFile" name="cvFile" accept=".pdf, .doc, .docx, .rtf">
                     <label for="formFile" class="form-label">Optionally upload a CV no larger than 10MB for file types
                         .pdf .doc .docx .rtf</label>
                     <span>Please note: You will need to upload a CV to apply for jobs, however you can skip the CV
@@ -211,7 +211,9 @@
                     </label>
                 </div>
                 <hr>
-                <a href="{% url 'customerDashboard' %}" class="btn head-btn1">CREATE YOUR ACCOUNT</a>
+                <input type="hidden" name="button" value="signup">
+                <button type="submit" class="btn head-btn1">CREATE YOUR ACCOUNT</button>
+                <!-- <a href="{% url 'customerDashboard' %}" class="btn head-btn1">CREATE YOUR ACCOUNT</a> -->
             </div>
         </div>
     </div>

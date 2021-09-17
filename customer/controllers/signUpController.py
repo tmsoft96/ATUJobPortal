@@ -1,3 +1,4 @@
+from ATUJobPortal.config.firebase import Firebase
 from ATUJobPortal.config.authentication import Authentication
 from ATUJobPortal.config.dictionary import Dictionary
 from django.shortcuts import render
@@ -6,6 +7,7 @@ from django.shortcuts import render
 def signUpController(request):
     dictionary = Dictionary()
     auth = Authentication(request)
+    firebase = Firebase()
 
     dayList = []
     yearList = []
