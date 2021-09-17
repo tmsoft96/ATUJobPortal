@@ -87,6 +87,7 @@ def signUpController(request):
                 "createdDate": str(datetime.now()),
                 "editDate": str(datetime.now()),
                 "delete": False,
+                "profilePicture": "None",
             }
             firebase.db.child("Users").child(userId).set(profile)
 

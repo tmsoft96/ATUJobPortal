@@ -5,15 +5,21 @@
 {% block submain %}
 <div class="row">
     <div class="col-auto">
+        {% if userDetails.profilePicture != "None" %}
+        <img src="{{ userDetails.profilePicture }}"
+            alt="Profile picture" height="150px" class="border border-2 border-warning rounded-circle"
+            style="border-color: #11467f !important;" />
+        {% else %}
         <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
             alt="Profile picture" height="150px" class="border border-2 border-warning rounded-circle"
             style="border-color: #11467f !important;" />
+        {% endif %}
     </div>
     <div class="col">
-        <h2>Michael Tamakloe</h2>
-        <h5>Experience: 2 years</h5>
-        <h5>Location: Alajo</h5>
-        <h5>Phone: 0554302776</h5>
+        <h2>{{ userDetails.fname }} {{ userDetails.lname }}</h2>
+        <h5>Experience: {{ userDetails.yearExperience }}</h5>
+        <h5>Location: {{ userDetails.location }}</h5>
+        <h5>Phone: {{ userDetails.phone }}</h5>
     </div>
 </div>
 <br><br>
@@ -28,7 +34,8 @@
                 <hr>
                 <div class="d-flex flex-row-reverse bd-highlight">
                     <div class="p-2 bd-highlight">
-                        <a href="{% url 'profileEmployment' %}" class="btn head-btn3 removeButtonStyle2 buttonWhite">UPDATE</a>
+                        <a href="{% url 'profileEmployment' %}"
+                            class="btn head-btn3 removeButtonStyle2 buttonWhite">UPDATE</a>
                     </div>
                 </div>
             </div>
@@ -42,7 +49,8 @@
                 <hr>
                 <div class="d-flex flex-row-reverse bd-highlight">
                     <div class="p-2 bd-highlight">
-                        <a href="{% url 'profileAboutMe' %}" class="btn head-btn3 removeButtonStyle2 buttonWhite">ADD</a>
+                        <a href="{% url 'profileAboutMe' %}"
+                            class="btn head-btn3 removeButtonStyle2 buttonWhite">ADD</a>
                     </div>
                 </div>
             </div>
@@ -64,7 +72,8 @@
                 <hr>
                 <div class="d-flex flex-row-reverse bd-highlight">
                     <div class="p-2 bd-highlight">
-                        <a href="{% url 'profileWorkExperience' %}" class="btn head-btn3 removeButtonStyle2 buttonWhite">ADD</a>
+                        <a href="{% url 'profileWorkExperience' %}"
+                            class="btn head-btn3 removeButtonStyle2 buttonWhite">ADD</a>
                     </div>
                 </div>
             </div>
@@ -78,7 +87,8 @@
                 <hr>
                 <div class="d-flex flex-row-reverse bd-highlight">
                     <div class="p-2 bd-highlight">
-                        <a href="{% url 'profileEducation' %}" class="btn head-btn3 removeButtonStyle2 buttonWhite">ADD</a>
+                        <a href="{% url 'profileEducation' %}"
+                            class="btn head-btn3 removeButtonStyle2 buttonWhite">ADD</a>
                     </div>
                 </div>
             </div>
@@ -110,7 +120,8 @@
                 <hr>
                 <div class="d-flex flex-row-reverse bd-highlight">
                     <div class="p-2 bd-highlight">
-                        <a href="{% url 'profileCertificate' %}" class="btn head-btn3 removeButtonStyle2 buttonWhite">ADD</a>
+                        <a href="{% url 'profileCertificate' %}"
+                            class="btn head-btn3 removeButtonStyle2 buttonWhite">ADD</a>
                     </div>
                 </div>
             </div>
@@ -124,7 +135,8 @@
                 <hr>
                 <div class="d-flex flex-row-reverse bd-highlight">
                     <div class="p-2 bd-highlight">
-                        <a href="{% url 'profileLanguage' %}" class="btn head-btn3 removeButtonStyle2 buttonWhite">ADD</a>
+                        <a href="{% url 'profileLanguage' %}"
+                            class="btn head-btn3 removeButtonStyle2 buttonWhite">ADD</a>
                     </div>
                 </div>
             </div>
@@ -139,7 +151,8 @@
                 <hr>
                 <div class="d-flex flex-row-reverse bd-highlight">
                     <div class="p-2 bd-highlight">
-                        <a href="{% url 'profileCoverLetter' %}" class="btn head-btn3 removeButtonStyle2 buttonWhite">ADD</a>
+                        <a href="{% url 'profileCoverLetter' %}"
+                            class="btn head-btn3 removeButtonStyle2 buttonWhite">ADD</a>
                     </div>
                 </div>
             </div>

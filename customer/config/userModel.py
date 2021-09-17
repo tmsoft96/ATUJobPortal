@@ -21,6 +21,7 @@ class CustomerUserModel:
             "currentJobFunction": getData(userId, "currentJobFunction"),
             "yearExperience": getData(userId, "yearExperience"),
             "cv": getData(userId, "cv"),
+            "profilePicture": getData(userId, "profilePicture"),
         }
         return userDetail
 

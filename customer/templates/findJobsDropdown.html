@@ -6,7 +6,19 @@
 {% if not auth.verifyEmail %}
 <div class="alert alert-primary noStyle" role="alert" style="background-color: #63696E;">
     Hi {{ userDetails.fname }}, Please verify your account. 
-    <a href="#" style="color: #DBD81A;">RESEND VERIFICATION EMAIL</a>
+    <a href="/customer/dashboard?action=resend" style="color: #DBD81A;">RESEND VERIFICATION EMAIL</a>
+</div>
+{% endif %}
+
+{% if msg %}
+<div class="alert alert-success text-center" role="alert">
+    {{ msg }}
+</div>
+{% endif %}
+
+{% if errorMessage %}
+<div class="alert alert-danger text-center" role="alert">
+    {{ errorMessage }}
 </div>
 {% endif %}
 
