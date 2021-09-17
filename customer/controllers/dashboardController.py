@@ -6,15 +6,16 @@ from django.shortcuts import render
 
 def dashboardController(request):
     auth = Authentication(request)
-
+    userDetails = None
     if auth.authMap["authorize"]:
         userId = auth.authMap["userId"]
-        userDetail = CustomerUserModel.userModel(userId)
-        print(userDetail)
+        userDetails = CustomerUserModel.userModel(userId)
+        print(userDetails)
     else:
-        return HttpResponseRedirect("/logout")
+        return HttpResponseRedirect("/account/logout")
 
     return render(request,
                   'customerDashboard.html',
                   {"heading": "Job Seeker Profile | ATU Job Portal",
-                   "auth": auth.authMap})
+                   "auth": auth.authMap,
+                   "userDetails": userDetails})

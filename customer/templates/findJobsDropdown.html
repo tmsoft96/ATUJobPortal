@@ -2,12 +2,14 @@
 
 {% load static %}
 {% block body %}
+
+{% if not auth.verifyEmail %}
 <div class="alert alert-primary noStyle" role="alert" style="background-color: #63696E;">
-    Hi michael, Please verify your account.
+    Hi {{ userDetails.fname }}, Please verify your account. 
     <a href="#" style="color: #DBD81A;">RESEND VERIFICATION EMAIL</a>
-    or
-    <a href="#" style="color: #DBD81A;">CHANGE EMAIL</a>
 </div>
+{% endif %}
+
 <div class="alert alert-primary noStyle" role="alert">
     <form>
         <div class="row">
@@ -40,9 +42,11 @@
     </form>
 </div>
 <br>
+
 <div class="container">
     {% block submain %}
     {% endblock %}
 </div>
 <br><br>
+
 {% endblock %}

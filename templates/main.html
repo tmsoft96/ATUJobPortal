@@ -60,70 +60,52 @@
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
-                                            {% for key, value in auth.items %}
-                                            {% if key == "userType" and value == "employer" %}
+                                            {% if auth.userType == "employer" %}
                                             <li><a href="{% url 'jobPost' %}">POST A JOB</a></li>
                                             <li><a href="{% url 'employerDashboard' %}">DASHBOARD</a></li>
                                             <li><a href="#">HELP CENTER</a></li>
                                             {% endif %}
-                                            {% endfor %}
 
-                                            {% for key, value in auth.items %}
-                                            {% if key == "userType" and value != "employer" %}
+                                            {% if auth.userType != "employer" %}
                                             <li><a href="{% url 'home' %}">Home</a></li>
                                             <li><a href="{% url 'jobListings' %}">Find a Jobs </a></li>
                                             <li><a href="{% url 'about' %}">About</a></li>
-                                            <!-- <li><a href="#">Page</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Elements</a></li>
-                                                    <li><a href="job_details.html">job Details</a></li>
-                                                </ul>
-                                            </li> -->
                                             <li><a href="{% url 'contact' %}">Contact</a></li>
                                             {% endif %}
-                                            {% endfor %}
                                         </ul>
                                     </nav>
                                 </div>
                                 <!-- Header-btn -->
                                 <div class="header-btn d-none f-rightß d-lg-block">
-                                    {% for key, value in auth.items %}
-                                    {% if key == "authorize" and not value %}
+                                    {% if not auth.authorize %}
                                     <a href="{% url 'register' %}" class="btn head-btn1">Register</a>
                                     <a href="{% url 'login' %}" class="btn head-btn2">Login</a>
-                                    {% elif key == "authorize" and value %}
+                                    {% elif auth.authorize %}
                                     <div class="dropdown">
                                         <a href="#" class="dropbtn">
                                             <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
                                                 alt="Profile picture" height="50px"
                                                 class="border border-2 border-warning rounded-circle"
-                                                style="border-color: #11467f !important;"/>
+                                                style="border-color: #11467f !important;" />
                                             <span style="font-size: larger; margin-left: 10px; color: #11467f;">Hi,
-                                                Michael</span>
+                                                {{ userDetails.fname }}</span>
                                         </a>
                                         <div class="dropdown-content">
-                                            {% for key, value in auth.items %}
-                                            {% if key == "userType" and value == "employer" %}
+                                            {% if auth.userType == "employer" %}
                                             <a href="#">NOTIFICATION</a>
                                             <a href="#">ACCOUNT SETTING</a>
                                             {% endif %}
-                                            {% endfor %}
-                                            
-                                            {% for key, value in auth.items %}
-                                            {% if key == "userType" and value != "employer" %}
+
+                                            {% if auth.userType != "employer" %}
                                             <a href="{% url 'customerDashboard' %}">MY DASHBOARD</a>
                                             <a href="{% url 'careerProfile' %}">CAREER PROFILE</a>
                                             <a href="{% url 'profileUpdatePersonal' %}">ACCOUNT SETTING</a>
                                             {% endif %}
-                                            {% endfor %}
 
                                             <a href="{% url 'logout' %}" style="color: tomato;">LOGOUT</a>
-                                          </div>
+                                        </div>
                                     </div>
                                     {% endif %}
-                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
