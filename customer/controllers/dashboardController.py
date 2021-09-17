@@ -1,5 +1,5 @@
+from customer.config.userModel import CustomerUserModel
 from django.http.response import HttpResponseRedirect
-from customer.config.__pycache__.userModel import CustomerUserModel
 from ATUJobPortal.config.authentication import Authentication
 from django.shortcuts import render
 
