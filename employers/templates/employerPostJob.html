@@ -133,7 +133,7 @@
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col">
+                            <!-- <div class="col">
                                 <div class="form-check">
                                     <input class="form-check-input" name="confidential" type="checkbox"
                                         id="flexCheckDefault" checked>
@@ -141,10 +141,10 @@
                                         Confidential
                                     </label>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" name="tipsAlert" type="checkbox"
+                                    <input class="form-check-input" name="negotiable" type="checkbox"
                                         id="flexCheckDefault" checked>
                                     <label class="form-check-label" for="negotiable">
                                         Negotiable
@@ -181,7 +181,7 @@
                 <div class="row">
                     <div class="col">
                         <label>Available Openings</label>
-                        <input type="number" id="" class="form-control" required>
+                        <input type="number" name="availableOpenings" id="" class="form-control" required>
                     </div>
                     <div class="col"></div>
                     <div class="col"></div>
@@ -189,24 +189,24 @@
                 <hr>
                 <label>Job Summary</label>
                 <br>
-                <textarea class="form-control" name="note" id="" rows="3"
+                <textarea class="form-control" name="jobSummary" id="" rows="3"
                     placeholder="The summary helps you attract the right candidate, only include the most important information to grab the attention of the job seekers. Keep it as short as possible."></textarea>
                 <br>
                 <label>Job Description/Requirements</label>
-                <textarea class="form-control" name="note" id="" rows="7"
+                <textarea class="form-control" name="jobDescription" id="" rows="7"
                     placeholder="The job description/requirements should accurately reflect the duties and responsibilities of the position. It helps give a realistic overview of the job and what is required from the candidate applying."></textarea>
                 <hr>
                 <h5>Want to know more specific information about your candidates? Add Additional Questions.</h5>
                 <br>
                 <label>Would you like applicants to apply with a cover letter?</label>
                 <div class="form-check">
-                    <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault" checked>
+                    <input class="form-check-input" name="applyWithCoverLetter" type="checkbox" id="flexCheckDefault" checked>
                     <label class="form-check-label" for="flexCheckDefault">
                         Applicant must apply with a cover letter attached
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault" checked>
+                    <input class="form-check-input" name="applyWithCoverLetterOrNot" type="checkbox" id="flexCheckDefault" checked>
                     <label class="form-check-label" for="flexCheckDefault">
                         Applicant have the option to choose if they want to apply with a cover letter or not
                     </label>
@@ -214,19 +214,20 @@
                 <br>
                 <label>How would you like to view the applications for this job?</label>
                 <div class="form-check">
-                    <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault" checked>
+                    <input class="form-check-input" name="viewByPortalAndEmail" type="checkbox" id="flexCheckDefault" checked>
                     <label class="form-check-label" for="flexCheckDefault">
                         View application in employer ATS and receive email notifications.
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault" checked>
+                    <input class="form-check-input" name="viewByPortal" type="checkbox" id="flexCheckDefault" checked>
                     <label class="form-check-label" for="flexCheckDefault">
                         View application in employer ATS only.
                     </label>
                 </div>
                 <hr>
-                <a href="#" class="btn head-btn1">POST JOB</a>
+                <input type="hidden" name="button" value="postJob">
+                <button class="btn head-btn1" type="submit">POST JOB</button>
             </div>
         </div>
     </form>
