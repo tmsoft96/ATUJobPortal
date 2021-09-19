@@ -13,8 +13,8 @@
         </div>
         <div class="col">
             <br>
-            <h4>AlfaNuruAnsu Ventures</h4>
-            <span>P.O.Box Dk 31</span>
+            <h4>{{ userDetails.companyName }}</h4>
+            <span>{{ userDetails.address }}</span>
         </div>
     </div>
     <br>
@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <p>JOBS</p>
-                    <h1>0</h1>
+                    <h1>{{ userDetails.noOfJobs }}</h1>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <p>APPLICATIONS</p>
-                    <h1>0</h1>
+                    <h1>{{ userDetails.noOfApplication }}</h1>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <p>VIEWS</p>
-                    <h1>0</h1>
+                    <h1>{{ userDetails.noOfViews }}</h1>
                 </div>
             </div>
         </div>

@@ -10,226 +10,226 @@
     <h4>Best Match</h4>
     <p>Get qualified and ranked candidates quickly.</p>
     <br>
-    <div class="card">
-        <div class="card-body">
-            <label>Job Title</label>
-            <input type="text" id="jobTitle" class="form-control" required>
-            <br>
-            <div class="row">
-                <div class="col">
-                    <label>Job Functions</label>
-                    <div class="select-form border">
-                        <div class="select-itms">
-                            <select name="position" class="form-select form-control" required>
-                                <option value="Select" selected>Select</option>
-                                {% for jobFunction in jobFunctions %}
-                                <option value="{{ jobFunction }}">{{ jobFunction }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <label>Industry</label>
-                    <div class="select-form border">
-                        <div class="select-itms">
-                            <select name="position" class="form-select form-control" required>
-                                <option value="Select" selected>Select</option>
-                                {% for industry in industries %}
-                                <option value="{{ industry }}">{{ industry }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <label>Work Type</label>
-                    <div class="select-form border">
-                        <div class="select-itms">
-                            <select name="position" class="form-select form-control" required>
-                                <option value="Select" selected>Select</option>
-                                {% for workType in workTypes %}
-                                <option value="{{ workType }}">{{ workType }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col">
-                    <label>Location</label>
-                    <div class="select-form border">
-                        <div class="select-itms">
-                            <select name="position" class="form-select form-control" required>
-                                <option value="Select" selected>Select</option>
-                                {% for region in regions %}
-                                <option value="{{ region }}">{{ region }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <label>Minimum Qualification</label>
-                    <div class="select-form border">
-                        <div class="select-itms">
-                            <select name="position" class="form-select form-control" required>
-                                <option value="Select" selected>Select</option>
-                                {% for qualification in qualifications %}
-                                <option value="{{ qualification }}">{{ qualification }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <label>Experience Length</label>
-                    <div class="select-form border">
-                        <div class="select-itms">
-                            <select name="yearExperience" class="form-select form-control" required>
-                                <option value="Select" selected>Select</option>
-                                <option value="No Experience/Less than 1 year">No Experience/Less than 1 year</option>
-                                {% for year in yearExperiences %}
-                                <option value="{{ year }} years">{{ year }} years</option>
-                                {% endfor %}
-                                <option value="More than 5 years">More than 5 years</option>
-                            </select>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col">
-                    <label>Job Level</label>
-                    <div class="select-form border">
-                        <div class="select-itms">
-                            <select name="position" class="form-select form-control" required>
-                                <option value="Select" selected>Select</option>
-                                {% for jobLevel in jobLevels %}
-                                <option value="{{ jobLevel }}">{{ jobLevel }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <label>Salary Currency</label>
-                    <div class="select-form border">
-                        <div class="select-itms">
-                            <select name="position" class="form-select form-control" required>
-                                <option value="Select" selected>Select</option>
-                                {% for currency in currencies %}
-                                <option value="{{ currency }}">{{ currency }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault"
-                                    checked>
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Confidential
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault"
-                                    checked>
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Negotiable
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <label>Monthly Salary (Gross)</label>
-                    <div class="select-form border">
-                        <div class="select-itms">
-                            <select name="position" class="form-select form-control" required>
-                                <option value="Select" selected>Select</option>
-                                {% for salary in salaries %}
-                                <option value="{{ salary }}">{{ salary }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <br>
+    <form action="" class="form-contact contact_form" method="POST">
+        {% csrf_token %}
+        <div class="card">
+            <div class="card-body">
+                <label>Job Title</label>
+                <input type="text" id="jobTitle" class="form-control" required>
+                <br>
+                <div class="row">
                     <div class="col">
-                        <div class="form-check">
-                            <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault"
-                                checked>
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Plus Commission
-                            </label>
+                        <label>Job Functions</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="jobFunction" class="form-select form-control" required>
+                                    <option value="Select" selected>Select</option>
+                                    {% for jobFunction in jobFunctions %}
+                                    <option value="{{ jobFunction }}">{{ jobFunction }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Industry</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="industry" class="form-select form-control" required>
+                                    <option value="Select" selected>Select</option>
+                                    {% for industry in industries %}
+                                    <option value="{{ industry }}">{{ industry }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Work Type</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="workType" class="form-select form-control" required>
+                                    <option value="Select" selected>Select</option>
+                                    {% for workType in workTypes %}
+                                    <option value="{{ workType }}">{{ workType }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col">
-                    <label>Available Openings</label>
-                    <input type="number" id="" class="form-control" required>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label>Location</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="region" class="form-select form-control" required>
+                                    <option value="Select" selected>Select</option>
+                                    {% for region in regions %}
+                                    <option value="{{ region }}">{{ region }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Minimum Qualification</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="qualification" class="form-select form-control" required>
+                                    <option value="Select" selected>Select</option>
+                                    {% for qualification in qualifications %}
+                                    <option value="{{ qualification }}">{{ qualification }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Experience Length</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="yearExperience" class="form-select form-control" required>
+                                    <option value="Select" selected>Select</option>
+                                    <option value="No Experience/Less than 1 year">No Experience/Less than 1 year
+                                    </option>
+                                    {% for year in yearExperiences %}
+                                    <option value="{{ year }} years">{{ year }} years</option>
+                                    {% endfor %}
+                                    <option value="More than 5 years">More than 5 years</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col"></div>
-                <div class="col"></div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label>Job Level</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="jobLevel" class="form-select form-control" required>
+                                    <option value="Select" selected>Select</option>
+                                    {% for jobLevel in jobLevels %}
+                                    <option value="{{ jobLevel }}">{{ jobLevel }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Salary Currency</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="currency" class="form-select form-control" required>
+                                    <option value="Select" selected>Select</option>
+                                    {% for currency in currencies %}
+                                    <option value="{{ currency }}">{{ currency }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" name="confidential" type="checkbox"
+                                        id="flexCheckDefault" checked>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Confidential
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" name="tipsAlert" type="checkbox"
+                                        id="flexCheckDefault" checked>
+                                    <label class="form-check-label" for="negotiable">
+                                        Negotiable
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Monthly Salary (Gross)</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="salary" class="form-select form-control" required>
+                                    <option value="Select" selected>Select</option>
+                                    {% for salary in salaries %}
+                                    <option value="{{ salary }}">{{ salary }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" name="plusCommission" type="checkbox" id="flexCheckDefault"
+                                    checked>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Plus Commission
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label>Available Openings</label>
+                        <input type="number" id="" class="form-control" required>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <hr>
+                <label>Job Summary</label>
+                <br>
+                <textarea class="form-control" name="note" id="" rows="3"
+                    placeholder="The summary helps you attract the right candidate, only include the most important information to grab the attention of the job seekers. Keep it as short as possible."></textarea>
+                <br>
+                <label>Job Description/Requirements</label>
+                <textarea class="form-control" name="note" id="" rows="7"
+                    placeholder="The job description/requirements should accurately reflect the duties and responsibilities of the position. It helps give a realistic overview of the job and what is required from the candidate applying."></textarea>
+                <hr>
+                <h5>Want to know more specific information about your candidates? Add Additional Questions.</h5>
+                <br>
+                <label>Would you like applicants to apply with a cover letter?</label>
+                <div class="form-check">
+                    <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault" checked>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Applicant must apply with a cover letter attached
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault" checked>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Applicant have the option to choose if they want to apply with a cover letter or not
+                    </label>
+                </div>
+                <br>
+                <label>How would you like to view the applications for this job?</label>
+                <div class="form-check">
+                    <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault" checked>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        View application in employer ATS and receive email notifications.
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault" checked>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        View application in employer ATS only.
+                    </label>
+                </div>
+                <hr>
+                <a href="#" class="btn head-btn1">POST JOB</a>
             </div>
-            <hr>
-            <label>Job Summary</label>
-            <br>
-            <textarea class="form-control" name="note" id="" rows="3"
-                placeholder="The summary helps you attract the right candidate, only include the most important information to grab the attention of the job seekers. Keep it as short as possible."></textarea>
-            <br>
-            <label>Job Description/Requirements</label>
-            <textarea class="form-control" name="note" id="" rows="7"
-                placeholder="The job description/requirements should accurately reflect the duties and responsibilities of the position. It helps give a realistic overview of the job and what is required from the candidate applying."></textarea>
-            <hr>
-            <h5>Want to know more specific information about your candidates? Add Additional Questions.</h5>
-            <br>
-            <label>Would you like applicants to apply with a cover letter?</label>
-            <div class="form-check">
-                <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault"
-                    checked>
-                <label class="form-check-label" for="flexCheckDefault">
-                    Applicant must apply with a cover letter attached
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault"
-                    checked>
-                <label class="form-check-label" for="flexCheckDefault">
-                    Applicant have the option to choose if they want to apply with a cover letter or not
-                </label>
-            </div>
-            <br>
-            <label>How would you like to view the applications for this job?</label>
-            <div class="form-check">
-                <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault"
-                    checked>
-                <label class="form-check-label" for="flexCheckDefault">
-                    View application in employer ATS and receive email notifications.
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault"
-                    checked>
-                <label class="form-check-label" for="flexCheckDefault">
-                    View application in employer ATS only.
-                </label>
-            </div>
-            <hr>
-            <a href="#" class="btn head-btn1">POST JOB</a>
         </div>
-    </div>
+    </form>
 </div>
 <br>
 {% endblock %}
