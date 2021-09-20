@@ -1,6 +1,6 @@
+from ATUJobPortal.config.firebase import Firebase
 from django.http.response import HttpResponseRedirect
 from employers.config.userModel import EmployerUserModel
-from pyrebase.pyrebase import Firebase
 from ATUJobPortal.config.authentication import Authentication
 from django.shortcuts import render
 
