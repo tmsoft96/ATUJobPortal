@@ -2,6 +2,18 @@
 
 {% load static %}
 {% block body %}
+{% if msg %}
+<div class="alert alert-success text-center" role="alert">
+    {{ msg }}
+</div>
+{% endif %}
+
+{% if errorMessage %}
+<div class="alert alert-danger text-center" role="alert">
+    {{ errorMessage }}
+</div>
+{% endif %}
+
 <div class="alert alert-primary noStyle" role="alert" style="background-color: #63696E;">
     Get qualified and ranked candidates, quickly, with the new and improved Best Match!
 </div>

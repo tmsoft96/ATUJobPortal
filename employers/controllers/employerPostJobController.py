@@ -1,3 +1,4 @@
+from employers.config.userModel import EmployerUserModel
 from django.http.response import HttpResponseRedirect
 from ATUJobPortal.config.firebase import Firebase
 from ATUJobPortal.config.dictionary import Dictionary
@@ -14,10 +15,19 @@ def employerPostJobController(request):
     for yearEx in range(1, 6):
         yearExperienceList.append(yearEx)
 
+    userDetails = None
+    if auth.authMap["authorize"]:
+        userId = auth.authMap["userId"]
+        userDetails = EmployerUserModel.userModel(userId)
+        print(userDetails)
+    else:
+        return HttpResponseRedirect("/account/logout")
+
     if request.method == "POST":
         if request.POST.get("button") == "postJob":
             job = {
-                "companyId": "",
+                "companyId": userDetails.get("id"),
+                "companyName": userDetails.get("companyName"),
                 "jobTitle": request.POST.get("jobTitle"),
                 "jobFunction": request.POST.get("jobFunction"),
                 "industry": request.POST.get("industry"),
@@ -25,9 +35,9 @@ def employerPostJobController(request):
                 "region": request.POST.get("region"),
                 "qualification": request.POST.get("qualification"),
                 "yearExperience": request.POST.get("yearExperience"),
-                "negotiable": request.POST.get("negotiable"),
+                "negotiable": True if request.POST.get("negotiable") == "on" else False,
                 "salary": request.POST.get("salary"),
-                "plusCommission": request.POST.get("plusCommission"),
+                "plusCommission": True if request.POST.get("plusCommission") == "on" else False,
                 "availableOpenings": request.POST.get("availableOpenings"),
                 "jobSummary": request.POST.get("jobSummary"),
                 "jobDescription": request.POST.get("jobDescription"),
@@ -35,6 +45,10 @@ def employerPostJobController(request):
                 "viewBy": "viewByPortalAndEmail" if request.POST.get("viewByPortalAndEmail") == "on" else "viewByPortal" ,
             }
             firebase.db.child("Jobs").push(job)
+
+            # adding no of add job to user profile
+            noOfJobs = userDetails.get("noOfJobs")
+            firebase.db.child("Users").child(userId).update({"noOfJobs": noOfJobs + 1})
 
             return HttpResponseRedirect("/employer/dashboard?action=jobSuccess") 
 

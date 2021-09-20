@@ -26,6 +26,8 @@ def employerDashboardController(request):
                 msg = "Verification send successfully to " + userDetails.get("email")
             except:
                 errorMessage = "Error occured while trying to send verification code"
+        elif request.GET.get("action") == "jobSuccess":
+            msg = "Job posted successfully"
 
     return render(request,
                   'employerDashboard.html',
