@@ -18,6 +18,16 @@ def loginController(request):
         elif auth.authMap.get("userType") == constants.userType[1]:
             return HttpResponseRedirect("/employer/dashboard")
 
+    
+    if request.method == "GET":
+        if request.GET.get("action") == "emailVerify":
+            return render(request, 'login.html',
+                        {"heading": "login",
+                        "emailVerify": True,
+                        "email": request.session["email"],
+                        'auth': auth.authMap})
+
+
     if request.method == "POST":
         if request.POST.get("button") == "logIn":
             email = request.POST.get("email")
@@ -63,19 +73,7 @@ def loginController(request):
                               {"heading": "login",
                                "errorMessage": "Error loading your information",
                                'auth': auth.authMap})
-
-    try:
-        if request.session["fromSignUp"] and request.session["email"] != None and not request.session["verifyEmail"]:
-            return render(request, 'login.html',
-                          {"heading": "login",
-                           "emailVerify": True,
-                           "email": request.session["email"],
-                           'auth': auth.authMap})
-        else:
-            return render(request, 'login.html',
-                          {"heading": "login",
-                           'auth': auth.authMap})
-    except KeyError:
-        return render(request, 'login.html',
-                      {"heading": "login",
-                       'auth': auth.authMap})
+       
+    return render(request, 'login.html',
+                    {"heading": "login",
+                    'auth': auth.authMap})

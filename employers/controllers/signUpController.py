@@ -64,10 +64,7 @@ def signUpController(request):
 
             # send email verification
             firebase.authe.send_email_verification(idToken)
-            request.session["verifyEmail"] = False
-            request.session["fromSignUp"] = True
-
-            return HttpResponseRedirect("/account/login")
+            return HttpResponseRedirect("/account/login?action=emailVerify")
 
     return render(request,
                   'employerSignUp.html',
