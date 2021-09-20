@@ -1,3 +1,4 @@
+from employers.config.jobModel import JobModel
 from ATUJobPortal.config.firebase import Firebase
 from django.http.response import HttpResponseRedirect
 from employers.config.userModel import EmployerUserModel
@@ -7,6 +8,7 @@ from django.shortcuts import render
 def employerDashboardController(request):
     auth = Authentication(request)
     firebase = Firebase()
+    jobs = JobModel.allJob()
 
     msg = None
     errorMessage = None
@@ -29,10 +31,12 @@ def employerDashboardController(request):
         elif request.GET.get("action") == "jobSuccess":
             msg = "Job posted successfully"
 
+
     return render(request,
                   'employerDashboard.html',
                   {"heading": "Welcome | ATU Job Portal",
                    'auth': auth.authMap,
                    "msg": msg,
                    "userDetails": userDetails,
-                   "errorMessage": errorMessage})
+                   "errorMessage": errorMessage,
+                   "jobs": jobs})

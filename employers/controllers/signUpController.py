@@ -4,6 +4,7 @@ from ATUJobPortal.config.firebase import Firebase
 from ATUJobPortal.config.authentication import Authentication
 from ATUJobPortal.config.dictionary import Dictionary
 from django.shortcuts import render
+from datetime import datetime
 
 
 def signUpController(request):
@@ -58,6 +59,11 @@ def signUpController(request):
                 "noOfJobs": 0,
                 "noOfApplication": 0,
                 "noOfViews": 0,
+                "lastLoginDate": str(datetime.now()),
+                "createdDate": str(datetime.now()),
+                "editDate": str(datetime.now()),
+                "delete": False,
+                "logo": "None",
             }
 
             firebase.db.child("Users").child(userId).set(profile)

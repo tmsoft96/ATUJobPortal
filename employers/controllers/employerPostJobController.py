@@ -4,6 +4,7 @@ from ATUJobPortal.config.firebase import Firebase
 from ATUJobPortal.config.dictionary import Dictionary
 from ATUJobPortal.config.authentication import Authentication
 from django.shortcuts import render
+from datetime import datetime
 
 def employerPostJobController(request):
     auth = Authentication(request)
@@ -36,6 +37,7 @@ def employerPostJobController(request):
                 "qualification": request.POST.get("qualification"),
                 "yearExperience": request.POST.get("yearExperience"),
                 "negotiable": True if request.POST.get("negotiable") == "on" else False,
+                "currency": request.POST.get("currency"),
                 "salary": request.POST.get("salary"),
                 "plusCommission": True if request.POST.get("plusCommission") == "on" else False,
                 "availableOpenings": request.POST.get("availableOpenings"),
@@ -43,6 +45,10 @@ def employerPostJobController(request):
                 "jobDescription": request.POST.get("jobDescription"),
                 "applyWith": "applyWithCoverLetter" if request.POST.get("applyWithCoverLetter") == "on" else "applyWithCoverLetterOrNot" ,
                 "viewBy": "viewByPortalAndEmail" if request.POST.get("viewByPortalAndEmail") == "on" else "viewByPortal" ,
+                "timestamp": datetime.now().timestamp(),
+                "createdDate": str(datetime.now()),
+                "editDate": str(datetime.now()),
+                "delete": False,
             }
             firebase.db.child("Jobs").push(job)
 

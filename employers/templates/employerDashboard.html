@@ -60,9 +60,10 @@
     <div class="card">
         <div class="card-body">
             <div class="alert alert-primary noStyle" role="alert">
-                Recent Job Listings
+                Recent Job Postings
             </div>
             <br>
+            {% for job in jobs %}
             <div class="single-job-items mb-30">
                 <div class="job-items">
                     <div class="company-img">
@@ -70,41 +71,21 @@
                     </div>
                     <div class="job-tittle job-tittle2">
                         <a href="#">
-                            <h4>Digital Marketer</h4>
+                            <h4>{{ job.jobTitle }}</h4>
                         </a>
                         <ul>
-                            <li>Creative Agency</li>
-                            <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                            <li>$3500 - $4000</li>
+                            <li>{{ job.jobFunction }}</li>
+                            <li><i class="fas fa-map-marker-alt"></i>{{ job.region }}</li>
+                            <li>{{ job.currency }} &nbsp; {{ job.salary }}</li>
                         </ul>
                     </div>
                 </div>
                 <div class="items-link items-link2 f-right">
-                    <a href="{% url 'jobDetails' %}">Full Time</a>
-                    <span>7 hours ago</span>
+                    <a href="{% url 'jobDetails' %}">{{ job.workType }}</a>
+                    <span>{{ job.time }}</span>
                 </div>
             </div>
-            <div class="single-job-items mb-30">
-                <div class="job-items">
-                    <div class="company-img">
-                        <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
-                    </div>
-                    <div class="job-tittle job-tittle2">
-                        <a href="#">
-                            <h4>Digital Marketer</h4>
-                        </a>
-                        <ul>
-                            <li>Creative Agency</li>
-                            <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                            <li>$3500 - $4000</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="items-link items-link2 f-right">
-                    <a href="{% url 'jobDetails' %}">Full Time</a>
-                    <span>7 hours ago</span>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>

@@ -23,6 +23,7 @@ class EmployerUserModel:
             "noOfJobs": getData(userId, "noOfJobs"),
             "noOfApplication": getData(userId, "noOfApplication"),
             "noOfViews": getData(userId, "noOfViews"),
+            "logo": getData(userId, "logo"),
         }
         return userDetail
 
