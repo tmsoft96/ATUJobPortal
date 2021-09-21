@@ -64,7 +64,7 @@
             </div>
             <br>
             {% for job in jobs %}
-            {% if not job.delete %}
+            {% if not job.delete and job.companyId == auth.userId %}
             <div class="single-job-items mb-30">
                 <div class="job-items">
                     <div class="company-img">

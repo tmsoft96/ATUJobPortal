@@ -27,6 +27,8 @@ class JobModel:
                 "workType": value.get("workType"),
                 "delete": value.get("delete"),
                 "time": timeago.format(postDate, now),
+                "companyId": value.get("companyId"),
+                "yearExperience": value.get("yearExperience"),
             }
             allJobsList.append(jobDic)
 
