@@ -1,0 +1,229 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% block body %}
+<div class="alert alert-primary noStyle" role="alert" style="background-color: #63696E;">
+    Get qualified and ranked candidates, quickly, with the new and improved Best Match!
+</div>
+<br><br>
+<div class="container">
+    <h4>Edit Job Post</h4>
+    <p>Get qualified and ranked candidates quickly.</p>
+    <br>
+    <form action="" class="form-contact contact_form" method="POST">
+        {% csrf_token %}
+        <div class="card">
+            <div class="card-body">
+                <label>Job Title</label>
+                <input type="text" id="jobTitle" name="jobTitle" class="form-control" value="{{ jobDict.jobTitle }}"
+                    required>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label>Job Functions</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="jobFunction" class="form-select form-control" required>
+                                    <option value="{{ jobDict.jobFunction }}" selected>{{ jobDict.jobFunction }}
+                                    </option>
+                                    <option value="Select">Select</option>
+                                    {% for jobFunction in jobFunctions %}
+                                    <option value="{{ jobFunction }}">{{ jobFunction }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Industry</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="industry" class="form-select form-control" required>
+                                    <option value="{{ jobDict.industry }}" selected>{{ jobDict.industry }}</option>
+                                    <option value="Select">Select</option>
+                                    {% for industry in industries %}
+                                    <option value="{{ industry }}">{{ industry }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Work Type</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="workType" class="form-select form-control" required>
+                                    <option value="{{ jobDict.workType }}" selected>{{ jobDict.workType }}</option>
+                                    <option value="Select">Select</option>
+                                    {% for workType in workTypes %}
+                                    <option value="{{ workType }}">{{ workType }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label>Location</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="region" class="form-select form-control" required>
+                                    <option value="{{ jobDict.region }}" selected>{{ jobDict.region }}</option>
+                                    <option value="Select">Select</option>
+                                    {% for region in regions %}
+                                    <option value="{{ region }}">{{ region }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Minimum Qualification</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="qualification" class="form-select form-control" required>
+                                    <option value="{{ jobDict.qualification }}" selected>{{ jobDict.qualification }}
+                                    </option>
+                                    <option value="Select">Select</option>
+                                    {% for qualification in qualifications %}
+                                    <option value="{{ qualification }}">{{ qualification }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Experience Length</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="yearExperience" class="form-select form-control" required>
+                                    <option value="{{ jobDict.yearExperience }}" selected>{{ jobDict.yearExperience }}
+                                    </option>
+                                    <option value="Select">Select</option>
+                                    <option value="No Experience/Less than 1 year">No Experience/Less than 1 year
+                                    </option>
+                                    {% for year in yearExperiences %}
+                                    <option value="{{ year }} years">{{ year }} years</option>
+                                    {% endfor %}
+                                    <option value="More than 5 years">More than 5 years</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label>Job Level</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="jobLevel" class="form-select form-control" required>
+                                    <option value="{{ jobDict.jobLevel }}" selected>{{ jobDict.jobLevel }}
+                                    </option>
+                                    <option value="Select">Select</option>
+                                    {% for jobLevel in jobLevels %}
+                                    <option value="{{ jobLevel }}">{{ jobLevel }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Salary Currency</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="currency" class="form-select form-control" required>
+                                    <option value="{{ jobDict.currency }}" selected>{{ jobDict.currency }}
+                                    </option>
+                                    <option value="Select">Select</option>
+                                    {% for currency in currencies %}
+                                    <option value="{{ currency }}">{{ currency }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-check">
+                                    {% if jobDict.negotiable %}
+                                    <input class="form-check-input" name="negotiable" type="checkbox"
+                                        id="flexCheckDefault" checked>
+                                    {% else %}
+                                    <input class="form-check-input" name="negotiable" type="checkbox"
+                                        id="flexCheckDefault">
+                                    {% endif %}
+                                    <label class="form-check-label" for="negotiable">
+                                        Negotiable
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Monthly Salary (Gross)</label>
+                        <div class="select-form border">
+                            <div class="select-itms">
+                                <select name="salary" class="form-select form-control" required>
+                                    <option value="{{ jobDict.salary }}" selected>{{ jobDict.salary }}
+                                    </option>
+                                    <option value="Select">Select</option>
+                                    {% for salary in salaries %}
+                                    <option value="{{ salary }}">{{ salary }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="col">
+                            <div class="form-check">
+                                {% if jobDict.negotiable %}
+                                <input class="form-check-input" name="plusCommission" type="checkbox"
+                                    id="flexCheckDefault" checked>
+                                {% else %}
+                                <input class="form-check-input" name="plusCommission" type="checkbox"
+                                    id="flexCheckDefault">
+                                {% endif %}
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Plus Commission
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label>Available Openings</label>
+                        <input type="number" name="availableOpenings" id="" class="form-control"
+                            value="{{ jobDict.availableOpenings }}" required>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <hr>
+                <label>Job Summary</label>
+                <br>
+                <textarea class="form-control" name="jobSummary" id="" rows="3"
+                    placeholder="The summary helps you attract the right candidate, only include the most important information to grab the attention of the job seekers. Keep it as short as possible.">
+                    {{ jobDict.jobSummary }}
+                </textarea>
+                <br>
+                <label>Job Description/Requirements</label>
+                <textarea class="form-control" name="jobDescription" id="" rows="7"
+                    placeholder="The job description/requirements should accurately reflect the duties and responsibilities of the position. It helps give a realistic overview of the job and what is required from the candidate applying.">
+                    {{ jobDict.jobDescription }}
+                </textarea>
+                <hr>
+                <input type="hidden" name="button" value="editJob">
+                <input type="hidden" name="key" value="{{ key }}">
+                <button class="btn head-btn1" type="submit">UPDATE JOB</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br>
+{% endblock %}

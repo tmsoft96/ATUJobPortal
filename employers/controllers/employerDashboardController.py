@@ -32,6 +32,9 @@ def employerDashboardController(request):
         elif request.GET.get("action") == "jobSuccess":
             msg = "Job posted successfully"
 
+        elif request.GET.get("action") == "jobEditSuccess":
+            msg = "Job updated successfully"
+
         elif request.GET.get("action") == "deleteSuccess":
             msg = "Job deleted successfully"
 
