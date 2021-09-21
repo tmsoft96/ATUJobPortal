@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center">
-                            <h2>UI/UX Designer</h2>
+                            <h2>{{ jobDict.jobTitle }}</h2>
                         </div>
                     </div>
                 </div>
@@ -34,12 +34,17 @@
                             </div>
                             <div class="job-tittle">
                                 <a href="#">
-                                    <h4>Digital Marketer</h4>
+                                    <h4>{{ jobDict.jobTitle }}</h4>
                                 </a>
                                 <ul>
-                                    <li>Creative Agency</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                    <li>$3500 - $4000</li>
+                                    <li>{{ jobDict.companyName }}</li>
+                                    <li><i class="fas fa-map-marker-alt"></i>{{ jobDict.region }}</li>
+                                    <li>{{ jobDict.currency }} &nbsp; {{ jobDict.salary }}</li>
+                                </ul>
+                                <hr>
+                                <ul>
+                                    <li>{{ jobDict.jobFunction }}</li>
+                                    <li>{{ jobDict.industry }}</li>
                                 </ul>
                             </div>
                         </div>
@@ -50,16 +55,27 @@
                         <div class="post-details1 mb-50">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
-                                <h4>Job Description</h4>
+                                <h4>Job Summary</h4>
                             </div>
-                            <p>It is a long established fact that a reader will beff distracted by vbthe creadable
-                                content of a page when looking at its layout. The pointf of using Lorem Ipsum is that it
-                                has ahf mcore or-lgess normal distribution of letters, as opposed to using, Content here
-                                content here making it look like readable.</p>
+                            <p>{{ jobDict.jobSummary }}</p>
+                            <ul>
+                                <li>Minimum Qualification: &nbsp;<b>{{ jobDict.qualification }}</b></li>
+                                <li>Experience Level: &nbsp;<b>{{ jobDict.jobLevel }}</b></li>
+                                <li>Experience Length: &nbsp;<b>{{ jobDict.yearExperience }}</b></li>
+                            </ul>
                         </div>
-                        <div class="post-details2  mb-50">
+                    </div>
+                    <div class="job-post-details">
+                        <div class="post-details1 mb-50">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
+                                <h4>Job Description</h4>
+                            </div>
+                            <p>{{ jobDict.jobDescription }}</p>
+                        </div>
+                        <!-- <div class="post-details2  mb-50"> -->
+                        <!-- Small Section Tittle -->
+                        <!-- <div class="small-section-tittle">
                                 <h4>Required Knowledge, Skills, and Abilities</h4>
                             </div>
                             <ul>
@@ -69,10 +85,10 @@
                                 <li>Strong knowledge on software development life cycle</li>
                                 <li>Strong problem solving and debugging skills</li>
                             </ul>
-                        </div>
-                        <div class="post-details2  mb-50">
-                            <!-- Small Section Tittle -->
-                            <div class="small-section-tittle">
+                        </div> -->
+                        <!-- <div class="post-details2  mb-50"> -->
+                        <!-- Small Section Tittle -->
+                        <!-- <div class="small-section-tittle">
                                 <h4>Education + Experience</h4>
                             </div>
                             <ul>
@@ -82,7 +98,7 @@
                                 <li>Familiarity with mobile and web apps preferred</li>
                                 <li>Experience using Invision a plus</li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -94,15 +110,60 @@
                             <h4>Job Overview</h4>
                         </div>
                         <ul>
-                            <li>Posted date : <span>12 Aug 2019</span></li>
-                            <li>Location : <span>New York</span></li>
-                            <li>Vacancy : <span>02</span></li>
-                            <li>Job nature : <span>Full time</span></li>
-                            <li>Salary : <span>$7,800 yearly</span></li>
-                            <li>Application date : <span>12 Sep 2020</span></li>
+                            <li>Posted date : <span>{{ jobDict.time }}</span></li>
+                            <li>Location : <span>{{ jobDict.region }}</span></li>
+                            <li>Vacancy : <span>{{ jobDict.availableOpenings }}</span></li>
+                            <li>Job nature : <span>{{ jobDict.workType }}</span></li>
+                            <li>Salary : <span>{{ jobDict.salary }}</span></li>
+                            <li>Application date : <span>{{ jobDict.editDate }}</span></li>
                         </ul>
                         <div class="apply-btn2">
+                            {% if auth.userType == "customer" %}
                             <a href="#" class="btn">Apply Now</a>
+                            {% else %}
+                            {% if jobDict.companyId == auth.userId %}
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn" style="background-color: #F30909;" id="myBtn">Remove</button>
+                                </div>
+                                <div class="col">
+                                    <a href="" class="btn" style="background-color: #06660E;">Edit</a>
+                                </div>
+                            </div>
+
+
+                            <div id="myModal" class="modal">
+
+                                <!-- Modal content -->
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <br>
+                                    <h2>{{ jobDict.jobTitle }}</h2>
+                                    <ul>
+                                        <li>Posted date : {{ jobDict.time }}</li>
+                                        <li>Salary : {{ jobDict.salary }}</li>
+                                        <li>Application date : {{ jobDict.editDate }}</li>
+                                    </ul>
+                                    <span style="color: red;">Are you sure you want to delete this job post? </span>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <button class="btn" onclick="document.getElementById('myModal').style.display='none'"
+                                                style="background-color: #06660E;">Cancel</button>
+                                        </div>
+                                        <div class="col">
+                                            <a href="/job-details?action=delete&key={{ key }}" class="btn"
+                                                style="background-color: #F30909;">Remove</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                            {% endif %}
+                            {% endif %}
                         </div>
                     </div>
                     <div class="post-details4  mb-50">
@@ -110,13 +171,14 @@
                         <div class="small-section-tittle">
                             <h4>Company Information</h4>
                         </div>
-                        <span>Colorlib</span>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout.</p>
+                        <!-- <span>{{ jobDict.companyName }} </span>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of
+                            a
+                            page when looking at its layout.</p> -->
                         <ul>
-                            <li>Name: <span>Colorlib </span></li>
-                            <li>Web : <span> colorlib.com</span></li>
-                            <li>Email: <span>carrier.colorlib@gmail.com</span></li>
+                            <li>Name: <span>{{ jobDict.companyName }} </span></li>
+                            <li>Web : <span>{{ jobDict.companyWebsite }}</span></li>
+                            <li>Email: <span>{{ jobDict.companyEmail }}</span></li>
                         </ul>
                     </div>
                 </div>

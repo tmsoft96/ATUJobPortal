@@ -6,28 +6,28 @@ class EmployerUserModel:
         pass
 
     def userModel(userId):
+        firebase = Firebase()
+        user = firebase.db.child("Users").child(userId).get().val()
+        userDictConvert = dict(user)
+
         userDetail = {
             "id": userId,
-            "userType": getData(userId, "userType"),
-            "lname": getData(userId, "lname"),
-            "fname": getData(userId, "fname"),
-            "email": getData(userId, "email"),
-            "position": getData(userId, "position"),
-            "phone" : getData(userId, "phone"),
-            "companyName": getData(userId, "companyName"),
-            "industry": getData(userId, "industry"),
-            "employeesNumber": getData(userId, "employeesNumber"),
-            "employerType": getData(userId, "employerType"),
-            "website": getData(userId, "website"),
-            "address": getData(userId, "address"),
-            "noOfJobs": getData(userId, "noOfJobs"),
-            "noOfApplication": getData(userId, "noOfApplication"),
-            "noOfViews": getData(userId, "noOfViews"),
-            "logo": getData(userId, "logo"),
+            "userType": userDictConvert.get("userType"),
+            "lname": userDictConvert.get("lname"),
+            "fname": userDictConvert.get("fname"),
+            "email": userDictConvert.get("email"),
+            "position": userDictConvert.get("position"),
+            "phone" : userDictConvert.get("phone"),
+            "companyName": userDictConvert.get("companyName"),
+            "industry": userDictConvert.get("industry"),
+            "employeesNumber": userDictConvert.get("employeesNumber"),
+            "employerType": userDictConvert.get("employerType"),
+            "website": userDictConvert.get("website"),
+            "address": userDictConvert.get("address"),
+            "noOfJobs": userDictConvert.get("noOfJobs"),
+            "noOfApplication": userDictConvert.get("noOfApplication"),
+            "noOfViews": userDictConvert.get("noOfViews"),
+            "logo": userDictConvert.get("logo"),
         }
         return userDetail
 
-
-def getData(userId, key):
-    firebase = Firebase()
-    return firebase.db.child("Users").child(userId).child(key).get().val()

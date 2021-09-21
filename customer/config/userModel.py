@@ -6,33 +6,32 @@ class CustomerUserModel:
         pass
 
     def userModel(userId):
+        firebase = Firebase()
+        user = firebase.db.child("Users").child(userId).get().val()
+        userDictConvert = dict(user)
+        
         userDetail = {
             "id": userId,
-            "userType": getData(userId, "userType"),
-            "lname": getData(userId, "lname"),
-            "fname": getData(userId, "fname"),
-            "gender": getData(userId, "gender"),
-            "email": getData(userId, "email"),
-            "dob": getData(userId, "dob"),
-            "nationality": getData(userId, "nationality"),
-            "location": getData(userId, "location"),
-            "phone": getData(userId, "phone"),
-            "qualification": getData(userId, "qualification"),
-            "currentJobFunction": getData(userId, "currentJobFunction"),
-            "yearExperience": getData(userId, "yearExperience"),
-            "cv": getData(userId, "cv"),
-            "profilePicture": getData(userId, "profilePicture"),
-            "professionalHeadline": getData(userId, "professionalHeadline"),
-            "preferredJobFunction": getData(userId, "preferredJobFunction"),
-            "workType": getData(userId, "workType"),
-            "salaryExpectation": getData(userId, "salaryExpectation"),
-            "tipsAlert": getData(userId, "tipsAlert"),
-            "jobAlerts": getData(userId, "jobAlerts"),
-            "note": getData(userId, "note"),
+            "userType":userDictConvert.get("userType"),
+            "lname":userDictConvert.get("lname"),
+            "fname":userDictConvert.get("fname"),
+            "gender":userDictConvert.get("gender"),
+            "email":userDictConvert.get("email"),
+            "dob":userDictConvert.get("dob"),
+            "nationality":userDictConvert.get("nationality"),
+            "location":userDictConvert.get("location"),
+            "phone":userDictConvert.get("phone"),
+            "qualification":userDictConvert.get("qualification"),
+            "currentJobFunction":userDictConvert.get("currentJobFunction"),
+            "yearExperience":userDictConvert.get("yearExperience"),
+            "cv":userDictConvert.get("cv"),
+            "profilePicture":userDictConvert.get("profilePicture"),
+            "professionalHeadline":userDictConvert.get("professionalHeadline"),
+            "preferredJobFunction":userDictConvert.get("preferredJobFunction"),
+            "workType":userDictConvert.get("workType"),
+            "salaryExpectation":userDictConvert.get("salaryExpectation"),
+            "tipsAlert":userDictConvert.get("tipsAlert"),
+            "jobAlerts":userDictConvert.get("jobAlerts"),
+            "note":userDictConvert.get("note"),
         }
         return userDetail
-
-
-def getData(userId, key):
-    firebase = Firebase()
-    return firebase.db.child("Users").child(userId).child(key).get().val()

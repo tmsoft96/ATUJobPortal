@@ -29,6 +29,8 @@ def employerPostJobController(request):
             job = {
                 "companyId": userDetails.get("id"),
                 "companyName": userDetails.get("companyName"),
+                "companyWebsite": userDetails.get("website"),
+                "companyEmail": userDetails.get("email"),
                 "jobTitle": request.POST.get("jobTitle"),
                 "jobFunction": request.POST.get("jobFunction"),
                 "industry": request.POST.get("industry"),
@@ -36,6 +38,7 @@ def employerPostJobController(request):
                 "region": request.POST.get("region"),
                 "qualification": request.POST.get("qualification"),
                 "yearExperience": request.POST.get("yearExperience"),
+                "jobLevel": request.POST.get("jobLevel"),
                 "negotiable": True if request.POST.get("negotiable") == "on" else False,
                 "currency": request.POST.get("currency"),
                 "salary": request.POST.get("salary"),
@@ -70,4 +73,5 @@ def employerPostJobController(request):
                   "jobLevels": dictionary.jobLevelList,
                   "currencies": dictionary.currencyList,
                   "salaries": dictionary.salaryList,
-                   'auth': auth.authMap})
+                   'auth': auth.authMap,
+                   "userDetails": userDetails})

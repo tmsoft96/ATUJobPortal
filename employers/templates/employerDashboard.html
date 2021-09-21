@@ -64,13 +64,14 @@
             </div>
             <br>
             {% for job in jobs %}
+            {% if not job.delete %}
             <div class="single-job-items mb-30">
                 <div class="job-items">
                     <div class="company-img">
-                        <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                        <a href="/job-details?action=job&key={{ job.key }}"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
                     </div>
                     <div class="job-tittle job-tittle2">
-                        <a href="#">
+                        <a href="/job-details?action=job&key={{ job.key }}">
                             <h4>{{ job.jobTitle }}</h4>
                         </a>
                         <ul>
@@ -81,10 +82,11 @@
                     </div>
                 </div>
                 <div class="items-link items-link2 f-right">
-                    <a href="{% url 'jobDetails' %}">{{ job.workType }}</a>
+                    <a href="/job-details?action=job&key={{ job.key }}">{{ job.workType }}</a>
                     <span>{{ job.time }}</span>
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
