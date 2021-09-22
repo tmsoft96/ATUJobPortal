@@ -1,3 +1,4 @@
+from employers.config.jobModel import JobModel
 from ATUJobPortal.config.firebase import Firebase
 from customer.config.userModel import CustomerUserModel
 from django.http.response import HttpResponseRedirect
@@ -8,6 +9,7 @@ from django.shortcuts import render
 def dashboardController(request):
     auth = Authentication(request)
     firebase = Firebase()
+    jobs = JobModel.allJob()
 
     msg = None
     errorMessage = None
@@ -34,4 +36,5 @@ def dashboardController(request):
                    "auth": auth.authMap,
                    "msg": msg,
                    "userDetails": userDetails,
-                   "errorMessage": errorMessage})
+                   "errorMessage": errorMessage,
+                   "jobs": jobs})

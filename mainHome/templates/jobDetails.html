@@ -21,7 +21,7 @@
     </div>
     <!-- Hero Area End -->
     <!-- job post company Start -->
-    <div class="job-post-company pt-120 pb-120">
+    <div class="job-post-company pt-10 pb-120">
         <div class="container">
             <div class="row justify-content-between">
                 <!-- Left Content -->
@@ -73,32 +73,6 @@
                             </div>
                             <p>{{ jobDict.jobDescription }}</p>
                         </div>
-                        <!-- <div class="post-details2  mb-50"> -->
-                        <!-- Small Section Tittle -->
-                        <!-- <div class="small-section-tittle">
-                                <h4>Required Knowledge, Skills, and Abilities</h4>
-                            </div>
-                            <ul>
-                                <li>System Software Development</li>
-                                <li>Mobile Applicationin iOS/Android/Tizen or other platform</li>
-                                <li>Research and code , libraries, APIs and frameworks</li>
-                                <li>Strong knowledge on software development life cycle</li>
-                                <li>Strong problem solving and debugging skills</li>
-                            </ul>
-                        </div> -->
-                        <!-- <div class="post-details2  mb-50"> -->
-                        <!-- Small Section Tittle -->
-                        <!-- <div class="small-section-tittle">
-                                <h4>Education + Experience</h4>
-                            </div>
-                            <ul>
-                                <li>3 or more years of professional design experience</li>
-                                <li>Direct response email experience</li>
-                                <li>Ecommerce website design experience</li>
-                                <li>Familiarity with mobile and web apps preferred</li>
-                                <li>Experience using Invision a plus</li>
-                            </ul>
-                        </div> -->
                     </div>
 
                 </div>
@@ -117,20 +91,17 @@
                             <li>Salary : <span>{{ jobDict.salary }}</span></li>
                             <li>Application date : <span>{{ jobDict.editDate }}</span></li>
                         </ul>
+                        {% if jobDict.companyId == auth.userId %}
                         <div class="apply-btn2">
-                            {% if auth.userType == "customer" %}
-                            <a href="#" class="btn">Apply Now</a>
-                            {% else %}
-                            {% if jobDict.companyId == auth.userId %}
                             <div class="row">
                                 <div class="col">
                                     <button class="btn" style="background-color: #F30909;" id="myBtn">Remove</button>
                                 </div>
                                 <div class="col">
-                                    <a href="/employer/jobs/create?action=edit&key={{ key }}" class="btn" style="background-color: #06660E;">Edit</a>
+                                    <a href="/employer/jobs/create?action=edit&key={{ key }}" class="btn"
+                                        style="background-color: #06660E;">Edit</a>
                                 </div>
                             </div>
-
 
                             <div id="myModal" class="modal">
 
@@ -148,7 +119,8 @@
                                     <br>
                                     <div class="row">
                                         <div class="col-auto">
-                                            <button class="btn" onclick="document.getElementById('myModal').style.display='none'"
+                                            <button class="btn"
+                                                onclick="document.getElementById('myModal').style.display='none'"
                                                 style="background-color: #06660E;">Cancel</button>
                                         </div>
                                         <div class="col">
@@ -156,31 +128,160 @@
                                                 style="background-color: #F30909;">Remove</a>
                                         </div>
                                     </div>
-
-
                                 </div>
-
                             </div>
 
-                            {% endif %}
-                            {% endif %}
+
                         </div>
+                        {% endif %}
                     </div>
-                    <div class="post-details4  mb-50">
+                    <div class="post-details4  ">
                         <!-- Small Section Tittle -->
                         <div class="small-section-tittle">
                             <h4>Company Information</h4>
                         </div>
-                        <!-- <span>{{ jobDict.companyName }} </span>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of
-                            a
-                            page when looking at its layout.</p> -->
                         <ul>
                             <li>Name: <span>{{ jobDict.companyName }} </span></li>
                             <li>Web : <span>{{ jobDict.companyWebsite }}</span></li>
                             <li>Email: <span>{{ jobDict.companyEmail }}</span></li>
                         </ul>
                     </div>
+                    <br>
+                    {% if auth.userType == "customer" %}
+                    <div class="alert alert-primary noStyle" role="alert">
+                        Apply Here
+                    </div>
+                    <form action="" class="form-contact contact_form" method="POST">
+                        {% csrf_token %}
+                        <div class="card">
+                            <div class="card-body">
+                                <small>
+                                    Note: The application form uses your saved account details. Please ensure you have
+                                    verified your phone number and email address before applying for a job.
+                                </small>
+                                <br>
+                                <a href="{% url 'careerProfile' %}" class="underline" style="color: sienna;"><u>Edit
+                                        Profile</u></a>
+                                <br> <br>
+                                <label class="h6">First Name</label>
+                                <br>
+                                <input type="text" name="fname" class="form-control" required
+                                    value="{{ userDetails.fname }}">
+                                <br>
+                                <label class="h6">Last Name</label>
+                                <br>
+                                <input type="text" name="lname" class="form-control" required
+                                    value="{{ userDetails.lname }}">
+                                <br>
+                                <label class="h6">Mobile Number</label>
+                                <br>
+                                <input type="text" name="phone" class="form-control" required
+                                    value="{{ userDetails.phone }}">
+                                <br>
+                                <label class="h6">Minimum Qualification</label>
+                                <br>
+                                <div class="select-form border">
+                                    <div class="select-itms">
+                                        <select name="qualification" class="form-select form-control" required>
+                                            <option value="Select">Select</option>
+                                            {% for qualification in qualifications %}
+                                            {% if qualification == userDetails.qualification %}
+                                            <option value="{{ qualification }}" selected>{{ qualification }}</option>
+                                            {% else %}
+                                            <option value="{{ qualification }}">{{ qualification }}</option>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <label class="h6">Year of Experience</label>
+                                <br>
+                                <div class="select-form border">
+                                    <div class="select-itms">
+                                        <select name="yearExperience" class="form-select form-control" required>
+                                            <option value="{{ userDetails.yearExperience }}" selected>
+                                                {{ userDetails.yearExperience }}</option>
+                                            <option value="No Experience/Less than 1 year">
+                                                No Experience/Less than 1 year
+                                            </option>
+                                            {% for year in yearExperiences %}
+                                            <option value="{{ year }} years">{{ year }} years</option>
+                                            {% endfor %}
+                                            <option value="More than 5 years">More than 5 years</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <label class="h6">Cover Letter</label>
+                                <br>
+                                <textarea class="form-control" name="note" id="" rows="7" maxlength="2000"
+                                    placeholder="Max. 2000 characters">{{ userDetails.note }}</textarea>
+                                <br>
+                                <div class="form-check">
+                                    <input class="form-check-input" name="saveNote" type="checkbox"
+                                        id="flexCheckDefault" checked>
+
+                                    <label class="form-check-label" for="saveNote">
+                                        Save my Cover Letter to my Profile
+                                    </label>
+                                </div>
+                                <br>
+                                <label class="h6">CV</label>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="cv1"
+                                                id="flexRadioDefault1" checked>
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Use exiting CV uploaded
+                                                <small>
+                                                    Apply with Profile allows for quick and easy applications on the go.
+                                                </small>
+                                                <br>
+                                                <a href="{% url 'careerProfile' %}" class="underline"
+                                                    style="color: sienna;"><u>My
+                                                        Profile</u></a>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="alert alert-primary" role="alert">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="cv2" id="flexRadioDefault2">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            Attack a new CV
+                                            <div class="mb-3">
+                                                <input class="form-control" type="file" id="formFile" name="cvFile"
+                                                    accept=".pdf, .doc, .docx, .rtf">
+                                                <br>
+                                                <label for="formFile" class="form-label">Optionally upload a CV no
+                                                    larger
+                                                    than
+                                                    10MB for
+                                                    file
+                                                    types
+                                                    .pdf .doc .docx .rtf</label>
+                                                <br>
+                                                <span>Uploading a new CV will overwrite your current one.</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="key" value="{{ key }}">
+                                <input type="hidden" name="button" value="apply">
+                                <button class="btn btn-primary" type="submit"
+                                    style="width: 100%; font-size: large;">APPLY NOW</button>
+                                <small>
+                                    By clicking 'Apply Now', you agree to our Terms & Conditions and Privacy Policy
+                                </small>
+                            </div>
+                        </div>
+                    </form>
+                    {% endif %}
                 </div>
             </div>
         </div>
