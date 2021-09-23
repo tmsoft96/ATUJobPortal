@@ -7,6 +7,7 @@ from employers.config.jobModel import JobModel
 from employers.config.userModel import EmployerUserModel
 from ATUJobPortal.config.authentication import Authentication
 from django.shortcuts import render
+from datetime import datetime
 
 
 def jobDetailsController(request):
@@ -59,6 +60,7 @@ def jobDetailsController(request):
             apply = {
                 "jobId": key,
                 "customerId": auth.authMap["userId"],
+                "companyId": request.POST.get("companyId"),
                 "fname": request.POST.get("fname"),
                 "lname": request.POST.get("lname"),
                 "phone": request.POST.get("phone"),
@@ -66,6 +68,11 @@ def jobDetailsController(request):
                 "yearExperience": request.POST.get("yearExperience"),
                 "note": request.POST.get("saveNote"),
                 "cv": "null",
+                "status": constants.jobstatus[0],
+                "timestamp": datetime.now().timestamp(),
+                "createdDate": str(datetime.now()),
+                "editDate": str(datetime.now()),
+                "delete": False,
             }
             firebase.db.child("Application").child(key).push(apply)
 
