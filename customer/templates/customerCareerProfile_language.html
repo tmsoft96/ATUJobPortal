@@ -1,131 +1,46 @@
-{% extends 'findJobsDropdown.html' %}
+{% extends 'saveAndjobApplication.html' %}
 
 {% load static %}
 
-{% block submain %}
-<div class="row">
-    <div class="col-8">
-        <form action="#">
-            <div class="alert alert-primary noStyle" role="alert">
-                Add Language Skill
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <label>Language</label>
-                            <div class="select-form border">
-                                <div class="select-itms">
-                                    <select name="language" class="form-select form-control" required>
-                                        <option value="Select" selected>Select</option>
-                                        {% for language in languages %}
-                                        <option value="{{ language }}">{{ language }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <label>Proficiency</label>
-                            <br>
-                            <div class="select-form border">
-                                <div class="select-itms">
-                                    <select name="proficiency" class="form-select form-control" required>
-                                        <option value="Select" selected>Select</option>
-                                        {% for proficiency in proficiencies %}
-                                        <option value="{{ proficiency }}">{{ proficiency }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
+{% block col1 %}
+<form action="#">
+    <div class="alert alert-primary noStyle" role="alert">
+        Add Language Skill
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <label>Language</label>
+                    <div class="select-form border">
+                        <div class="select-itms">
+                            <select name="language" class="form-select form-control" required>
+                                <option value="Select" selected>Select</option>
+                                {% for language in languages %}
+                                <option value="{{ language }}">{{ language }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
-                    <hr>
-                    <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">SAVE</button>
                 </div>
-            </div>
-        </form>
-    </div>
-    <div class="col-4">
-        <a href="#">
-            <div class="alert alert-primary noStyle" role="alert">
-                <!-- Percentage is base on the color blue-90, yellow-75, pink-60 and many more  -->
-                <div class="progress yellow">
-                    <span class="progress-left">
-                        <span class="progress-bar"></span>
-                    </span>
-                    <span class="progress-right">
-                        <span class="progress-bar"></span>
-                    </span>
-                    <div class="progress-value">30%</div>
-                </div>
-                <br>
-                Complete Your Profile
-            </div>
-        </a>
-        <br>
-        <div class="alert alert-primary noStyle" role="alert">
-            <div class="row">
                 <div class="col">
-                    Job Application
-                </div>
-                <div class="col-auto">
-                    <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
-                </div>
-            </div>
-        </div>
-        <div class="single-job-items mb-30">
-            <div class="job-items">
-                <div class="company-img">
-                    <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
-                </div>
-                <div class="job-tittle job-tittle2">
-                    <a href="#">
-                        <h4>Digital Marketer</h4>
-                    </a>
-                    <ul>
-                        <li>Creative Agency</li>
-                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                        <li>$3500 - $4000</li>
-                    </ul>
+                    <label>Proficiency</label>
+                    <br>
+                    <div class="select-form border">
+                        <div class="select-itms">
+                            <select name="proficiency" class="form-select form-control" required>
+                                <option value="Select" selected>Select</option>
+                                {% for proficiency in proficiencies %}
+                                <option value="{{ proficiency }}">{{ proficiency }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="items-link items-link2 f-right">
-                <a href="{% url 'jobDetails' %}">PENDING</a>
-                <span>7 hours ago</span>
-            </div>
-        </div>
-        <div class="alert alert-primary noStyle" role="alert">
-            <div class="row">
-                <div class="col">
-                    Saved Jobs
-                </div>
-                <div class="col-auto">
-                    <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
-                </div>
-            </div>
-        </div>
-        <div class="single-job-items mb-30">
-            <div class="job-items">
-                <div class="company-img">
-                    <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
-                </div>
-                <div class="job-tittle job-tittle2">
-                    <a href="#">
-                        <h4>Digital Marketer</h4>
-                    </a>
-                    <ul>
-                        <li>Creative Agency</li>
-                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                        <li>$3500 - $4000</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="items-link items-link2 f-right">
-                <a href="{% url 'jobDetails' %}">PENDING</a>
-                <span>7 hours ago</span>
-            </div>
+            <hr>
+            <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">SAVE</button>
         </div>
     </div>
-</div>
+</form>
 {% endblock %}

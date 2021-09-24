@@ -30,6 +30,9 @@ def dashboardController(request):
             except:
                 errorMessage = "Error occured while trying to send verification code"
 
+        elif request.GET.get("action") == "applySuccess":
+            msg = "Job applied successfully"
+
     return render(request,
                   'customerDashboard.html',
                   {"heading": "Job Seeker Profile | ATU Job Portal",

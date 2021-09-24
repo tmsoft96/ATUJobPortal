@@ -55,6 +55,7 @@ def employerPostJobController(request):
                 "companyName": userDetails.get("companyName"),
                 "companyWebsite": userDetails.get("website"),
                 "companyEmail": userDetails.get("email"),
+                "companyLogo":  userDetails.get("logo"),
                 "jobTitle": request.POST.get("jobTitle"),
                 "jobFunction": request.POST.get("jobFunction"),
                 "industry": request.POST.get("industry"),

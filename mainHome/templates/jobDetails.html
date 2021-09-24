@@ -2,8 +2,12 @@
 
 {% load static %}
 {% block body %}
+{% if errorMessage %}
+<div class="alert alert-danger text-center" role="alert">
+    {{ errorMessage }}
+</div>
+{% endif %}
 <main>
-
     <!-- Hero Area Start-->
     <div class="slider-area ">
         <div class="single-slider section-overly slider-height2 d-flex align-items-center"
@@ -30,7 +34,8 @@
                     <div class="single-job-items mb-50">
                         <div class="job-items">
                             <div class="company-img company-img-details">
-                                <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                                <a href="#"><img src="{{ jobDict.companyLogo }}"
+                                    alt="{{ jobDict.companyName }}" width="70px" height="70px"></a>
                             </div>
                             <div class="job-tittle">
                                 <a href="#">
@@ -147,7 +152,7 @@
                         </ul>
                     </div>
                     <br>
-                    {% if auth.userType == "customer" %}
+                    {% if allowApplication and auth.userType == "customer" %}
                     <div class="alert alert-primary noStyle" role="alert">
                         Apply Here
                     </div>

@@ -83,10 +83,15 @@
                                     {% elif auth.authorize %}
                                     <div class="dropdown">
                                         <a href="#" class="dropbtn">
-                                            <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
-                                                alt="Profile picture" height="50px"
-                                                class="border border-2 border-warning rounded-circle"
+                                            {% if auth.userType == "employer" %}
+                                            <img src="{{ userDetails.logo }}" alt="Profile picture"
+                                                height="50px" class="border border-2 border-warning rounded-circle"
                                                 style="border-color: #11467f !important;" />
+                                            {% else %}
+                                            <img src="{{ userDetails.profilePicture }}" alt="Profile picture"
+                                                height="50px" class="border border-2 border-warning rounded-circle"
+                                                style="border-color: #11467f !important;" />
+                                            {% endif %}
                                             <span style="font-size: larger; margin-left: 10px; color: #11467f;">Hi,
                                                 {{ userDetails.fname }}</span>
                                         </a>

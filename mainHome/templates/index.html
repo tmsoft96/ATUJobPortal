@@ -197,8 +197,8 @@
                     <div class="single-job-items mb-30">
                         <div class="job-items">
                             <div class="company-img">
-                                <a href="/job-details?action=job&key={{ job.key }}"><img
-                                        src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                                <a href="/job-details?action=job&key={{ job.key }}"><img src="{{ job.companyLogo }}"
+                                    alt="{{ job.companyName }}" width="70px" height="70px"></a>
                             </div>
                             <div class="job-tittle job-tittle2">
                                 <a href="/job-details?action=job&key={{ job.key }}">

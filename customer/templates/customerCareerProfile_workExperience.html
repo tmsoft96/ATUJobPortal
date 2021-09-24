@@ -1,282 +1,197 @@
-{% extends 'findJobsDropdown.html' %}
+{% extends 'saveAndjobApplication.html' %}
 
 {% load static %}
 
-{% block submain %}
-<div class="row">
-    <div class="col-8">
-        <form action="#">
-            <div class="alert alert-primary noStyle" role="alert">
-                Add Work Experience
+{% block col1 %}
+<form action="#">
+    <div class="alert alert-primary noStyle" role="alert">
+        Add Work Experience
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    I have no experience
+                </label>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            I have no experience
-                        </label>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col">
-                            <label>Employer</label>
-                            <br>
-                            <input type="text" name="employer" class="form-control" required
-                                placeholder="Employer Name">
-                        </div>
-                        <div class="col">
-                            <label>Job Title</label>
-                            <br>
-                            <input type="text" name="jobTitle" class="form-control" required placeholder="Job Title">
-                        </div>
-                    </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <label>Employer</label>
                     <br>
-                    <div class="row">
-                        <div class="col">
-                            <label>Job Level</label>
-                            <br>
-                            <div class="select-form border">
-                                <div class="select-itms">
-                                    <select name="jobLevel" class="form-select form-control" required>
-                                        <option value="Select" selected>Select</option>
-                                        {% for jobLevel in jobLevels %}
-                                        <option value="{{ jobLevel }}">{{ jobLevel }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <label>Country</label>
-                            <br>
-                            <div class="select-form border">
-                                <div class="select-itms">
-                                    <select name="country" class="form-select form-control" required>
-                                        <option value="Select" selected>Select</option>
-                                        {% for country in countries %}
-                                        <option value="{{ country }}">{{ country }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col">
-                            <label>Industry</label>
-                            <div class="select-form border">
-                                <div class="select-itms">
-                                    <select name="yearExperience" class="form-select form-control" required>
-                                        <option value="Select" selected>Select</option>
-                                        {% for industry in industries %}
-                                        <option value="{{ industry }}">{{ industry }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <label>Job Function</label>
-                            <div class="select-form border">
-                                <div class="select-itms">
-                                    <select name="workType" class="form-select form-control" required>
-                                        <option value="Select" selected>Select</option>
-                                        {% for currentJob in currentJobs %}
-                                        <option value="{{ currentJob }}">{{ currentJob }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col">
-                            <label>Monthly Salary</label>
-                            <div class="input-group">
-                                <div class="input-group-text">GHS</div>
-                                <input type="text" class="form-control" id="salaryExpectation" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <label>Work Type</label>
-                            <div class="select-form border">
-                                <div class="select-itms">
-                                    <select name="workType" class="form-select form-control" required>
-                                        <option value="Select" selected>Select</option>
-                                        {% for workType in workTypes %}
-                                        <option value="{{ workType }}">{{ workType }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <label>City</label>
-                    <br>
-                    <input type="text" name="city" class="form-control" required placeholder="City">
-                    <br>
-                    <div class="row">
-                        <div class="col">
-                            <label>Start date</label>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="select-form border">
-                                        <div class="select-itms">
-                                            <select name="startMonth" class="form-select form-control" required>
-                                                <option value="Select" selected>Month</option>
-                                                {% for month in date.month %}
-                                                <option value="{{ month }}">{{ month }}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="select-form border">
-                                        <div class="select-itms">
-                                            <select name="startYear" class="form-select form-control" required>
-                                                <option value="Select" selected>Year</option>
-                                                {% for year in date.year %}
-                                                <option value="{{ year }}">{{ year }}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <label>End date</label>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="select-form border">
-                                        <div class="select-itms">
-                                            <select name="endMonth" class="form-select form-control" required>
-                                                <option value="Select" selected>Month</option>
-                                                {% for month in date.month %}
-                                                <option value="{{ month }}">{{ month }}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="select-form border">
-                                        <div class="select-itms">
-                                            <select name="endYear" class="form-select form-control" required>
-                                                <option value="Select" selected>Year</option>
-                                                {% for year in date.year %}
-                                                <option value="{{ year }}">{{ year }}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            I currently work here
-                        </label>
-                    </div>
-                    <br>
-                    <label>Job Responsibilities</label>
-                    <br>
-                    <textarea class="form-control" name="jobResponsibilities" id="" rows="10"></textarea>
+                    <input type="text" name="employer" class="form-control" required
+                        placeholder="Employer Name">
                 </div>
-                <hr>
-                <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">SAVE</button>
+                <div class="col">
+                    <label>Job Title</label>
+                    <br>
+                    <input type="text" name="jobTitle" class="form-control" required placeholder="Job Title">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <label>Job Level</label>
+                    <br>
+                    <div class="select-form border">
+                        <div class="select-itms">
+                            <select name="jobLevel" class="form-select form-control" required>
+                                <option value="Select" selected>Select</option>
+                                {% for jobLevel in jobLevels %}
+                                <option value="{{ jobLevel }}">{{ jobLevel }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <label>Country</label>
+                    <br>
+                    <div class="select-form border">
+                        <div class="select-itms">
+                            <select name="country" class="form-select form-control" required>
+                                <option value="Select" selected>Select</option>
+                                {% for country in countries %}
+                                <option value="{{ country }}">{{ country }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <label>Industry</label>
+                    <div class="select-form border">
+                        <div class="select-itms">
+                            <select name="yearExperience" class="form-select form-control" required>
+                                <option value="Select" selected>Select</option>
+                                {% for industry in industries %}
+                                <option value="{{ industry }}">{{ industry }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <label>Job Function</label>
+                    <div class="select-form border">
+                        <div class="select-itms">
+                            <select name="workType" class="form-select form-control" required>
+                                <option value="Select" selected>Select</option>
+                                {% for currentJob in currentJobs %}
+                                <option value="{{ currentJob }}">{{ currentJob }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <label>Monthly Salary</label>
+                    <div class="input-group">
+                        <div class="input-group-text">GHS</div>
+                        <input type="text" class="form-control" id="salaryExpectation" placeholder="">
+                    </div>
+                </div>
+                <div class="col">
+                    <label>Work Type</label>
+                    <div class="select-form border">
+                        <div class="select-itms">
+                            <select name="workType" class="form-select form-control" required>
+                                <option value="Select" selected>Select</option>
+                                {% for workType in workTypes %}
+                                <option value="{{ workType }}">{{ workType }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <label>City</label>
+            <br>
+            <input type="text" name="city" class="form-control" required placeholder="City">
+            <br>
+            <div class="row">
+                <div class="col">
+                    <label>Start date</label>
+                    <div class="row">
+                        <div class="col">
+                            <div class="select-form border">
+                                <div class="select-itms">
+                                    <select name="startMonth" class="form-select form-control" required>
+                                        <option value="Select" selected>Month</option>
+                                        {% for month in date.month %}
+                                        <option value="{{ month }}">{{ month }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="select-form border">
+                                <div class="select-itms">
+                                    <select name="startYear" class="form-select form-control" required>
+                                        <option value="Select" selected>Year</option>
+                                        {% for year in date.year %}
+                                        <option value="{{ year }}">{{ year }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <label>End date</label>
+                    <div class="row">
+                        <div class="col">
+                            <div class="select-form border">
+                                <div class="select-itms">
+                                    <select name="endMonth" class="form-select form-control" required>
+                                        <option value="Select" selected>Month</option>
+                                        {% for month in date.month %}
+                                        <option value="{{ month }}">{{ month }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="select-form border">
+                                <div class="select-itms">
+                                    <select name="endYear" class="form-select form-control" required>
+                                        <option value="Select" selected>Year</option>
+                                        {% for year in date.year %}
+                                        <option value="{{ year }}">{{ year }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    I currently work here
+                </label>
+            </div>
+            <br>
+            <label>Job Responsibilities</label>
+            <br>
+            <textarea class="form-control" name="jobResponsibilities" id="" rows="10"></textarea>
+        </div>
+        <hr>
+        <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">SAVE</button>
 
-            </div>
-        </form>
     </div>
-    <div class="col-4">
-        <a href="#">
-            <div class="alert alert-primary noStyle" role="alert">
-                <!-- Percentage is base on the color blue-90, yellow-75, pink-60 and many more  -->
-                <div class="progress yellow">
-                    <span class="progress-left">
-                        <span class="progress-bar"></span>
-                    </span>
-                    <span class="progress-right">
-                        <span class="progress-bar"></span>
-                    </span>
-                    <div class="progress-value">30%</div>
-                </div>
-                <br>
-                Complete Your Profile
-            </div>
-        </a>
-        <br>
-        <div class="alert alert-primary noStyle" role="alert">
-            <div class="row">
-                <div class="col">
-                    Job Application
-                </div>
-                <div class="col-auto">
-                    <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
-                </div>
-            </div>
-        </div>
-        <div class="single-job-items mb-30">
-            <div class="job-items">
-                <div class="company-img">
-                    <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
-                </div>
-                <div class="job-tittle job-tittle2">
-                    <a href="#">
-                        <h4>Digital Marketer</h4>
-                    </a>
-                    <ul>
-                        <li>Creative Agency</li>
-                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                        <li>$3500 - $4000</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="items-link items-link2 f-right">
-                <a href="{% url 'jobDetails' %}">PENDING</a>
-                <span>7 hours ago</span>
-            </div>
-        </div>
-        <div class="alert alert-primary noStyle" role="alert">
-            <div class="row">
-                <div class="col">
-                    Saved Jobs
-                </div>
-                <div class="col-auto">
-                    <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
-                </div>
-            </div>
-        </div>
-        <div class="single-job-items mb-30">
-            <div class="job-items">
-                <div class="company-img">
-                    <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
-                </div>
-                <div class="job-tittle job-tittle2">
-                    <a href="#">
-                        <h4>Digital Marketer</h4>
-                    </a>
-                    <ul>
-                        <li>Creative Agency</li>
-                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                        <li>$3500 - $4000</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="items-link items-link2 f-right">
-                <a href="{% url 'jobDetails' %}">PENDING</a>
-                <span>7 hours ago</span>
-            </div>
-        </div>
-    </div>
-</div>
+</form>
 {% endblock %}

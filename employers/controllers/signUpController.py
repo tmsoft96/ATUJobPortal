@@ -63,7 +63,7 @@ def signUpController(request):
                 "createdDate": str(datetime.now()),
                 "editDate": str(datetime.now()),
                 "delete": False,
-                "logo": "None",
+                "logo": "https://i.pinimg.com/originals/0e/79/c5/0e79c590cd66b6140e9505201045b7de.png",
             }
 
             firebase.db.child("Users").child(userId).set(profile)

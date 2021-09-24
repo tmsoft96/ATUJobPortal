@@ -1,267 +1,175 @@
-{% extends 'findJobsDropdown.html' %}
+{% extends 'saveAndjobApplication.html' %}
 
 {% load static %}
 
-{% block submain %}
-<div class="row">
-    <div class="col-8">
-        <form action="" class="form-contact contact_form" method="POST">
-            {% csrf_token %}
-            <div class="alert alert-primary noStyle" role="alert">
-                Employment & Availability
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <span>Keeping this section up to date will help employers & recruiters find you.</span>
-                    <br>
-                    <span>They will know the field you are in, what your preferred industries are and if you are
-                        actively
-                        looking.</span>
-                    <hr>
-                    <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            {% if userDetails.profilePicture != "None" %}
-                            <img src="{{ userDetails.profilePicture }}" alt="Profile picture" height="150px"
-                                class="border border-2 border-warning rounded-circle"
-                                style="border-color: #11467f !important;" />
-                            {% else %}
-                            <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
-                                alt="Profile picture" height="150px"
-                                class="border border-2 border-warning rounded-circle"
-                                style="border-color: #11467f !important;" />
-                            {% endif %}
-                        </div>
-                        <input type="hidden" name="profilePicture" value="None">
-                        <div class="col">
-                            <a href="#" class="btn head-btn1">UPLOAD PICTURE</a>
-                            <br><br>
-                            <span>
-                                Upload an image no larger than 5MB for file types .jpg .gif .png .bmp
-                            </span>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col">
-                            <label>Professional Headline</label>
-                            <br>
-                            <input type="text" name="professionalHeadline" id="professionalHeadline"
-                                class="form-control" required placeholder=""
-                                value="{{ userDetails.professionalHeadline }}">
-                        </div>
-                        <div class="col">
-                            <label>Highest Qualification</label>
-                            <div class="select-form border">
-                                <div class="select-itms">
-                                    <select name="qualification" class="form-select form-control" required>
-                                        <option value="Select">Select</option>
-                                        {% for qualification in qualifications %}
-                                        {% if qualification == userDetails.qualification %}
-                                        <option value="{{ qualification }}" selected>{{ qualification }}</option>
-                                        {% else %}
-                                        <option value="{{ qualification }}">{{ qualification }}</option>
-                                        {% endif %}
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col">
-                            <label>Current Job Function</label>
-                            <br>
-                            <div class="select-form border">
-                                <div class="select-itms">
-                                    <select name="currentJobFunction" class="form-select form-control" required>
-                                        <option value="Select">Select</option>
-                                        {% for currentJob in currentJobs %}
-                                        {% if currentJob == userDetails.currentJobFunction %}
-                                        <option value="{{ currentJob }}" selected>{{ currentJob }}</option>
-                                        {% else %}
-                                        <option value="{{ currentJob }}">{{ currentJob }}</option>
-                                        {% endif %}
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <label>Preferred Job Function</label>
-                            <br>
-                            <div class="select-form border">
-                                <div class="select-itms">
-                                    <select name="preferredJobFunction" class="form-select form-control" required>
-                                        <option value="Select" selected>Select</option>
-                                        {% for currentJob in currentJobs %}
-                                        {% if currentJob == userDetails.preferredJobFunction %}
-                                        <option value="{{ currentJob }}" selected>{{ currentJob }}</option>
-                                        {% else %}
-                                        <option value="{{ currentJob }}">{{ currentJob }}</option>
-                                        {% endif %}
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col">
-                            <label>Years of Experience</label>
-                            <div class="select-form border">
-                                <div class="select-itms">
-                                    <select name="yearExperience" class="form-select form-control" required>
-                                        <option value="{{ userDetails.yearExperience }}" selected>{{ userDetails.yearExperience }}</option>
-                                        <option value="No Experience/Less than 1 year">No Experience/Less than 1 year
-                                        </option>
-                                        {% for year in yearExperiences %}
-                                        <option value="{{ year }} years">{{ year }} years</option>
-                                        {% endfor %}
-                                        <option value="More than 5 years">More than 5 years</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <label>Work Type</label>
-                            <div class="select-form border">
-                                <div class="select-itms">
-                                    <select name="workType" class="form-select form-control" required>
-                                        <option value="Select">Select</option>
-                                        {% for workType in workTypes %}
-                                        {% if workType == userDetails.workType %}
-                                        <option value="{{ workType }}" selected>{{ workType }}</option>
-                                        {% else %}
-                                        <option value="{{ workType }}">{{ workType }}</option>
-                                        {% endif %}
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col">
-                            <label>Monthly Salary Expectation (Gross)</label>
-                            <div class="input-group">
-                                <div class="input-group-text">GHS</div>
-                                <input type="text" class="form-control" name="salaryExpectation" id="salaryExpectation"
-                                    placeholder="" value="{{ userDetails.salaryExpectation }}">
-                            </div>
-                        </div>
-                        <div class="col"></div>
-                    </div>
+{% block col1 %}
+<form action="" class="form-contact contact_form" method="POST">
+    {% csrf_token %}
+    <div class="alert alert-primary noStyle" role="alert">
+        Employment & Availability
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <span>Keeping this section up to date will help employers & recruiters find you.</span>
+            <br>
+            <span>They will know the field you are in, what your preferred industries are and if you are
+                actively
+                looking.</span>
+            <hr>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <img src="{{ userDetails.profilePicture }}" alt="Profile picture" height="150px"
+                    class="border border-2 border-warning rounded-circle"
+                    style="border-color: #11467f !important;" />
+                </div>
+                <input type="hidden" name="profilePicture" value="None">
+                <div class="col">
+                    <a href="#" class="btn head-btn1">UPLOAD PICTURE</a>
                     <br><br>
-                    <div class="form-check">
-                        {% if userDetails.tipsAlert %}
-                        <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault" checked>
-                        {% else %}
-                        <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault">
-                        {% endif %}
-                        <label class="form-check-label" for="flexCheckDefault">
-                            I would like to receive top jobs and career tips
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        {% if userDetails.jobAlerts %}
-                        <input class="form-check-input" name="jobAlert" type="checkbox" id="flexCheckDefault" checked>
-                        {% else %}
-                        <input class="form-check-input" name="jobAlert" type="checkbox" id="flexCheckDefault">
-                        {% endif %}
-                        <label class="form-check-label" for="flexCheckChecked">
-                            Sign me up for Job alerts.
-                        </label>
-                    </div>
-                    <hr>
-                    <input type="hidden" name="button" value="save">
-                    <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">SAVE</button>
+                    <span>
+                        Upload an image no larger than 5MB for file types .jpg .gif .png .bmp
+                    </span>
                 </div>
             </div>
-        </form>
-    </div>
-    <div class="col-4">
-        <a href="#">
-            <div class="alert alert-primary noStyle" role="alert">
-                <!-- Percentage is base on the color blue-90, yellow-75, pink-60 and many more  -->
-                <div class="progress yellow">
-                    <span class="progress-left">
-                        <span class="progress-bar"></span>
-                    </span>
-                    <span class="progress-right">
-                        <span class="progress-bar"></span>
-                    </span>
-                    <div class="progress-value">30%</div>
-                </div>
-                <br>
-                Complete Your Profile
-            </div>
-        </a>
-        <br>
-        <div class="alert alert-primary noStyle" role="alert">
+            <hr>
             <div class="row">
                 <div class="col">
-                    Job Application
+                    <label>Professional Headline</label>
+                    <br>
+                    <input type="text" name="professionalHeadline" id="professionalHeadline"
+                        class="form-control" required placeholder=""
+                        value="{{ userDetails.professionalHeadline }}">
                 </div>
-                <div class="col-auto">
-                    <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                <div class="col">
+                    <label>Highest Qualification</label>
+                    <div class="select-form border">
+                        <div class="select-itms">
+                            <select name="qualification" class="form-select form-control" required>
+                                <option value="Select">Select</option>
+                                {% for qualification in qualifications %}
+                                {% if qualification == userDetails.qualification %}
+                                <option value="{{ qualification }}" selected>{{ qualification }}</option>
+                                {% else %}
+                                <option value="{{ qualification }}">{{ qualification }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="single-job-items mb-30">
-            <div class="job-items">
-                <div class="company-img">
-                    <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
-                </div>
-                <div class="job-tittle job-tittle2">
-                    <a href="#">
-                        <h4>Digital Marketer</h4>
-                    </a>
-                    <ul>
-                        <li>Creative Agency</li>
-                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                        <li>$3500 - $4000</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="items-link items-link2 f-right">
-                <a href="{% url 'jobDetails' %}">PENDING</a>
-                <span>7 hours ago</span>
-            </div>
-        </div>
-        <div class="alert alert-primary noStyle" role="alert">
+            <br>
             <div class="row">
                 <div class="col">
-                    Saved Jobs
+                    <label>Current Job Function</label>
+                    <br>
+                    <div class="select-form border">
+                        <div class="select-itms">
+                            <select name="currentJobFunction" class="form-select form-control" required>
+                                <option value="Select">Select</option>
+                                {% for currentJob in currentJobs %}
+                                {% if currentJob == userDetails.currentJobFunction %}
+                                <option value="{{ currentJob }}" selected>{{ currentJob }}</option>
+                                {% else %}
+                                <option value="{{ currentJob }}">{{ currentJob }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-auto">
-                    <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                <div class="col">
+                    <label>Preferred Job Function</label>
+                    <br>
+                    <div class="select-form border">
+                        <div class="select-itms">
+                            <select name="preferredJobFunction" class="form-select form-control" required>
+                                <option value="Select" selected>Select</option>
+                                {% for currentJob in currentJobs %}
+                                {% if currentJob == userDetails.preferredJobFunction %}
+                                <option value="{{ currentJob }}" selected>{{ currentJob }}</option>
+                                {% else %}
+                                <option value="{{ currentJob }}">{{ currentJob }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="single-job-items mb-30">
-            <div class="job-items">
-                <div class="company-img">
-                    <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <label>Years of Experience</label>
+                    <div class="select-form border">
+                        <div class="select-itms">
+                            <select name="yearExperience" class="form-select form-control" required>
+                                <option value="{{ userDetails.yearExperience }}" selected>{{ userDetails.yearExperience }}</option>
+                                <option value="No Experience/Less than 1 year">No Experience/Less than 1 year
+                                </option>
+                                {% for year in yearExperiences %}
+                                <option value="{{ year }} years">{{ year }} years</option>
+                                {% endfor %}
+                                <option value="More than 5 years">More than 5 years</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="job-tittle job-tittle2">
-                    <a href="#">
-                        <h4>Digital Marketer</h4>
-                    </a>
-                    <ul>
-                        <li>Creative Agency</li>
-                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                        <li>$3500 - $4000</li>
-                    </ul>
+                <div class="col">
+                    <label>Work Type</label>
+                    <div class="select-form border">
+                        <div class="select-itms">
+                            <select name="workType" class="form-select form-control" required>
+                                <option value="Select">Select</option>
+                                {% for workType in workTypes %}
+                                {% if workType == userDetails.workType %}
+                                <option value="{{ workType }}" selected>{{ workType }}</option>
+                                {% else %}
+                                <option value="{{ workType }}">{{ workType }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="items-link items-link2 f-right">
-                <a href="{% url 'jobDetails' %}">PENDING</a>
-                <span>7 hours ago</span>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <label>Monthly Salary Expectation (Gross)</label>
+                    <div class="input-group">
+                        <div class="input-group-text">GHS</div>
+                        <input type="text" class="form-control" name="salaryExpectation" id="salaryExpectation"
+                            placeholder="" value="{{ userDetails.salaryExpectation }}">
+                    </div>
+                </div>
+                <div class="col"></div>
             </div>
+            <br><br>
+            <div class="form-check">
+                {% if userDetails.tipsAlert %}
+                <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault" checked>
+                {% else %}
+                <input class="form-check-input" name="tipsAlert" type="checkbox" id="flexCheckDefault">
+                {% endif %}
+                <label class="form-check-label" for="flexCheckDefault">
+                    I would like to receive top jobs and career tips
+                </label>
+            </div>
+            <div class="form-check">
+                {% if userDetails.jobAlerts %}
+                <input class="form-check-input" name="jobAlert" type="checkbox" id="flexCheckDefault" checked>
+                {% else %}
+                <input class="form-check-input" name="jobAlert" type="checkbox" id="flexCheckDefault">
+                {% endif %}
+                <label class="form-check-label" for="flexCheckChecked">
+                    Sign me up for Job alerts.
+                </label>
+            </div>
+            <hr>
+            <input type="hidden" name="button" value="save">
+            <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">SAVE</button>
         </div>
     </div>
-</div>
+</form>
 {% endblock %}

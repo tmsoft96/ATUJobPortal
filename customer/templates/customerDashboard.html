@@ -1,124 +1,42 @@
-{% extends 'findJobsDropdown.html' %}
+{% extends 'saveAndjobApplication.html' %}
 
 {% load static %}
 
-{% block submain %}
+{% block heading %}
 <h5>Hello {{ userDetails.fname }}</h5>
 <span>Welcome to your Dashboard. Check out what’s happening</span>
 <br><br>
-<div class="row">
-    <div class="col-8">
-        <div class="alert alert-primary noStyle" role="alert">
-            Jobs For You
+{% endblock %}
+
+{% block col1 %}
+<div class="alert alert-primary noStyle" role="alert">
+    Jobs For You
+</div>
+<!-- single-job-content -->
+{% for job in jobs %}
+{% if not job.delete %}
+<div class="single-job-items mb-30">
+    <div class="job-items">
+        <div class="company-img">
+            <a href="/job-details?action=job&key={{ job.key }}"><img src="{{ job.companyLogo }}"
+                    alt="{{ job.companyName }}" width="70px" height="70px"></a>
         </div>
-        <!-- single-job-content -->
-        {% for job in jobs %}
-        {% if not job.delete %}
-        <div class="single-job-items mb-30">
-            <div class="job-items">
-                <div class="company-img">
-                    <a href="/job-details?action=job&key={{ job.key }}"><img src="{% static 'img/icon/job-list1.png' %}"
-                            alt=""></a>
-                </div>
-                <div class="job-tittle job-tittle2">
-                    <a href="/job-details?action=job&key={{ job.key }}">
-                        <h4>{{ job.jobTitle }}</h4>
-                    </a>
-                    <ul>
-                        <li>{{ job.jobFunction }}</li>
-                        <li><i class="fas fa-map-marker-alt"></i>{{ job.region }}</li>
-                        <li>{{ job.currency }} &nbsp; {{ job.salary }}</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="items-link items-link2 f-right">
-                <a href="/job-details?action=job&key={{ job.key }}">{{ job.workType }}</a>
-                <span>{{ job.time }}</span>
-            </div>
+        <div class="job-tittle job-tittle2">
+            <a href="/job-details?action=job&key={{ job.key }}">
+                <h4>{{ job.jobTitle }}</h4>
+            </a>
+            <ul>
+                <li>{{ job.jobFunction }}</li>
+                <li><i class="fas fa-map-marker-alt"></i>{{ job.region }}</li>
+                <li>{{ job.currency }} &nbsp; {{ job.salary }}</li>
+            </ul>
         </div>
-        {% endif %}
-        {% endfor %}
     </div>
-    <div class="col-4">
-        <a href="#">
-            <div class="alert alert-primary noStyle" role="alert">
-                <!-- Percentage is base on the color blue-90, yellow-75, pink-60 and many more  -->
-                <div class="progress yellow">
-                    <span class="progress-left">
-                        <span class="progress-bar"></span>
-                    </span>
-                    <span class="progress-right">
-                        <span class="progress-bar"></span>
-                    </span>
-                    <div class="progress-value">30%</div>
-                </div>
-                <br>
-                Complete Your Profile
-            </div>
-        </a>
-        <br>
-        <div class="alert alert-primary noStyle" role="alert">
-            <div class="row">
-                <div class="col">
-                    Job Application
-                </div>
-                <div class="col-auto">
-                    <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
-                </div>
-            </div>
-        </div>
-        <div class="single-job-items mb-30">
-            <div class="job-items">
-                <div class="company-img">
-                    <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
-                </div>
-                <div class="job-tittle job-tittle2">
-                    <a href="#">
-                        <h4>Digital Marketer</h4>
-                    </a>
-                    <ul>
-                        <li>Creative Agency</li>
-                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                        <li>$3500 - $4000</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="items-link items-link2 f-right">
-                <a href="{% url 'jobDetails' %}">PENDING</a>
-                <span>7 hours ago</span>
-            </div>
-        </div>
-        <div class="alert alert-primary noStyle" role="alert">
-            <div class="row">
-                <div class="col">
-                    Saved Jobs
-                </div>
-                <div class="col-auto">
-                    <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
-                </div>
-            </div>
-        </div>
-        <div class="single-job-items mb-30">
-            <div class="job-items">
-                <div class="company-img">
-                    <a href="#"><img src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
-                </div>
-                <div class="job-tittle job-tittle2">
-                    <a href="#">
-                        <h4>Digital Marketer</h4>
-                    </a>
-                    <ul>
-                        <li>Creative Agency</li>
-                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                        <li>$3500 - $4000</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="items-link items-link2 f-right">
-                <a href="{% url 'jobDetails' %}">PENDING</a>
-                <span>7 hours ago</span>
-            </div>
-        </div>
+    <div class="items-link items-link2 f-right">
+        <a href="/job-details?action=job&key={{ job.key }}">{{ job.workType }}</a>
+        <span>{{ job.time }}</span>
     </div>
 </div>
+{% endif %}
+{% endfor %}
 {% endblock %}

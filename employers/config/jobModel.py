@@ -28,6 +28,8 @@ class JobModel:
                 "delete": value.get("delete"),
                 "time": timeago.format(postDate, now),
                 "companyId": value.get("companyId"),
+                "companyName": value.get("companyName"),
+                "companyLogo": value.get("companyLogo"),
                 "yearExperience": value.get("yearExperience"),
             }
             allJobsList.append(jobDic)
@@ -47,6 +49,7 @@ class JobModel:
             "companyName": jobDictConvert.get("companyName"),
             "companyWebsite": jobDictConvert.get("companyWebsite"),
             "companyEmail": jobDictConvert.get("companyEmail"),
+            "companyLogo": jobDictConvert.get("companyLogo"),
             "jobTitle": jobDictConvert.get("jobTitle"),
             "jobFunction": jobDictConvert.get("jobFunction"),
             "industry": jobDictConvert.get("industry"),
