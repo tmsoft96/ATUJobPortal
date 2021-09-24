@@ -84,15 +84,11 @@
                                     <span class="checkmark"></span>
                                 </label>
                                 {% endfor %}
-                                <!-- <label class="container">2-3 Years
-                                    <input type="checkbox" checked="checked active">
-                                    <span class="checkmark"></span>
-                                </label> -->
                             </div>
                             <!-- select-Categories End -->
                         </div>
                         <!-- single three -->
-                       
+
                     </div>
                     <!-- Job Category Listing End -->
                 </div>
@@ -117,7 +113,8 @@
                                 <div class="job-items">
                                     <div class="company-img">
                                         <a href="/job-details?action=job&key={{ job.key }}"><img
-                                                src="{% static 'img/icon/job-list1.png' %}" alt=""></a>
+                                                src="{{ job.companyLogo }}" alt="{{ job.companyName }}" width="70px"
+                                                height="70px"></a>
                                     </div>
                                     <div class="job-tittle job-tittle2">
                                         <a href="/job-details?action=job&key={{ job.key }}">

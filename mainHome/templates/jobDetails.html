@@ -55,7 +55,10 @@
                         </div>
                     </div>
                     <!-- job single End -->
-
+                    {% if fromExtra %}
+                    {% block extra %}
+                    {% endblock %}
+                    {% else %}
                     <div class="job-post-details">
                         <div class="post-details1 mb-50">
                             <!-- Small Section Tittle -->
@@ -79,7 +82,7 @@
                             <p>{{ jobDict.jobDescription }}</p>
                         </div>
                     </div>
-
+                    {% endif %}
                 </div>
                 <!-- Right Content -->
                 <div class="col-xl-4 col-lg-4">
@@ -94,7 +97,8 @@
                             <li>Vacancy : <span>{{ jobDict.availableOpenings }}</span></li>
                             <li>Job nature : <span>{{ jobDict.workType }}</span></li>
                             <li>Salary : <span>{{ jobDict.salary }}</span></li>
-                            <li>Application date : <span>{{ jobDict.editDate }}</span></li>
+                            {% block extraList %}
+                            {% endblock %}
                         </ul>
                         {% if jobDict.companyId == auth.userId %}
                         <div class="apply-btn2">
@@ -140,6 +144,8 @@
                         </div>
                         {% endif %}
                     </div>
+                    {% if fromExtra %}
+                    {% else %}
                     <div class="post-details4  ">
                         <!-- Small Section Tittle -->
                         <div class="small-section-tittle">
@@ -287,6 +293,7 @@
                             </div>
                         </div>
                     </form>
+                    {% endif %}
                     {% endif %}
                 </div>
             </div>

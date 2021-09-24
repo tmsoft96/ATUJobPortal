@@ -1,0 +1,34 @@
+{% extends 'findJobsDropdown.html' %}
+
+{% load static %}
+
+{% block submain %}
+<div class="alert alert-primary noStyle" role="alert">
+    Job Applications
+</div>
+
+{% for job in userDetails.appliedJobList %}
+<div class="single-job-items mb-30">
+    <div class="job-items">
+        <div class="company-img">
+            <a href="/customer/application/details?action=job&key={{ job.jobId }}">
+            <img src="{{ job.logo }}" alt="{{ job.companyName }}" width="70px" height="70px"></a>
+        </div>
+        <div class="job-tittle job-tittle2">
+            <a href="/customer/application/details?action=job&key={{ job.jobId }}">
+                <h4>{{ job.jobTitle }}</h4>
+            </a>
+            <ul>
+                <li>{{ job.jobFunction }}</li>
+                <li><i class="fas fa-map-marker-alt"></i>{{ job.region }}</li>
+                <li>{{ job.currency }} &nbsp; {{ job.salary }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="items-link items-link2 f-right">
+        <a href="/customer/application/details?action=job&key={{ job.jobId }}">{{ job.status }}</a>
+        <span>{{ job.time }}</span>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

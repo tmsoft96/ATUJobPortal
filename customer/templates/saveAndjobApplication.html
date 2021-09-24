@@ -35,7 +35,9 @@
                     Job Application
                 </div>
                 <div class="col-auto">
-                    <a href="#" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                    {% if userDetails.oneAppliedJob %}
+                    <a href="{% url 'customerViewAllApplication' %}" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -43,11 +45,12 @@
         <div class="single-job-items mb-30">
             <div class="job-items">
                 <div class="company-img">
-                    <a href="#"><img src="{{ userDetails.oneAppliedJob.logo }}"
-                            alt="{{ userDetails.oneAppliedJob.companyName }}" height="50px" width="50px"></a>
+                    <a href="/customer/application/details?action=job&key={{ userDetails.oneAppliedJob.jobId }}"><img
+                            src="{{ userDetails.oneAppliedJob.logo }}" alt="{{ userDetails.oneAppliedJob.companyName }}"
+                            height="50px" width="50px"></a>
                 </div>
                 <div class="job-tittle job-tittle2">
-                    <a href="#">
+                    <a href="/customer/application/details?action=job&key={{ userDetails.oneAppliedJob.jobId }}">
                         <h4>{{ userDetails.oneAppliedJob.jobTitle }}</h4>
                     </a>
                     <ul>
@@ -58,7 +61,8 @@
                 </div>
             </div>
             <div class="items-link items-link2 f-right">
-                <a href="{% url 'jobDetails' %}">{{ userDetails.oneAppliedJob.status }}</a>
+                <a href="/customer/application/details?action=job&key={{ userDetails.oneAppliedJob.jobId }}">
+                    {{ userDetails.oneAppliedJob.status }}</a>
                 <span>{{ userDetails.oneAppliedJob.time }}</span>
             </div>
         </div>

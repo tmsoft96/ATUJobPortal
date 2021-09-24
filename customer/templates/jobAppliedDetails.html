@@ -1,0 +1,32 @@
+{% extends 'jobDetails.html' %}
+
+{% load static %}
+
+{% block extra %}
+<div class="row">
+    <div class="col-auto">
+        <img src="{{ userDetails.profilePicture }}" alt="Profile picture" height="150px"
+            class="border border-2 border-warning rounded-circle" style="border-color: #11467f !important;" />
+
+    </div>
+    <div class="col">
+        <h2>{{ applicationDict.fname }} {{ applicationDict.lname }}</h2>
+        <h5>Experience: {{ applicationDict.yearExperience }}</h5>
+        <h5>Location: {{ applicationDict.location }}</h5>
+        <h5>Phone: {{ applicationDict.phone }}</h5>
+        <h5>Minimum Qualification: {{ applicationDict.qualification }}</h5>
+        <h5>Status: {{ applicationDict.status }}</h5>
+    </div>
+</div>
+<br><br>
+<div class="card">
+    <div class="card-body">
+        <h5>Cover Letter</h5>
+        <span>{{ applicationDict.note }}</span>
+    </div>
+</div>
+{% endblock %}
+
+{% block extraList %}
+<li>Application date : <span>{{ applicationDict.time }}</span></li>
+{% endblock %}

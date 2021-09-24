@@ -1,3 +1,5 @@
+from customer.controllers.viewAllApplicationController import ViewAllApplicationController
+from customer.controllers.jobAppliedDetailsController import jobAppliedDetailsController
 from customer.controllers.profileUpdate.profileUpdateEmailController import profileUpdateEmailController
 from customer.controllers.profileUpdate.profileUpdatePhoneController import profileUpdatePhoneController
 from customer.controllers.profileUpdate.profileUpdatePasswordController import profileUpdatePasswordController
@@ -58,3 +60,9 @@ def profileUpdatePhone(request):
 
 def profileUpdateEmail(request):
     return profileUpdateEmailController(request)
+
+def jobAppliedDetails(request):
+    return jobAppliedDetailsController(request)
+
+def viewAllApplication(request):
+    return ViewAllApplicationController(request)

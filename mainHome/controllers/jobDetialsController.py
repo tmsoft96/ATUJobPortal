@@ -47,7 +47,7 @@ def jobDetailsController(request):
                 "phone": request.POST.get("phone"),
                 "qualification": request.POST.get("qualification"),
                 "yearExperience": request.POST.get("yearExperience"),
-                "note": request.POST.get("saveNote"),
+                "note": request.POST.get("note"),
                 "cv": "null",
                 "status": constants.jobstatus[0],
                 "timestamp": datetime.now().timestamp(),

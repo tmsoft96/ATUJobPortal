@@ -17,4 +17,6 @@ urlpatterns = [
     path('profile/update/password', views.profileUpdatePassword, name="profileUpdatePassword"),
     path('profile/update/phone', views.profileUpdatePhone, name="profileUpdatePhone"),
     path('profile/update/email', views.profileUpdateEmail, name="profileUpdateEmail"),
+    path('application/details', views.jobAppliedDetails),
+    path('application', views.viewAllApplication, name="customerViewAllApplication"),
 ]
