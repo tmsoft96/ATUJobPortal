@@ -36,6 +36,7 @@
                 <div class="card-body text-center">
                     <p>JOBS</p>
                     <h1>{{ userDetails.noOfJobs }}</h1>
+                    <a href="#" style="color: sienna;">View</a>
                 </div>
             </div>
         </div>
@@ -44,6 +45,7 @@
                 <div class="card-body text-center">
                     <p>APPLICATIONS</p>
                     <h1>{{ userDetails.noOfApplication }}</h1>
+                    <a href="#" style="color: sienna;">View</a>
                 </div>
             </div>
         </div>
@@ -52,8 +54,49 @@
                 <div class="card-body text-center">
                     <p>VIEWS</p>
                     <h1>{{ userDetails.noOfViews }}</h1>
+                    <br>
                 </div>
             </div>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <div class="alert alert-primary noStyle" role="alert">
+                Recent Job Applications
+            </div>
+            <br>
+            {% if noApplication %}
+            <div class="text-center">
+                <img src="{% static 'img/icon/empty.png' %}" alt="empty" width="130px" height="130px">
+                No Job Applied
+            </div>
+            {% endif %}
+            {% for application in applications %}
+            <div class="single-job-items mb-30">
+                <div class="job-items">
+                    <div class="company-img">
+                        <a href="/job-details?action=job&key={{ job.key }}"><img src="{{ application.profilePicture }}"
+                                alt="Profile picture" height="50px"
+                                class="border border-2 border-warning rounded-circle"
+                                style="border-color: #11467f !important;" /></a>
+                    </div>
+                    <div class="job-tittle job-tittle2">
+                        <a href="/job-details?action=job&key={{ job.key }}">
+                            <h4>{{ application.fname }} {{ application.lname }}</h4>
+                        </a>
+                        <ul>
+                            <li>{{ application.phone }}</li>
+                            <li>Year Experience: &nbsp; {{ application.yearExperience }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="items-link items-link2 f-right">
+                    <a href="/job-details?action=job&key={{ job.key }}">{{ application.status }}</a>
+                    <span>{{ application.time }}</span>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
     <br>

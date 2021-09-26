@@ -1,3 +1,4 @@
+from employers.config.applicationModel import ApplicationModel
 from employers.config.jobModel import JobModel
 from ATUJobPortal.config.firebase import Firebase
 from django.http.response import HttpResponseRedirect
@@ -9,14 +10,16 @@ def employerDashboardController(request):
     auth = Authentication(request)
     firebase = Firebase()
     jobs = JobModel.allJob()
-
+   
     msg = None
     errorMessage = None
 
     userDetails = None
+    applications = None
     if auth.authMap["authorize"]:
         userId = auth.authMap["userId"]
         userDetails = EmployerUserModel.userModel(userId)
+        applications = ApplicationModel.allCompanyApplication(userId)
         print(userDetails)
     else:
         return HttpResponseRedirect("/account/logout")
@@ -46,4 +49,6 @@ def employerDashboardController(request):
                    "msg": msg,
                    "userDetails": userDetails,
                    "errorMessage": errorMessage,
-                   "jobs": jobs})
+                   "jobs": jobs,
+                   "applications": applications,
+                   "noApplication": len(applications) == 0})
