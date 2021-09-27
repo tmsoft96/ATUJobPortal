@@ -39,12 +39,12 @@ class ApplicationModel:
         return applicationList
 
 
-    def paticularApplication(companyId, customerId):
+    def paticularApplication(companyId, jobId):
         firebase = Firebase()
 
         now = datetime.datetime.now() + datetime.timedelta(seconds=60 * 3.4)
         application = firebase.db.child("Application").child(
-            companyId).child(customerId).get().val().items()
+            companyId).child(jobId).get().val().items()
         applicationConvert = dict(application)
 
         editDate = datetime.datetime.fromisoformat(

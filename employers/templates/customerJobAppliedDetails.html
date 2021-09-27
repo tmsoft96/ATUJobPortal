@@ -1,0 +1,94 @@
+{% extends 'jobDetails.html' %}
+
+{% load static %}
+
+{% block extra %}
+<div class="row">
+    <div class="col-auto">
+        <img src="{{ userDetails.profilePicture }}" alt="Profile picture" height="150px"
+            class="border border-2 border-warning rounded-circle" style="border-color: #11467f !important;" />
+
+    </div>
+    <div class="col">
+        <h2>{{ applicationDict.fname }} {{ applicationDict.lname }}</h2>
+        <h5>Professional Headline: {{ applicationDict.phone }}</h5>
+        <h5>Gender: {{ applicationDict.phone }}</h5>
+        <h5>Nationality: {{ applicationDict.phone }}</h5>
+        <h5>Experience: {{ applicationDict.yearExperience }}</h5>
+        <h5>Location: {{ applicationDict.location }}</h5>
+        <h5>Phone: {{ applicationDict.phone }}</h5>
+        <h5>Email: {{ applicationDict.phone }}</h5>
+        <h5>Minimum Qualification: {{ applicationDict.qualification }}</h5>
+        <h5>Status: {{ applicationDict.status }}</h5>
+    </div>
+</div>
+<br><br>
+<a href="#" style="color: chocolate;">Click to download CV attached</a>
+<br>
+<br>
+<div class="card">
+    <div class="card-body">
+        <h5>Cover Letter</h5>
+        <span>{{ applicationDict.note }}</span>
+    </div>
+</div>
+{% endblock %}
+
+{% block extraList %}
+<li>Application date : <span>{{ applicationDict.time }}</span></li>
+{% endblock %}
+
+{% block extraRight %}
+<div class="alert alert-primary noStyle" role="alert">
+    Application
+</div>
+<form action="" class="form-contact contact_form" method="POST">
+    {% csrf_token %}
+    <div class="card">
+        <div class="card-body">
+            <label class="h6">Application Status</label>
+            <br>
+            <div class="select-form border">
+                <div class="select-itms">
+                    <select name="status" class="form-select form-control" required>
+                        <option value="Select">Select</option>
+                        {% for qualification in qualifications %}
+                        <option value="{{ qualification }}">{{ qualification }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <label class="h6">Continue if status is changed to 'accept'</label>
+            <br>
+            <label class="h6">Send appointment letter</label>
+            <br>
+            <div class="select-form border">
+                <div class="select-itms">
+                    <select name="appointmentLetter" class="form-select form-control">
+                        <option value="Select">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <label class="h6">Appointment Date</label>
+            <br>
+            <input type="date" name="date" class="form-control">
+            <br>
+            <label class="h6">Appointment Time</label>
+            <br>
+            <input type="time" name="time" class="form-control">
+            <br>
+            <label class="h6">Venue</label>
+            <br>
+            <input type="text" name="venue" class="form-control">
+            <br>
+            <input type="hidden" name="button" value="apply">
+            <button class="btn btn-primary" type="submit"
+                                    style="width: 100%; font-size: large;">COMPLETE</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

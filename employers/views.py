@@ -1,3 +1,4 @@
+from employers.controllers.customerJobAppliedDetialController import customerJobAppliedDetialController
 from employers.controllers.employerPostJobController import employerPostJobController
 from employers.controllers.employerDashboardController import employerDashboardController
 from employers.controllers.signUpController import signUpController
@@ -11,3 +12,6 @@ def dashboard(request):
 
 def postJob(request):
     return employerPostJobController(request)
+
+def jobAppliedDetails(request):
+    return customerJobAppliedDetialController(request)

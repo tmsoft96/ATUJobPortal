@@ -45,7 +45,6 @@ def jobDetailsController(request):
                 "fname": request.POST.get("fname"),
                 "lname": request.POST.get("lname"),
                 "phone": request.POST.get("phone"),
-                "profilePicture": userDetails.get("profilePicture"),
                 "qualification": request.POST.get("qualification"),
                 "yearExperience": request.POST.get("yearExperience"),
                 "note": request.POST.get("note"),

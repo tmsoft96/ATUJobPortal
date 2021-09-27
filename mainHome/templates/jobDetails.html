@@ -100,7 +100,7 @@
                             {% block extraList %}
                             {% endblock %}
                         </ul>
-                        {% if jobDict.companyId == auth.userId %}
+                        {% if jobDict.companyId == auth.userId and not fromExtra %}
                         <div class="apply-btn2">
                             <div class="row">
                                 <div class="col">
@@ -145,6 +145,8 @@
                         {% endif %}
                     </div>
                     {% if fromExtra %}
+                    {% block extraRight %}
+                    {% endblock %}
                     {% else %}
                     <div class="post-details4  ">
                         <!-- Small Section Tittle -->
