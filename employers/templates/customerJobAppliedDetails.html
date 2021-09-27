@@ -5,21 +5,30 @@
 {% block extra %}
 <div class="row">
     <div class="col-auto">
-        <img src="{{ userDetails.profilePicture }}" alt="Profile picture" height="150px"
+        <img src="{{ applicationDict.profilePicture }}" alt="Profile picture" height="150px"
             class="border border-2 border-warning rounded-circle" style="border-color: #11467f !important;" />
 
     </div>
     <div class="col">
         <h2>{{ applicationDict.fname }} {{ applicationDict.lname }}</h2>
-        <h5>Professional Headline: {{ applicationDict.phone }}</h5>
-        <h5>Gender: {{ applicationDict.phone }}</h5>
-        <h5>Nationality: {{ applicationDict.phone }}</h5>
-        <h5>Experience: {{ applicationDict.yearExperience }}</h5>
-        <h5>Location: {{ applicationDict.location }}</h5>
-        <h5>Phone: {{ applicationDict.phone }}</h5>
-        <h5>Email: {{ applicationDict.phone }}</h5>
-        <h5>Minimum Qualification: {{ applicationDict.qualification }}</h5>
-        <h5>Status: {{ applicationDict.status }}</h5>
+        Gender: &nbsp;&nbsp;&nbsp;&nbsp; <span class="h5">{{ applicationDict.gender }}</span>
+        <br>
+        Nationality:&nbsp;&nbsp;&nbsp;&nbsp; <span class="h5">{{ applicationDict.nationality }}</span>
+        <br>
+        Professional Headline:&nbsp;&nbsp;&nbsp;&nbsp; 
+        <span class="h5">{{ applicationDict.professionalHeadline }}</span>
+        <br>
+        Experience:&nbsp;&nbsp;&nbsp;&nbsp; <span class="h5">{{ applicationDict.yearExperience }}</span>
+        <br>
+        Location:&nbsp;&nbsp;&nbsp;&nbsp; <span class="h5">{{ applicationDict.location }}</span>
+        <br>
+        Phone:&nbsp;&nbsp;&nbsp;&nbsp; <span class="h5">{{ applicationDict.phone }}</span>
+        <br>
+        Email:&nbsp;&nbsp;&nbsp;&nbsp; <span class="h5">{{ applicationDict.email }}</span>
+        <br>
+        Minimum Qualification:&nbsp;&nbsp;&nbsp;&nbsp; <span class="h5">{{ applicationDict.qualification }}</span>
+        <br>
+        Status:&nbsp;&nbsp;&nbsp;&nbsp; <span class="h5">{{ applicationDict.status }}</span>
     </div>
 </div>
 <br><br>
@@ -52,14 +61,19 @@
                 <div class="select-itms">
                     <select name="status" class="form-select form-control" required>
                         <option value="Select">Select</option>
-                        {% for qualification in qualifications %}
-                        <option value="{{ qualification }}">{{ qualification }}</option>
-                        {% endfor %}
+                        <option value="accepted">Accepted</option>
+                        <option value="declined">Declined</option>
                     </select>
                 </div>
             </div>
+            <br>
+            <label class="h6">Note (This can be reasons or any additional information the applicant must be aware
+                of)</label>
+            <br>
+            <textarea class="form-control" name="note" id="" rows="4" maxlength="2000"
+                placeholder="Max. 2000 characters"></textarea>
             <hr>
-            <label class="h6">Continue if status is changed to 'accept'</label>
+            <label class="h6">Continue if status is changed to 'accepted'</label>
             <br>
             <label class="h6">Send appointment letter</label>
             <br>
@@ -85,9 +99,10 @@
             <br>
             <input type="text" name="venue" class="form-control">
             <br>
-            <input type="hidden" name="button" value="apply">
-            <button class="btn btn-primary" type="submit"
-                                    style="width: 100%; font-size: large;">COMPLETE</button>
+            <input type="hidden" name="jobId" value="{{ key }}">
+            <input type="hidden" name="customerId" value="{{ applicationDict.customerId }}">
+            <input type="hidden" name="button" value="complete">
+            <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">COMPLETE</button>
         </div>
     </div>
 </form>

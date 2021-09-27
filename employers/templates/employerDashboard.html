@@ -73,11 +73,12 @@
             </div>
             {% endif %}
             {% for application in applications %}
+            {% if application.status == "pending" %}
             <div class="single-job-items mb-30">
                 <div class="job-items">
                     <div class="company-img">
                         <a href="/employer/application/details?action=job&key={{ application.jobId }}"><img src="{{ application.profilePicture }}"
-                                alt="Profile picture" height="50px"
+                                alt="Profile picture" height="100px" width="100px"
                                 class="border border-2 border-warning rounded-circle"
                                 style="border-color: #11467f !important;" /></a>
                     </div>
@@ -96,6 +97,7 @@
                     <span>{{ application.time }}</span>
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>

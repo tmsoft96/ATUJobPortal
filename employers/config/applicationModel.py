@@ -1,3 +1,4 @@
+from customer.config.userModel import CustomerUserModel
 from ATUJobPortal.config.firebase import Firebase
 import timeago
 import datetime
@@ -19,14 +20,16 @@ class ApplicationModel:
             for key, value in applications:
                 editDate = datetime.datetime.fromisoformat(
                 value.get("editDate"))
+                customerId = value.get("customerId")
+                profilePicture = firebase.db.child("Users").child(customerId).child("profilePicture").get().val()
                 applicationDict = {
                     "jobId": value.get("jobId"),
-                    "customerId":value.get("customerId"),
+                    "customerId": customerId,
                     "companyId": value.get("companyId"),
                     "fname": value.get("fname"),
                     "lname": value.get("lname"),
                     "phone": value.get("phone"),
-                    "profilePicture": value.get("profilePicture"),
+                    "profilePicture": profilePicture,
                     "qualification": value.get("qualification"),
                     "yearExperience": value.get("yearExperience"),
                     "status": value.get("status"),
@@ -50,14 +53,23 @@ class ApplicationModel:
         editDate = datetime.datetime.fromisoformat(
             applicationConvert.get("editDate"))
 
+        customerId = applicationConvert.get("customerId")
+        customerDict = CustomerUserModel.userModel(customerId)
+
         applicationDict = {
             "jobId": applicationConvert.get("jobId"),
-            "customerId":applicationConvert.get("customerId"),
+            "customerId": customerId,
             "companyId": applicationConvert.get("companyId"),
             "fname": applicationConvert.get("fname"),
             "lname": applicationConvert.get("lname"),
             "phone": applicationConvert.get("phone"),
-            "profilePicture": applicationConvert.get("profilePicture"),
+            "email": customerDict.get("email"),
+            "dob": customerDict.get("dob"),
+            "professionalHeadline": customerDict.get("professionalHeadline"),
+            "gender": "Male" if customerDict.get("gender") == "M" else "Female",
+            "nationality": customerDict.get("nationality"),
+            "location": customerDict.get("location"),
+            "profilePicture": customerDict.get("profilePicture"),
             "qualification": applicationConvert.get("qualification"),
             "yearExperience": applicationConvert.get("yearExperience"),
             "note": applicationConvert.get("note"),

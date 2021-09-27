@@ -41,6 +41,9 @@ def employerDashboardController(request):
         elif request.GET.get("action") == "deleteSuccess":
             msg = "Job deleted successfully"
 
+        elif request.GET.get("action") == "applicationSuccess":
+            msg = "Application completed successfully"
+
 
     return render(request,
                   'employerDashboard.html',
