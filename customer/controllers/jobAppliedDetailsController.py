@@ -21,17 +21,17 @@ def jobAppliedDetailsController(request):
 
     if request.method == "GET":
         if request.GET.get("action") == "job":
-            key = request.GET.get("key")
-            jobDict = JobModel.particularJob(key)
-            applicationDict = ApplicationModel.paticularApplication(
-                jobId=key, customerId=auth.authMap["userId"])
+            jobId = request.GET.get("jobId")
+            companyId = request.GET.get("companyId")
+            jobDict = JobModel.particularJob(jobId)
+            applicationDict = ApplicationModel.paticularApplication(companyId, jobId)
 
             return render(request, 'jobAppliedDetails.html',
                           {'heading': "Job Applied Details",
                            "auth": auth.authMap,
                            "userDetails": userDetails,
                            "jobDict": jobDict,
-                           "key": key,
+                           "key": jobId,
                            "errorMessage": errorMessage,
                            "applicationDict": applicationDict,
                            "fromExtra": True})

@@ -56,7 +56,7 @@ def customerJobAppliedDetialController(request):
                 "editDate": str(datetime.now()),
                 "delete": False,
             }
-            firebase.db.child("Appoinments").child(
+            firebase.db.child("Appointments").child(
                 auth.authMap["userId"]).child(customerId).set(application)
 
             # updating status field in all tables it occurs

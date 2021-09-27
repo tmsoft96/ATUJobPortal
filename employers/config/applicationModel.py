@@ -1,3 +1,4 @@
+from ATUJobPortal.config.constant import Constants
 from customer.config.userModel import CustomerUserModel
 from ATUJobPortal.config.firebase import Firebase
 import timeago
@@ -13,15 +14,17 @@ class ApplicationModel:
 
         applicationList = []
         try:
-            applications = firebase.db.child("Application").child(companyId).get().val().items()
+            applications = firebase.db.child("Application").child(
+                companyId).get().val().items()
 
             now = datetime.datetime.now() + datetime.timedelta(seconds=60 * 3.4)
 
             for key, value in applications:
                 editDate = datetime.datetime.fromisoformat(
-                value.get("editDate"))
+                    value.get("editDate"))
                 customerId = value.get("customerId")
-                profilePicture = firebase.db.child("Users").child(customerId).child("profilePicture").get().val()
+                profilePicture = firebase.db.child("Users").child(
+                    customerId).child("profilePicture").get().val()
                 applicationDict = {
                     "jobId": value.get("jobId"),
                     "customerId": customerId,
@@ -41,9 +44,9 @@ class ApplicationModel:
 
         return applicationList
 
-
     def paticularApplication(companyId, jobId):
         firebase = Firebase()
+        constants = Constants()
 
         now = datetime.datetime.now() + datetime.timedelta(seconds=60 * 3.4)
         application = firebase.db.child("Application").child(
@@ -55,6 +58,24 @@ class ApplicationModel:
 
         customerId = applicationConvert.get("customerId")
         customerDict = CustomerUserModel.userModel(customerId)
+
+        # check for status to fetch appointment detials
+        status = applicationConvert.get("status")
+        appointmentDict = {}
+        if status == constants.jobstatus[2] or status == constants.jobstatus[3]:
+            appointment = firebase.db.child("Appointments").child(
+                companyId).child(customerId).get().val().items()
+            appointmentConvert = dict(appointment)
+            appointmentDict = {
+                "status": appointmentConvert.get("status"),
+                "note": appointmentConvert.get("note"),
+                "jobId": appointmentConvert.get("jobId"),
+                "date": appointmentConvert.get("date"),
+                "time": appointmentConvert.get("time"),
+                "venue": appointmentConvert.get("venue"),
+                "customerId": appointmentConvert.get("customerId"),
+                "editDate": timeago.format(appointmentConvert.get("editDate"), now),
+            }
 
         applicationDict = {
             "jobId": applicationConvert.get("jobId"),
@@ -74,8 +95,9 @@ class ApplicationModel:
             "yearExperience": applicationConvert.get("yearExperience"),
             "note": applicationConvert.get("note"),
             "cv": applicationConvert.get("cv"),
-            "status": applicationConvert.get("status"),
+            "status": status,
             "time": timeago.format(editDate, now),
+            "appointment": appointmentDict if status == constants.jobstatus[2] or status == constants.jobstatus[3] else None,
         }
 
         return applicationDict

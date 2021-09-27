@@ -45,12 +45,12 @@
         <div class="single-job-items mb-30">
             <div class="job-items">
                 <div class="company-img">
-                    <a href="/customer/application/details?action=job&key={{ userDetails.oneAppliedJob.jobId }}"><img
+                    <a href="/customer/application/details?action=job&jobId={{ userDetails.oneAppliedJob.jobId }}&companyId={{ userDetails.oneAppliedJob.companyId }}"><img
                             src="{{ userDetails.oneAppliedJob.logo }}" alt="{{ userDetails.oneAppliedJob.companyName }}"
                             height="50px" width="50px"></a>
                 </div>
                 <div class="job-tittle job-tittle2">
-                    <a href="/customer/application/details?action=job&key={{ userDetails.oneAppliedJob.jobId }}">
+                    <a href="/customer/application/details?action=job&jobId={{ userDetails.oneAppliedJob.jobId }}&companyId={{ userDetails.oneAppliedJob.companyId }}">
                         <h4>{{ userDetails.oneAppliedJob.jobTitle }}</h4>
                     </a>
                     <ul>
@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div class="items-link items-link2 f-right">
-                <a href="/customer/application/details?action=job&key={{ userDetails.oneAppliedJob.jobId }}">
+                <a href="/customer/application/details?action=job&jobId={{ userDetails.oneAppliedJob.jobId }}&companyId={{ userDetails.oneAppliedJob.companyId }}">
                     {{ userDetails.oneAppliedJob.status }}</a>
                 <span>{{ userDetails.oneAppliedJob.time }}</span>
             </div>
