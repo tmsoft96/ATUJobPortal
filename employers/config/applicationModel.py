@@ -66,6 +66,8 @@ class ApplicationModel:
             appointment = firebase.db.child("Appointments").child(
                 companyId).child(customerId).get().val().items()
             appointmentConvert = dict(appointment)
+            appointmentEditDate = datetime.datetime.fromisoformat(
+            appointmentConvert.get("editDate"))
             appointmentDict = {
                 "status": appointmentConvert.get("status"),
                 "note": appointmentConvert.get("note"),
@@ -74,7 +76,7 @@ class ApplicationModel:
                 "time": appointmentConvert.get("time"),
                 "venue": appointmentConvert.get("venue"),
                 "customerId": appointmentConvert.get("customerId"),
-                "editDate": timeago.format(appointmentConvert.get("editDate"), now),
+                "editDate": timeago.format(appointmentEditDate, now),
             }
 
         applicationDict = {

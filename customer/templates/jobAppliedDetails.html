@@ -31,6 +31,36 @@
 <li>Application date : <span>{{ applicationDict.time }}</span></li>
 {% endblock %}
 
-{% block extra %}
+{% block extraRight %}
+<div class="alert alert-primary noStyle" role="alert">
+    Application
+</div>
+<div class="card">
+    <div class="card-body">
+        {% if applicationDict.appointment %}
+        Application Status
+        <h5>{{ applicationDict.appointment.status }}</h5>
+        <br>
+        Additional Information
+        <h5>{{ applicationDict.appointment.note }}</h5>
+        <br>
+        {% if applicationDict.appointment.status == "accepted" %}
+        Appointment Date
+        <h5>{{ applicationDict.appointment.date }}</h5>
+        <br>
+        Appointment Time
+        <h5>{{ applicationDict.appointment.time }}</h5>
+        <br>
+        Venue
+        <h5>{{ applicationDict.appointment.venue }}</h5>
+        {% endif %}
+        <br>
+        {% else %}
+        Application Status
+        <h5>Pending</h5>
+        <br>
+        {% endif %}
+    </div>
+</div>
 
 {% endblock %}
