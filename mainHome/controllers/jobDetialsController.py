@@ -29,6 +29,7 @@ def jobDetailsController(request):
         userDetails = EmployerUserModel.userModel(
             userId) if auth.authMap["userType"] == constants.userType[1] else CustomerUserModel.userModel(userId)
         print(userDetails)
+
     else:
         errorMessage = "Login to apply"
 
@@ -83,16 +84,23 @@ def jobDetailsController(request):
             jobDict = JobModel.particularJob(key)
             print(jobDict)
 
-            # checking for if job is already applied for customers only
+            # checking for if job is already applied for customers only and 
+            # allow for declined applicants
             allowApplication = True
             if auth.authMap["userType"] == constants.userType[0]:
                 for value in userDetails.get("appliedJobList"):
-                    if value.get("jobId") == key and value.get("status") == constants.jobstatus[0]:
+                    if value.get("jobId") == key and value.get("status") != constants.jobstatus[3]:
                         allowApplication = False
                         errorMessage = "You already applied for this job"
                         break
 
-            print(allowApplication)
+            if allowApplication:
+                # Adding post view count if user type is customer
+                if  auth.authMap["userType"] == constants.userType[0]:
+                    noOfViews = firebase.db.child("Users").child(
+                        jobDict.get("companyId")).child("noOfViews").get().val()
+                    firebase.db.child("Users").child(jobDict.get("companyId")).update(
+                        {"noOfViews": noOfViews + 1})
 
             return render(request, 'jobDetails.html',
                           {'heading': "Job Details",
