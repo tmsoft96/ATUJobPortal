@@ -1,3 +1,5 @@
+from employers.controllers.employerViewAllJobController import employerViewAllJobController
+from employers.controllers.employerViewAllApplicationController import employerViewAllApplicationController
 from employers.controllers.customerJobAppliedDetialController import customerJobAppliedDetialController
 from employers.controllers.employerPostJobController import employerPostJobController
 from employers.controllers.employerDashboardController import employerDashboardController
@@ -15,3 +17,9 @@ def postJob(request):
 
 def jobAppliedDetails(request):
     return customerJobAppliedDetialController(request)
+
+def viewAllApplication(request):
+    return employerViewAllApplicationController(request)
+
+def viewAllJob(request):
+    return employerViewAllJobController(request)

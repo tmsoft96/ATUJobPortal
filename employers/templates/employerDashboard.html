@@ -36,7 +36,7 @@
                 <div class="card-body text-center">
                     <p>JOBS</p>
                     <h1>{{ userDetails.noOfJobs }}</h1>
-                    <a href="#" style="color: sienna;">View</a>
+                    <a href="{% url 'employerViewAllJobs' %}" style="color: sienna;">View</a>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
                 <div class="card-body text-center">
                     <p>APPLICATIONS</p>
                     <h1>{{ userDetails.noOfApplication }}</h1>
-                    <a href="#" style="color: sienna;">View</a>
+                    <a href="{% url 'employerViewAllApplication' %}" style="color: sienna;">View</a>
                 </div>
             </div>
         </div>
@@ -63,17 +63,19 @@
     <div class="card">
         <div class="card-body">
             <div class="alert alert-primary noStyle" role="alert">
-                Recent Job Applications
+                <div class="row">
+                    <div class="col">
+                        Recent Job Applications
+                    </div>
+                    <div class="col-auto">
+                        <a href="{% url 'employerViewAllApplication' %}" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                    </div>
+                </div>
             </div>
             <br>
-            {% if noApplication %}
-            <div class="text-center">
-                <img src="{% static 'img/icon/empty.png' %}" alt="empty" width="130px" height="130px">
-                No Job Applied
-            </div>
-            {% endif %}
+            {% if applications %}
             {% for application in applications %}
-            {% if application.status == "pending" %}
+            {% if forloop.counter < 6 %}
             <div class="single-job-items mb-30">
                 <div class="job-items">
                     <div class="company-img">
@@ -99,17 +101,31 @@
             </div>
             {% endif %}
             {% endfor %}
+            {% else %}
+            <div class="text-center">
+                <img src="{% static 'img/icon/empty.png' %}" alt="empty" width="130px" height="130px">
+                No Job Applied
+            </div>
+            {% endif %}
         </div>
     </div>
     <br>
     <div class="card">
         <div class="card-body">
             <div class="alert alert-primary noStyle" role="alert">
-                Recent Job Postings
+                <div class="row">
+                    <div class="col">
+                        Recent Job Postings
+                    </div>
+                    <div class="col-auto">
+                        <a href="{% url 'employerViewAllJobs' %}" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                    </div>
+                </div>
             </div>
             <br>
+            {% if jobs %}
             {% for job in jobs %}
-            {% if not job.delete and job.companyId == auth.userId %}
+            {% if forloop.counter < 6 %}
             <div class="single-job-items mb-30">
                 <div class="job-items">
                     <div class="company-img">
@@ -134,6 +150,12 @@
             </div>
             {% endif %}
             {% endfor %}
+            {% else %}
+            <div class="text-center">
+                <img src="{% static 'img/icon/empty.png' %}" alt="empty" width="130px" height="130px">
+                No Job Posted
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>

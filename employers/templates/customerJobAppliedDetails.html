@@ -39,6 +39,7 @@
 {% endblock %}
 
 {% block extraRight %}
+{% if allowAppointment %}
 <div class="alert alert-primary noStyle" role="alert">
     Application
 </div>
@@ -97,4 +98,7 @@
         </div>
     </div>
 </form>
+{% else %}
+<h4 style="color: chocolate;">Applicant has been attended to already</h4>
+{% endif %}
 {% endblock %}

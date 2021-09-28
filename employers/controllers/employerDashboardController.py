@@ -1,3 +1,4 @@
+from ATUJobPortal.config.constant import Constants
 from employers.config.applicationModel import ApplicationModel
 from employers.config.jobModel import JobModel
 from ATUJobPortal.config.firebase import Firebase
@@ -9,18 +10,30 @@ from django.shortcuts import render
 def employerDashboardController(request):
     auth = Authentication(request)
     firebase = Firebase()
-    jobs = JobModel.allJob()
+    constants = Constants()
+    
    
     msg = None
     errorMessage = None
-
     userDetails = None
-    applications = None
+    jobList = []
+    applicationList = []
+
     if auth.authMap["authorize"]:
         userId = auth.authMap["userId"]
         userDetails = EmployerUserModel.userModel(userId)
         applications = ApplicationModel.allCompanyApplication(userId)
         print(userDetails)
+        jobs = JobModel.allJob()
+
+        for job in jobs:
+            if not job.get("delete") and job.get("companyId") == userId:
+                jobList.append(job)
+        
+        for application in applications:
+            if application.get("status") == constants.jobstatus[0]:
+                applicationList.append(application)
+
     else:
         return HttpResponseRedirect("/account/logout")
 
@@ -52,6 +65,5 @@ def employerDashboardController(request):
                    "msg": msg,
                    "userDetails": userDetails,
                    "errorMessage": errorMessage,
-                   "jobs": jobs,
-                   "applications": applications,
-                   "noApplication": len(applications) == 0})
+                   "jobs": jobList if len(jobList) > 0 else None,
+                   "applications": applicationList if len(applicationList) > 0 else None})

@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block body %}
+<div class="alert alert-primary noStyle" role="alert">
+    Job Applications
+</div>
+<br>
+<div class="container">
+    <div class="btn-group">
+        <a href="/employer/application?sort=pending" class="btn" {% if sort != 'pending' %} style="background-color: white; color: black;"{% endif %}>Pending</a>
+        <a href="/employer/application?sort=accepted" class="btn" {% if sort != 'accepted' %} style="background-color: white; color: black;"{% endif %}>Accepted</a>
+        <a href="/employer/application?sort=declined" class="btn" {% if sort != 'declined' %} style="background-color: white; color: black;"{% endif %}>Declined</a>
+    </div>
+    <br><br>
+    {% if noApplication %}
+    <div class="text-center">
+        <img src="{% static 'img/icon/empty.png' %}" alt="empty" width="130px" height="130px">
+        No {{ sort }} application
+    </div>
+    {% endif %}
+    {% for application in applications %}
+    {% if application.status == sort %}
+    <div class="single-job-items mb-30">
+        <div class="job-items">
+            <div class="company-img">
+                <a href="/employer/application/details?action=job&key={{ application.jobId }}&sort={{ sort }}"><img
+                        src="{{ application.profilePicture }}" alt="Profile picture" height="100px" width="100px"
+                        class="border border-2 border-warning rounded-circle"
+                        style="border-color: #11467f !important;" /></a>
+            </div>
+            <div class="job-tittle job-tittle2">
+                <a href="/employer/application/details?action=job&key={{ application.jobId }}&sort={{ sort }}">
+                    <h4>{{ application.fname }} {{ application.lname }}</h4>
+                </a>
+                <ul>
+                    <li>{{ application.phone }}</li>
+                    <li>Year Experience: &nbsp; {{ application.yearExperience }}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="items-link items-link2 f-right">
+            <a href="/employer/application/details?action=job&key={{ application.jobId }}&sort={{ sort }}">{{ application.status }}</a>
+            <span>{{ application.time }}</span>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

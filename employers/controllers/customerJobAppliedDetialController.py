@@ -1,3 +1,4 @@
+from ATUJobPortal.config.constant import Constants
 from ATUJobPortal.config.firebase import Firebase
 from employers.config.userModel import EmployerUserModel
 from employers.config.applicationModel import ApplicationModel
@@ -11,6 +12,7 @@ from datetime import datetime
 def customerJobAppliedDetialController(request):
     auth = Authentication(request)
     firebase = Firebase()
+    constants = Constants()
 
     userDetails = None
     errorMessage = None
@@ -29,6 +31,12 @@ def customerJobAppliedDetialController(request):
             applicationDict = ApplicationModel.paticularApplication(
                 auth.authMap["userId"], key)
 
+            allowAppointment = True
+            # checking if applicant has been accepted or declined
+            if request.GET.get("sort") == constants.jobstatus[2] or request.GET.get("sort") == constants.jobstatus[3]:
+                allowAppointment = False
+                errorMessage = "Applicant has been attended to already"
+
             return render(request, 'customerJobAppliedDetails.html',
                           {'heading': "Job Applied Details",
                            "auth": auth.authMap,
@@ -37,7 +45,8 @@ def customerJobAppliedDetialController(request):
                            "key": key,
                            "errorMessage": errorMessage,
                            "applicationDict": applicationDict,
-                           "fromExtra": True})
+                           "fromExtra": True,
+                           "allowAppointment": allowAppointment})
 
     if request.method == "POST":
         if request.POST.get("button") == "complete":
