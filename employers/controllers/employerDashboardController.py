@@ -7,12 +7,12 @@ from employers.config.userModel import EmployerUserModel
 from ATUJobPortal.config.authentication import Authentication
 from django.shortcuts import render
 
+
 def employerDashboardController(request):
     auth = Authentication(request)
     firebase = Firebase()
     constants = Constants()
-    
-   
+
     msg = None
     errorMessage = None
     userDetails = None
@@ -24,9 +24,12 @@ def employerDashboardController(request):
         idToken = auth.authMap["idToken"]
 
         # checking if email has been verify
-        accountDetailsDict = dict(firebase.authe.get_account_info(idToken))
-        request.session["verifyEmail"] = accountDetailsDict.get("users")[
-            0].get("emailVerified")
+        try:
+            accountDetailsDict = dict(firebase.authe.get_account_info(idToken))
+            request.session["verifyEmail"] = accountDetailsDict.get("users")[
+                0].get("emailVerified")
+        except:
+            return HttpResponseRedirect("/account/logout")
 
         userDetails = EmployerUserModel.userModel(userId)
         applications = ApplicationModel.allCompanyApplication(userId)
@@ -36,7 +39,7 @@ def employerDashboardController(request):
         for job in jobs:
             if not job.get("delete") and job.get("companyId") == userId:
                 jobList.append(job)
-        
+
         for application in applications:
             if application.get("status") == constants.jobstatus[0]:
                 applicationList.append(application)
@@ -48,7 +51,8 @@ def employerDashboardController(request):
         if request.GET.get("action") == "resend":
             try:
                 firebase.authe.send_email_verification(auth.authMap["idToken"])
-                msg = "Verification send successfully to " + userDetails.get("email")
+                msg = "Verification send successfully to " + \
+                    userDetails.get("email")
             except:
                 errorMessage = "Error occured while trying to send verification code\nIf this continue please re-login"
 
@@ -63,7 +67,6 @@ def employerDashboardController(request):
 
         elif request.GET.get("action") == "applicationSuccess":
             msg = "Application completed successfully"
-
 
     return render(request,
                   'employerDashboard.html',
