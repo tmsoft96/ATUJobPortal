@@ -1,3 +1,6 @@
+from ATUJobPortal.config.firebase import Firebase
+
+
 class Authentication:
     authMap = {
         "authorize": False,
@@ -8,6 +11,7 @@ class Authentication:
     }
 
     def __init__(self, request):
+        firebase = Firebase()
         if (request is not None):
             try:
                 if (request.session["authorize"]):

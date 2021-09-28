@@ -14,6 +14,20 @@
 </div>
 {% endif %}
 
+{% if not auth.verifyEmail %}
+<div class="card">
+    <div class="card-body" style="background-color: #63696E;">
+        <h4 style="color: white;">Confirm your Email Address</h4>
+        <p style="color: white;">A verification email was sent to <b
+                style="color: white;">{{ userDetails.email }}</b> to confirm your email address.
+            <br>Please click on the link contained in this message to verify your account.</span>
+            <br><br>
+            <a href="/employer/dashboard?action=resend" class="btn head-btn1" style="background-color: #DBD81A; color: black;">RESEND EMAIL</a>
+    </div>
+</div>
+<br>
+{% endif %}
+
 <div class="alert alert-primary noStyle" role="alert" style="background-color: #63696E;">
     Get qualified and ranked candidates, quickly, with the new and improved Best Match!
 </div>

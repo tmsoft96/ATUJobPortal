@@ -21,6 +21,13 @@ def employerDashboardController(request):
 
     if auth.authMap["authorize"]:
         userId = auth.authMap["userId"]
+        idToken = auth.authMap["idToken"]
+
+        # checking if email has been verify
+        accountDetailsDict = dict(firebase.authe.get_account_info(idToken))
+        request.session["verifyEmail"] = accountDetailsDict.get("users")[
+            0].get("emailVerified")
+
         userDetails = EmployerUserModel.userModel(userId)
         applications = ApplicationModel.allCompanyApplication(userId)
         print(userDetails)
@@ -43,7 +50,7 @@ def employerDashboardController(request):
                 firebase.authe.send_email_verification(auth.authMap["idToken"])
                 msg = "Verification send successfully to " + userDetails.get("email")
             except:
-                errorMessage = "Error occured while trying to send verification code"
+                errorMessage = "Error occured while trying to send verification code\nIf this continue please re-login"
 
         elif request.GET.get("action") == "jobSuccess":
             msg = "Job posted successfully"
