@@ -7,6 +7,7 @@ from django.shortcuts import render
 from ATUJobPortal.config.authentication import Authentication
 from employers.config.jobModel import JobModel
 from datetime import datetime
+from django.core.mail import send_mail
 
 
 def customerJobAppliedDetialController(request):
@@ -74,8 +75,25 @@ def customerJobAppliedDetialController(request):
             firebase.db.child("Users").child(customerId).child(
                 "appliedJob").child(jobId).update({"status": status})
 
-            # sending appointment letter
-            if request.POST.get("appointmentLetter") == "yes":
-                print("send appointment letter")
+            # sending appointment email
+            # Hi Michael, Gitplus as approved your application. Details below
+            # date ...
+            customerFName = request.POST.get("customerFname")
+            costomerEmail = request.POST.get("costomerEmail")
+            companyName = request.POST.get("companyName")
+
+            emailBody = None
+            if status == constants.jobstatus[2]:
+                emailBody = "Dear " + customerFName + ".\n\n" + companyName + " has " + \
+                    constants.jobstatus[2] + " your application. Below are the appointment details:" + \
+                    "\n\n\n" + request.POST.get("note") + "\n\nDate:  " + request.POST.get("date") + "\nTime:   " + \
+                    request.POST.get("time") + "\nVenue:    " + \
+                    request.POST.get("venue")
+            else:
+                emailBody = "Hi " + customerFName + ", " + companyName + " has " + \
+                    constants.jobstatus[2] + " your application. Below are the appointment details:" + \
+                    "\n" + request.POST.get("note")
+            send_mail("Job Application", emailBody,
+                      "noreply@atujobportal.com", [costomerEmail])
 
             return HttpResponseRedirect("/employer/dashboard?action=applicationSuccess")

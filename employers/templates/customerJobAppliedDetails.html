@@ -67,7 +67,7 @@
             <hr>
             <label class="h6">Continue if status is changed to 'accepted'</label>
             <br>
-            <label class="h6">Send appointment letter</label>
+            <!-- <label class="h6">Send appointment letter</label>
             <br>
             <div class="select-form border">
                 <div class="select-itms">
@@ -77,8 +77,8 @@
                         <option value="no">No</option>
                     </select>
                 </div>
-            </div>
-            <br>
+            </div> -->
+            <!-- <br> -->
             <label class="h6">Appointment Date</label>
             <br>
             <input type="date" name="date" class="form-control">
@@ -92,7 +92,10 @@
             <input type="text" name="venue" class="form-control">
             <br>
             <input type="hidden" name="jobId" value="{{ key }}">
+            <input type="hidden" name="costomerEmail" value="{{ applicationDict.email }}">
+            <input type="hidden" name="companyName" value="{{ userDetails.companyName }}">
             <input type="hidden" name="customerId" value="{{ applicationDict.customerId }}">
+            <input type="hidden" name="customerFname" value="{{ applicationDict.fname }}">
             <input type="hidden" name="button" value="complete">
             <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">COMPLETE</button>
         </div>
