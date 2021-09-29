@@ -137,6 +137,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # setting up mailgun
 EMAIL_HOST = 'smtp.mailgun.org'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'postmaster@sandboxa1162a11a2f24118b0ba01476e69b975.mailgun.org'
-EMAIL_HOST_PASSWORD = '66c333e34da848feb637ea13a4a2f410-dbdfb8ff-0c186c10'
+EMAIL_HOST_USER = 'michael@mail.smartschoolonline.app'
+EMAIL_HOST_PASSWORD = '0363357bfa6d2d775bbb2729c7fb7130-dbdfb8ff-b8f999f9'
 EMAIL_USE_TLS = True
