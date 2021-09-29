@@ -29,15 +29,15 @@
                                 <div class="select-form">
                                     <div class="select-itms">
                                         <select name="select" id="select1">
-                                            <option value="">Location BD</option>
-                                            <option value="">Location PK</option>
-                                            <option value="">Location US</option>
-                                            <option value="">Location UK</option>
+                                            <option value="">Location</option>
+                                            {% for region in regions %}
+                                            <option value="{{ region }}">{{ region }}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                 </div>
                                 <div class="search-form">
-                                    <a href="#">Find job</a>
+                                    <a href="{% url 'jobListings' %}">Find job</a>
                                 </div>
                             </form>
                         </div>

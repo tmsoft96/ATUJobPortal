@@ -1,3 +1,4 @@
+from ATUJobPortal.config.dictionary import Dictionary
 from ATUJobPortal.config.constant import Constants
 from ATUJobPortal.config.firebase import Firebase
 import timeago
@@ -11,6 +12,7 @@ class CustomerUserModel:
     def userModel(userId):
         firebase = Firebase()
         constants = Constants()
+        dictionary = Dictionary()
 
         now = datetime.datetime.now() + datetime.timedelta(seconds=60 * 3.4)
 
@@ -78,5 +80,7 @@ class CustomerUserModel:
             "note": userDictConvert.get("note"),
             "appliedJobList": appliedJobList,
             "oneAppliedJob": oneAppliedJob,
+            "listCurrentJobFunction": dictionary.currentJobsFunctionList,
+            "listIndustries": dictionary.industriesList,
         }
         return userDetail

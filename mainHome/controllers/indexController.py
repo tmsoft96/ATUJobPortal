@@ -12,6 +12,7 @@ def indexController(request):
     jobs = JobModel.allJob()
 
     userDetails = None
+    regions = []
 
     if auth.authMap["authorize"]:
         userId = auth.authMap["userId"]
@@ -19,8 +20,18 @@ def indexController(request):
             userId) if auth.authMap["userType"] == constants.userType[1] else CustomerUserModel.userModel(userId)
         print(userDetails)
 
+    for job in jobs:
+        if not job.get("delete"):
+            try:
+                regions.index(job.get("region")) 
+            except ValueError:
+                regions.append(job.get("region"))
+
+    regions.sort()
+
     return render(request, 'index.html',
                   {'heading': 'Home',
                    "auth": auth.authMap,
                    "userDetails": userDetails,
-                   "jobs": jobs if len(jobs) <= 7 else jobs[:7]})
+                   "jobs": jobs if len(jobs) <= 7 else jobs[:7],
+                   "regions": regions})
