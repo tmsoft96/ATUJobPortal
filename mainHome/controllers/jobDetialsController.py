@@ -40,12 +40,14 @@ def jobDetailsController(request):
             companyId = request.POST.get("companyId")
             userId = auth.authMap["userId"]
             createdDate = str(datetime.now())
+            fname = request.POST.get("fname")
+            lname = request.POST.get("lname")
             apply = {
                 "jobId": key,
                 "customerId": userId,
                 "companyId": companyId,
-                "fname": request.POST.get("fname"),
-                "lname": request.POST.get("lname"),
+                "fname": fname,
+                "lname": lname,
                 "phone": request.POST.get("phone"),
                 "qualification": request.POST.get("qualification"),
                 "yearExperience": request.POST.get("yearExperience"),
@@ -62,8 +64,12 @@ def jobDetailsController(request):
                 companyId).child(key).set(apply)
 
             # sending email to employer
-            send_mail("Job Application", "Job Application from Michael",
-                      "noreply@atujobportal.com", ["micaheltamakloe18.mt@gmail.com"])
+            jobDict = JobModel.particularJob(key)
+            emailBody = fname + " " + lname + " has applied for " + \
+                jobDict.get("jobTitle") + \
+                ".\nOpen your portal and attend to it."
+            send_mail("Job Application", emailBody,
+                      "noreply@atujobportal.com", [jobDict.get("companyEmail")])
 
             # add no of apply job to user profile
             noOfApplication = firebase.db.child("Users").child(
