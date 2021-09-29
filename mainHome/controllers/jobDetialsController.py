@@ -8,6 +8,7 @@ from employers.config.userModel import EmployerUserModel
 from ATUJobPortal.config.authentication import Authentication
 from django.shortcuts import render
 from datetime import datetime
+from django.core.mail import send_mail
 
 
 def jobDetailsController(request):
@@ -60,6 +61,10 @@ def jobDetailsController(request):
             firebase.db.child("Application").child(
                 companyId).child(key).set(apply)
 
+            # sending email to employer
+            send_mail("Job Application", "Job Application from Michael",
+                      "noreply@atujobportal.com", ["micaheltamakloe18.mt@gmail.com"])
+
             # add no of apply job to user profile
             noOfApplication = firebase.db.child("Users").child(
                 companyId).child("noOfApplication").get().val()
@@ -84,7 +89,7 @@ def jobDetailsController(request):
             jobDict = JobModel.particularJob(key)
             print(jobDict)
 
-            # checking for if job is already applied for customers only and 
+            # checking for if job is already applied for customers only and
             # allow for declined applicants
             allowApplication = True
             if auth.authMap["userType"] == constants.userType[0]:
@@ -96,7 +101,7 @@ def jobDetailsController(request):
 
             if allowApplication:
                 # Adding post view count if user type is customer
-                if  auth.authMap["userType"] == constants.userType[0]:
+                if auth.authMap["userType"] == constants.userType[0]:
                     noOfViews = firebase.db.child("Users").child(
                         jobDict.get("companyId")).child("noOfViews").get().val()
                     firebase.db.child("Users").child(jobDict.get("companyId")).update(
