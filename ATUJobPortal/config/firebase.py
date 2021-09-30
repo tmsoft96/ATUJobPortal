@@ -15,3 +15,4 @@ class Firebase:
     __firebase = pyrebase.initialize_app(__firebaseConfig)
     authe = __firebase.auth()
     db = __firebase.database()
+    storage = __firebase.storage()

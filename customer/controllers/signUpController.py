@@ -5,6 +5,8 @@ from ATUJobPortal.config.authentication import Authentication
 from ATUJobPortal.config.dictionary import Dictionary
 from django.shortcuts import render
 from datetime import datetime
+from django.core.files.storage import FileSystemStorage
+import time
 
 
 def signUpController(request):
@@ -62,6 +64,23 @@ def signUpController(request):
             request.session["idToken"] = str(idToken)
             request.session["email"] = str(user["email"])
 
+            # uploading cv
+            cvUrl = "None"
+            try:
+                file = request.FILES["cvFile"]
+
+                fs = FileSystemStorage()
+                fs.save(file.name, file)
+                timestamp = time.time()
+                firebase.storage.child(
+                    "cv/" + str(timestamp)).put("media/" + file.name)
+                cvUrl = firebase.storage.child(
+                    "cv/" + str(timestamp)).get_url(idToken)
+                print(cvUrl)
+                fs.delete(file.name)
+            except:
+                pass
+
             dob = request.POST.get(
                 "day") + "/" + request.POST.get("month") + "/" + request.POST.get("year")
 
@@ -80,7 +99,7 @@ def signUpController(request):
                 "qualification": request.POST.get("qualification"),
                 "currentJobFunction": request.POST.get("currentJobFunction"),
                 "yearExperience": request.POST.get("yearExperience"),
-                "cv": request.POST.get("email"),
+                "cv": cvUrl,
                 "tipsAlert": True if request.POST.get("tipsAlert") == "on" else False,
                 "jobAlerts": True if request.POST.get("jobAlert") == "on" else False,
                 "lastLoginDate": str(datetime.now()),

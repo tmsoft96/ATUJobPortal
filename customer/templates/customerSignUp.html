@@ -8,7 +8,7 @@
    {{ errorMessage }}
 </div>
 {% endif %}
-<form action="" class="form-contact contact_form" method="POST">
+<form action="" class="form-contact contact_form" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="container">
         <div class="center">
