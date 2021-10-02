@@ -1,6 +1,6 @@
-from authentication.authControllers.logoutControler import logoutController
-from authentication.authControllers.loginController import loginController
-from authentication.authControllers.registerController import registerController
+from authentication.controllers.logoutControler import logoutController
+from authentication.controllers.loginController import loginController
+from authentication.controllers.registerController import registerController
 
 
 def login(request):

@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% block body %}
+{% if msg %}
+<div class="alert alert-success text-center" role="alert">
+    {{ msg }}
+</div>
+{% endif %}
+
+{% if errorMessage %}
+<div class="alert alert-danger text-center" role="alert">
+    {{ errorMessage }}
+</div>
+{% endif %}
+<br>
+<div class="row" style="margin: 0px 10px 20px 10px">
+    <div class="col-auto side">
+        <br>
+        <a href="#" class="btn post-btn sideActive">
+            <i class="fas fa-home"></i>
+            Dashboard
+        </a>
+        <br><br>
+        <a href="#" class="btn post-btn sideNotActive">
+            <i class="fas fa-list"></i>
+            Applications
+        </a>
+        <br><br>
+        <a href="#" class="btn post-btn sideNotActive">
+            <i class="fas fa-users"></i>
+            Customers
+        </a>
+        <br><br>
+        <a href="#" class="btn post-btn sideNotActive">
+            <i class="fas fa-user-md"></i>
+            Employers
+        </a>
+        <br><br>
+        <a href="#" class="btn post-btn sideNotActive">
+            <i class="fas fa-cog"></i>
+            settings
+        </a>
+        <br>
+    </div>
+   
+    <div class="col" style="background-color: rgb(245,247,255); padding: 30px;">
+    {% block body2 %}
+    {% endblock %}
+    </div>
+</div>
+
+{% endblock %}

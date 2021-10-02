@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'authentication',
     'employers',
     'customer',
+    'alumina',
 ]
 
 MIDDLEWARE = [

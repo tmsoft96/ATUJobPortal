@@ -1,0 +1,21 @@
+{% extends 'sideBar.html' %}
+
+{% load static %}
+
+{% block body2 %}
+<h2>Hello {{ userDetails.fname }}</h2>
+<span>Welcome to your Dashboard. Check out what’s happening</span>
+<br><br>
+<div class="row">
+    <div class="col">
+        <img src="{% static 'img/banner/people.svg' %}" alt="" class="rounded">
+    </div>
+    <div class="col">
+        <div class="row">
+            <div class="col">
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

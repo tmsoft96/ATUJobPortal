@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{% static 'css/customStyle.css' %}">
     <link rel="stylesheet" href="{% static 'css/progressCircleStyle.css' %}">
     <link rel="stylesheet" href="{% static 'css/dropdownStyle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -94,6 +95,8 @@
                                             {% endif %}
                                             <span style="font-size: larger; margin-left: 10px; color: #11467f;">Hi,
                                                 {{ userDetails.fname }}</span>
+                                                &nbsp; &nbsp;
+                                            <img src="{% static 'img/icon/arrow-down.png' %}" height="10px" width="10px"/>
                                         </a>
                                         <div class="dropdown-content">
                                             {% if auth.userType == "employer" %}
