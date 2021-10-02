@@ -28,6 +28,12 @@ def careerProfileController(request):
             except:
                 errorMessage = "Error occured while trying to send verification code"
 
+        elif request.GET.get("action") == "employmentSuccess":
+            msg = "Employment & Availability updated successfully"
+
+        elif request.GET.get("action") == "cvSuccess":
+            msg = "CV updated successfully"
+
     return render(request,
                   'customerCareerProfile.html',
                   {"heading": "Job Seeker Profile | ATU Job Portal",

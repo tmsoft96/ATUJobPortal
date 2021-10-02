@@ -3,22 +3,22 @@
 {% load static %}
 
 {% block col1 %}
-<form action="#">
-    <div class="alert alert-primary noStyle" role="alert">
-        Add your CV
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <span>Upload and save your CV to our system. You can use your uploaded CV to quickly apply for a
-                job.</span>
-            <br><br>
-            <label>Title</label>
+<div class="alert alert-primary noStyle" role="alert">
+    Add your CV
+</div>
+<div class="card">
+    <div class="card-body">
+        <span>Upload and save your CV to our system. You can use your uploaded CV to quickly apply for a
+            job.</span>
+        <br><br>
+        <form action="" class="form-contact contact_form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- <label>Title</label>
             <br>
-            <input type="text" name="title" class="form-control" required placeholder="Title">
+            <input type="text" name="title" class="form-control" required placeholder="Title"> -->
             <br>
             <div class="mb-3">
-                <input class="form-control" type="file" id="formFile" name="cv"
-                    accept=".pdf, .doc, .docx, .rtf">
+                <input class="form-control" type="file" id="formFile" name="cvFile" accept=".pdf, .doc, .docx, .rtf">
                 <br>
                 <label for="formFile" class="form-label">Optionally upload a CV no larger than 10MB for file
                     types
@@ -27,8 +27,9 @@
                 <span>Uploading a new CV will overwrite your current one.</span>
             </div>
             <hr>
+            <input type="hidden" name="button" value="save">
             <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">SAVE</button>
-        </div>
+        </form>
     </div>
-</form>
+</div>
 {% endblock %}

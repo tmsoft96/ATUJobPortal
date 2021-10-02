@@ -3,42 +3,40 @@
 {% load static %}
 
 {% block col1 %}
-<form action="" class="form-contact contact_form" method="POST">
-    {% csrf_token %}
-    <div class="alert alert-primary noStyle" role="alert">
-        Employment & Availability
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <span>Keeping this section up to date will help employers & recruiters find you.</span>
-            <br>
-            <span>They will know the field you are in, what your preferred industries are and if you are
-                actively
-                looking.</span>
-            <hr>
-            <div class="row">
-                <div class="col d-flex justify-content-center">
-                    <img src="{{ userDetails.profilePicture }}" alt="Profile picture" height="150px"
-                    class="border border-2 border-warning rounded-circle"
-                    style="border-color: #11467f !important;" />
-                </div>
-                <input type="hidden" name="profilePicture" value="None">
-                <div class="col">
-                    <a href="#" class="btn head-btn1">UPLOAD PICTURE</a>
-                    <br><br>
-                    <span>
-                        Upload an image no larger than 5MB for file types .jpg .gif .png .bmp
-                    </span>
-                </div>
+
+<div class="alert alert-primary noStyle" role="alert">
+    Employment & Availability
+</div>
+<div class="card">
+    <div class="card-body">
+        <span>Keeping this section up to date will help employers & recruiters find you.</span>
+        <br>
+        <span>They will know the field you are in, what your preferred industries are and if you are
+            actively
+            looking.</span>
+        <hr>
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <img src="{{ userDetails.profilePicture }}" alt="Profile picture" height="150px" id="profilePicPreview"
+                    class="border border-2 border-warning rounded-circle" style="border-color: #11467f !important;" />
             </div>
-            <hr>
+            <div class="col">
+                <button class="btn head-btn1" onclick="uploadProfilePic()">UPLOAD PICTURE</button>
+                <br><br>
+                <span>
+                    Upload an image no larger than 5MB for file types .jpg .gif .png .bmp
+                </span>
+            </div>
+        </div>
+        <hr>
+        <form action="" class="form-contact contact_form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="row">
                 <div class="col">
                     <label>Professional Headline</label>
                     <br>
-                    <input type="text" name="professionalHeadline" id="professionalHeadline"
-                        class="form-control" required placeholder=""
-                        value="{{ userDetails.professionalHeadline }}">
+                    <input type="text" name="professionalHeadline" id="professionalHeadline" class="form-control"
+                        required placeholder="" value="{{ userDetails.professionalHeadline }}">
                 </div>
                 <div class="col">
                     <label>Highest Qualification</label>
@@ -167,9 +165,34 @@
                 </label>
             </div>
             <hr>
+            <input id='profilePicture' name="profilePicture" type='file' accept="image/*" hidden />
             <input type="hidden" name="button" value="save">
             <button class="btn btn-primary" type="submit" style="width: 100%; font-size: large;">SAVE</button>
-        </div>
+        </form>
     </div>
-</form>
+</div>
+
+
+<script>
+    function uploadProfilePic() {
+        var profilePicture = document.getElementById("profilePicture");
+        
+        profilePicture.addEventListener('change', function(ev2) {
+            if (profilePicture.files.length){
+                document.getElementById("profilePicPreview").src = URL.createObjectURL(profilePicture.files[0]);
+            }
+
+            // test some async handling
+            new Promise(function(resolve) {
+            setTimeout(function() { console.log(profilePicture.files); resolve(); }, 1000);
+            })
+            .then(function() {
+            // clear / free reference
+            profilePicture = window._protected_reference = undefined;
+            });
+        });
+        profilePicture.click();
+    }
+</script>
+
 {% endblock %}

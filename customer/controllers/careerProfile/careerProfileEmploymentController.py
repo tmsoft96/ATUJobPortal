@@ -3,6 +3,7 @@ from ATUJobPortal.config.firebase import Firebase
 from ATUJobPortal.config.dictionary import Dictionary
 from django.shortcuts import render
 from ATUJobPortal.config.authentication import Authentication
+from ATUJobPortal.config.uploadFIle import uploadFile
 from customer.config.userModel import CustomerUserModel
 from datetime import datetime
 
@@ -40,8 +41,16 @@ def careerProfileEmploymentController(request):
 
     if request.method == "POST":
         if request.POST.get("button") == "save":
+            # uploading profile picture
+            profilePicURL = "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
+            try:
+                file = request.FILES["profilePicture"]
+                profilePicURL = uploadFile(request, file,  "profilePicture")
+            except:
+                pass
+
             profile = {
-                "profilePicture": request.POST.get("profilePicture"),
+                "profilePicture": profilePicURL,
                 "professionalHeadline": request.POST.get("professionalHeadline"),
                 "qualification": request.POST.get("qualification"),
                 "currentJobFunction": request.POST.get("currentJobFunction"),
@@ -56,7 +65,7 @@ def careerProfileEmploymentController(request):
 
             # updating the profile
             firebase.db.child("Users").child(userId).update(profile)
-            return HttpResponseRedirect("/customer/profile")
+            return HttpResponseRedirect("/customer/profile?action=employmentSuccess")
 
     return render(request,
                   'customerCareerProfile_employment.html',
