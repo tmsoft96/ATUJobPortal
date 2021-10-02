@@ -1,5 +1,6 @@
 from ATUJobPortal.config.dictionary import Dictionary
 from ATUJobPortal.config.firebase import Firebase
+from ATUJobPortal.config.uploadFIle import uploadFile
 from customer.config.userModel import CustomerUserModel
 from ATUJobPortal.config.constant import Constants
 from django.http.response import HttpResponseRedirect
@@ -42,6 +43,18 @@ def jobDetailsController(request):
             createdDate = str(datetime.now())
             fname = request.POST.get("fname")
             lname = request.POST.get("lname")
+            cv = request.POST.get("cv")
+
+            try:
+                file = request.FILES["cvFile"]
+                cv = uploadFile(request, file,  "cv")
+                profile = {"cv": cv}
+                # updating the profile 
+                firebase.db.child("Users").child(userId).update(profile)
+            except:
+                pass
+     
+
             apply = {
                 "jobId": key,
                 "customerId": userId,
@@ -52,7 +65,7 @@ def jobDetailsController(request):
                 "qualification": request.POST.get("qualification"),
                 "yearExperience": request.POST.get("yearExperience"),
                 "note": request.POST.get("note"),
-                "cv": "null",
+                "cv": cv,
                 "status": constants.jobstatus[0],
                 "timestamp": datetime.now().timestamp(),
                 "createdDate": createdDate,

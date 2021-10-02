@@ -30,9 +30,7 @@ def careerProfileCvController(request):
             except:
                 pass
 
-            profile = {
-                "cv": cvURL,
-            }
+            profile = {"cv": cvURL}
             # updating the profile 
             firebase.db.child("Users").child(userId).update(profile)
             return HttpResponseRedirect("/customer/profile?action=cvSuccess")

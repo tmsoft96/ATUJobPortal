@@ -5,8 +5,8 @@ from ATUJobPortal.config.authentication import Authentication
 from ATUJobPortal.config.dictionary import Dictionary
 from django.shortcuts import render
 from datetime import datetime
-from django.core.files.storage import FileSystemStorage
-import time
+
+from ATUJobPortal.config.uploadFIle import uploadFile
 
 
 def signUpController(request):
@@ -68,16 +68,7 @@ def signUpController(request):
             cvUrl = "None"
             try:
                 file = request.FILES["cvFile"]
-
-                fs = FileSystemStorage()
-                fs.save(file.name, file)
-                timestamp = time.time()
-                firebase.storage.child(
-                    "cv/" + str(timestamp)).put("media/" + file.name)
-                cvUrl = firebase.storage.child(
-                    "cv/" + str(timestamp)).get_url(idToken)
-                print(cvUrl)
-                fs.delete(file.name)
+                cvUrl = uploadFile(request, file,  "cv")
             except:
                 pass
 

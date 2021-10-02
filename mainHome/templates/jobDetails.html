@@ -164,7 +164,7 @@
                     <div class="alert alert-primary noStyle" role="alert">
                         Apply Here
                     </div>
-                    <form action="" class="form-contact contact_form" method="POST">
+                    <form action="" class="form-contact contact_form" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="card">
                             <div class="card-body">
@@ -256,6 +256,11 @@
                                                 <a href="{% url 'careerProfile' %}" class="underline"
                                                     style="color: sienna;"><u>My
                                                         Profile</u></a>
+                                                {% if userDetails.cv != "None" %}
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <a href="{{ userDetails.cv }}" target="_blank" class="underline"
+                                                style="color: sienna;"><u>Download CV</u></a>
+                                                {% endif %}
                                             </label>
 
                                         </div>
@@ -285,6 +290,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="key" value="{{ key }}">
+                                <input type="hidden" name="cv" value="{{ userDetails.cv }}">
                                 <input type="hidden" name="companyId" value="{{ jobDict.companyId }}">
                                 <input type="hidden" name="button" value="apply">
                                 <button class="btn btn-primary" type="submit"
