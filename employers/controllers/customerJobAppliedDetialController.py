@@ -1,5 +1,6 @@
 from ATUJobPortal.config.constant import Constants
 from ATUJobPortal.config.firebase import Firebase
+from alumina.config.userModel import AluminaUserModel
 from employers.config.userModel import EmployerUserModel
 from employers.config.applicationModel import ApplicationModel
 from django.http.response import HttpResponseRedirect
@@ -20,7 +21,8 @@ def customerJobAppliedDetialController(request):
 
     if auth.authMap["authorize"]:
         userId = auth.authMap["userId"]
-        userDetails = EmployerUserModel.userModel(userId)
+        userType = auth.authMap["userType"]
+        userDetails = AluminaUserModel.userModel(userId) if userType == constants.userType[2] else EmployerUserModel.userModel(userId)
         print(userDetails)
     else:
         return HttpResponseRedirect("/account/logout")

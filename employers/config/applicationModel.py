@@ -49,8 +49,7 @@ class ApplicationModel:
         constants = Constants()
 
         now = datetime.datetime.now() + datetime.timedelta(seconds=60 * 3.4)
-        application = firebase.db.child("Application").child(
-            companyId).child(jobId).get().val().items()
+        application = firebase.db.child("Application").child(companyId).child(jobId).get().val().items()
         applicationConvert = dict(application)
 
         editDate = datetime.datetime.fromisoformat(

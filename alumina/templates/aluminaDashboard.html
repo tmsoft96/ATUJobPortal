@@ -130,13 +130,13 @@
         <div class="single-job-items mb-30">
             <div class="job-items">
                 <div class="company-img">
-                    <a href="/employer/application/details?action=job&key={{ application.jobId }}"><img src="{{ application.profilePicture }}"
+                    <a href="/customer/application/details?action=job&jobId={{ application.jobId }}&companyId={{ application.companyId }}&fromAdmin=1"><img src="{{ application.profilePicture }}"
                             alt="Profile picture" height="100px" width="100px"
                             class="border border-2 border-warning rounded-circle"
                             style="border-color: #11467f !important;" /></a>
                 </div>
                 <div class="job-tittle job-tittle2">
-                    <a href="/employer/application/details?action=job&key={{ application.jobId }}">
+                    <a href="/customer/application/details?action=job&jobId={{ application.jobId }}&companyId={{ application.companyId }}&fromAdmin=1">
                         <h4>{{ application.fname }} {{ application.lname }}</h4>
                     </a>
                     <ul>
@@ -146,7 +146,7 @@
                 </div>
             </div>
             <div class="items-link items-link2 f-right">
-                <a href="/employer/application/details?action=job&key={{ application.jobId }}">{{ application.status }}</a>
+                <a href="/customer/application/details?action=job&jobId={{ application.jobId }}&companyId={{ application.companyId }}&fromAdmin=1">{{ application.status }}</a>
                 <span>{{ application.time }}</span>
             </div>
         </div>

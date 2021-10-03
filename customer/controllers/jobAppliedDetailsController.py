@@ -26,6 +26,12 @@ def jobAppliedDetailsController(request):
             jobDict = JobModel.particularJob(jobId)
             applicationDict = ApplicationModel.paticularApplication(companyId, jobId)
 
+            hideButton = False
+            try:
+                hideButton = True if request.GET.get("fromAdmin") == "1"  else False
+            except:
+                pass
+
             return render(request, 'jobAppliedDetails.html',
                           {'heading': "Job Applied Details",
                            "auth": auth.authMap,
@@ -34,4 +40,5 @@ def jobAppliedDetailsController(request):
                            "key": jobId,
                            "errorMessage": errorMessage,
                            "applicationDict": applicationDict,
-                           "fromExtra": True})
+                           "fromExtra": True,
+                           "hideButton": hideButton})
