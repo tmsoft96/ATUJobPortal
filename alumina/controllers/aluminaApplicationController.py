@@ -28,6 +28,7 @@ def aluminaApplicationController(request):
         if sort is None:
             sort = "pending"
 
+    # checking for no application
     for application in userDetails.get("allApplicationsList"):
         if application.get("status") == sort:
             noApplication = False

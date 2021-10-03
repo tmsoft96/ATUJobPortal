@@ -1,0 +1,69 @@
+{% extends 'sideBar.html' %}
+
+{% load static %}
+
+{% block body2 %}
+<div class="card">
+    <div class="card-body">
+        <div class="alert alert-primary noStyle" role="alert">
+            <div class="row">
+                <div class="col">
+                    All Job Postings
+                </div>
+                <div class="col-auto">
+                    <a href="{% url 'employerViewAllJobs' %}" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="btn-group">
+            <a href="/alumina/job?sort=unapprove" class="btn" {% if sort != 'unapprove' %} style="background-color: white; color: black;"{% endif %}>Unapprove</a>
+            <a href="/alumina/job?sort=approve" class="btn" {% if sort != 'approve' %} style="background-color: white; color: black;"{% endif %}>Approved</a>
+        </div>
+        <br><br>
+        {% if noJob %}
+        <div class="text-center">
+            <img src="{% static 'img/icon/empty.png' %}" alt="empty" width="130px" height="130px">
+            No {{ sort }} job
+        </div>
+        {% endif %}
+        {% if jobs %}
+        {% for job in jobs %}
+        {% if job.status == status %}
+        <div class="single-job-items mb-30">
+            <div class="job-items">
+                <div class="company-img">
+                    <a href="/job-details?action=job&key={{ job.key }}"><img src="{{ job.companyLogo }}"
+                            alt="{{ job.companyName }}" width="70px" height="70px"></a>
+                </div>
+                <div class="job-tittle job-tittle2">
+                    <a href="/job-details?action=job&key={{ job.key }}">
+                        <h4>{{ job.jobTitle }}</h4>
+                    </a>
+                    <ul>
+                        <li>{{ job.jobFunction }}</li>
+                        <li><i class="fas fa-map-marker-alt"></i>{{ job.region }}</li>
+                        <li>{{ job.currency }} &nbsp; {{ job.salary }}</li>
+                    </ul>
+                    {% if not job.status %}
+                    <br>
+                    <h5 style="color: red;">Status: No Approved Yet</h5>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="items-link items-link2 f-right">
+                <a href="/job-details?action=job&key={{ job.key }}">{{ job.workType }}</a>
+                <span>{{ job.time }}</span>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <div class="text-center">
+            <img src="{% static 'img/icon/empty.png' %}" alt="empty" width="130px" height="130px">
+            No Job Posted
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
