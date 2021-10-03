@@ -77,6 +77,7 @@ def employerPostJobController(request):
                 "createdDate": str(datetime.now()),
                 "editDate": str(datetime.now()),
                 "delete": False,
+                "status": False,
             }
             firebase.db.child("Jobs").push(job)
 

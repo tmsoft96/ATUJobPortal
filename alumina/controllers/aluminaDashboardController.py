@@ -31,6 +31,8 @@ def aluminaDashboardController(request):
             msg = "Job deleted successfully"
         elif request.GET.get("action") == "approveSuccess":
             msg = "Job approved successfully"
+        elif request.GET.get("action") == "disapproveSuccess":
+            msg = "Job disapproved successfully"
 
     return render(request,
                   'aluminaDashboard.html',

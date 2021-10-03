@@ -31,6 +31,10 @@
                     <li><i class="fas fa-map-marker-alt"></i>{{ job.region }}</li>
                     <li>{{ job.currency }} &nbsp; {{ job.salary }}</li>
                 </ul>
+                {% if not job.status %}
+                <br>
+                <h5 style="color: red;">Status: No Approved Yet</h5>
+                {% endif %}
             </div>
         </div>
         <div class="items-link items-link2 f-right">

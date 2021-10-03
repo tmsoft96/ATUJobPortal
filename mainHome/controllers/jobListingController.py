@@ -22,8 +22,11 @@ def jobListingController(request):
             userId) if auth.authMap["userType"] == constants.userType[1] else CustomerUserModel.userModel(userId)
         print(userDetails)
 
+    totalJobs = 0
+
     for job in jobs:
-        if not job.get("delete"):
+        if not job.get("delete") and job.get("status"):
+            totalJobs += 1
             try:
                 workTypes.index(job.get("workType")) 
             except ValueError:
@@ -42,7 +45,7 @@ def jobListingController(request):
     workTypes.sort()
     regions.sort()
     yearExperiences.sort()
-    totalJobs = len(jobs)
+
     return render(request, 'jobListing.html',
                   {'heading': "Job Listing",
                    "auth": auth.authMap,

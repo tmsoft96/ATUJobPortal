@@ -149,7 +149,12 @@ def jobDetailsController(request):
 
         elif request.GET.get("action") == "approve":
             key = request.GET.get("key")
-            firebase.db.child("Jobs").child(key).update({"approve": True})
+            firebase.db.child("Jobs").child(key).update({"status": True})
             return HttpResponseRedirect("/alumina/dashboard?action=approveSuccess")
+
+        elif request.GET.get("action") == "disapprove":
+            key = request.GET.get("key")
+            firebase.db.child("Jobs").child(key).update({"status": False})
+            return HttpResponseRedirect("/alumina/dashboard?action=disapproveSuccess")
 
     return HttpResponseRedirect("/")

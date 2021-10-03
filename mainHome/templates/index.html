@@ -193,7 +193,7 @@
                 <div class="col-xl-10">
                     <!-- single-job-content -->
                     {% for job in jobs %}
-                    {% if not job.delete %}
+                    {% if not job.delete and job.status %}
                     <div class="single-job-items mb-30">
                         <div class="job-items">
                             <div class="company-img">

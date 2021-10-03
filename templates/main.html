@@ -67,6 +67,12 @@
                                             <li><a href="#">HELP CENTER</a></li>
                                             {% endif %}
 
+                                            {% if auth.userType == "admin" %}
+                                            <li><a href="{% url 'jobPost' %}">POST A JOB</a></li>
+                                            <li><a href="{% url 'aluminaDashboard' %}">DASHBOARD</a></li>
+                                            <li><a href="#">HELP CENTER</a></li>
+                                            {% endif %}
+
                                             {% if auth.userType != "employer" and auth.userType != "admin" %}
                                             <li><a href="{% url 'home' %}">Home</a></li>
                                             <li><a href="{% url 'jobListings' %}">Find a Jobs </a></li>

@@ -100,6 +100,10 @@
                             {% block extraList %}
                             {% endblock %}
                         </ul>
+                        {% if not jobDict.status %}
+                        <h5 style="color: red;">Status: No Approved Yet</h5>
+                        <br>
+                        {% endif %}
                         {% if userDetails.userType == "admin" or jobDict.companyId == auth.userId and not fromExtra %}
                         <div class="apply-btn2">
                             <div class="row">
