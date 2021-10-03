@@ -67,7 +67,7 @@
                                             <li><a href="#">HELP CENTER</a></li>
                                             {% endif %}
 
-                                            {% if auth.userType != "employer" %}
+                                            {% if auth.userType != "employer" and auth.userType != "admin" %}
                                             <li><a href="{% url 'home' %}">Home</a></li>
                                             <li><a href="{% url 'jobListings' %}">Find a Jobs </a></li>
                                             <li><a href="{% url 'about' %}">About</a></li>
@@ -99,12 +99,12 @@
                                             <img src="{% static 'img/icon/arrow-down.png' %}" height="10px" width="10px"/>
                                         </a>
                                         <div class="dropdown-content">
-                                            {% if auth.userType == "employer" %}
+                                            {% if auth.userType == "employer" or auth.userType == "admin" %}
                                             <a href="#">NOTIFICATION</a>
                                             <a href="#">ACCOUNT SETTING</a>
                                             {% endif %}
 
-                                            {% if auth.userType != "employer" %}
+                                            {% if auth.userType != "employer" and auth.userType != "admin" %}
                                             <a href="{% url 'customerDashboard' %}">MY DASHBOARD</a>
                                             <a href="{% url 'careerProfile' %}">CAREER PROFILE</a>
                                             <a href="{% url 'profileUpdatePersonal' %}">ACCOUNT SETTING</a>

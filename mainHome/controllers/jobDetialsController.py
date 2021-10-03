@@ -49,11 +49,10 @@ def jobDetailsController(request):
                 file = request.FILES["cvFile"]
                 cv = uploadFile(request, file,  "cv")
                 profile = {"cv": cv}
-                # updating the profile 
+                # updating the profile
                 firebase.db.child("Users").child(userId).update(profile)
             except:
                 pass
-     
 
             apply = {
                 "jobId": key,
@@ -146,6 +145,11 @@ def jobDetailsController(request):
             firebase.db.child("Users").child(
                 userId).update({"noOfJobs": noOfJobs - 1})
 
-            return HttpResponseRedirect("/employer/dashboard?action=deleteSuccess")
+            return HttpResponseRedirect("/alumina/dashboard?action=deleteSuccess") if auth.authMap["userType"] == constants.userType[2] else HttpResponseRedirect("/employer/dashboard?action=deleteSuccess")
+
+        elif request.GET.get("action") == "approve":
+            key = request.GET.get("key")
+            firebase.db.child("Jobs").child(key).update({"approve": True})
+            return HttpResponseRedirect("/alumina/dashboard?action=approveSuccess")
 
     return HttpResponseRedirect("/")

@@ -13,9 +13,147 @@
     <div class="col">
         <div class="row">
             <div class="col">
-                
+                <div class="card bg-primary">
+                    <div class="card-body text-light">
+                        <span>Total Applications</span>
+                        <br>
+                        <h1 style="color: white;">{{ userDetails.noOfApplications }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card bg-info">
+                    <div class="card-body text-light">
+                        <span>Total Jobs</span>
+                        <br>
+                        <h1 style="color: white;">{{ userDetails.noOfJobs }}</h1>
+                    </div>
+                </div>
             </div>
         </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <div class="card bg-info">
+                    <div class="card-body text-light">
+                        <span>Total Customers</span>
+                        <br>
+                        <h1 style="color: white;">{{ userDetails.noOfCustomers }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card bg-primary">
+                    <div class="card-body text-light">
+                        <span>Total Employers</span>
+                        <br>
+                        <h1 style="color: white;">{{ userDetails.noOfEmployers }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="card">
+    <div class="card-body">
+        <div class="alert alert-primary noStyle" role="alert">
+            <div class="row">
+                <div class="col">
+                    Recent Pending Job Postings
+                </div>
+                <div class="col-auto">
+                    <a href="{% url 'employerViewAllJobs' %}" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                </div>
+            </div>
+        </div>
+        <br>
+        {% if jobs %}
+        {% for job in jobs %}
+        {% if forloop.counter < 6 %}
+        {% if not job.status %}
+        <div class="single-job-items mb-30">
+            <div class="job-items">
+                <div class="company-img">
+                    <a href="/job-details?action=job&key={{ job.key }}"><img src="{{ job.companyLogo }}"
+                            alt="{{ job.companyName }}" width="70px" height="70px"></a>
+                </div>
+                <div class="job-tittle job-tittle2">
+                    <a href="/job-details?action=job&key={{ job.key }}">
+                        <h4>{{ job.jobTitle }}</h4>
+                    </a>
+                    <ul>
+                        <li>{{ job.jobFunction }}</li>
+                        <li><i class="fas fa-map-marker-alt"></i>{{ job.region }}</li>
+                        <li>{{ job.currency }} &nbsp; {{ job.salary }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="items-link items-link2 f-right">
+                <a href="/job-details?action=job&key={{ job.key }}">{{ job.workType }}</a>
+                <span>{{ job.time }}</span>
+            </div>
+        </div>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <div class="text-center">
+            <img src="{% static 'img/icon/empty.png' %}" alt="empty" width="130px" height="130px">
+            No Job Posted
+        </div>
+        {% endif %}
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-body">
+        <div class="alert alert-primary noStyle" role="alert">
+            <div class="row">
+                <div class="col">
+                    Recent Job Applications
+                </div>
+                <div class="col-auto">
+                    <a href="{% url 'employerViewAllApplication' %}" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a>
+                </div>
+            </div>
+        </div>
+        <br>
+        {% if userDetails.allApplicationsList %}
+        {% for application in userDetails.allApplicationsList %}
+        {% if forloop.counter < 6 %}
+        <div class="single-job-items mb-30">
+            <div class="job-items">
+                <div class="company-img">
+                    <a href="/employer/application/details?action=job&key={{ application.jobId }}"><img src="{{ application.profilePicture }}"
+                            alt="Profile picture" height="100px" width="100px"
+                            class="border border-2 border-warning rounded-circle"
+                            style="border-color: #11467f !important;" /></a>
+                </div>
+                <div class="job-tittle job-tittle2">
+                    <a href="/employer/application/details?action=job&key={{ application.jobId }}">
+                        <h4>{{ application.fname }} {{ application.lname }}</h4>
+                    </a>
+                    <ul>
+                        <li>{{ application.phone }}</li>
+                        <li>Year Experience: &nbsp; {{ application.yearExperience }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="items-link items-link2 f-right">
+                <a href="/employer/application/details?action=job&key={{ application.jobId }}">{{ application.status }}</a>
+                <span>{{ application.time }}</span>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <div class="text-center">
+            <img src="{% static 'img/icon/empty.png' %}" alt="empty" width="130px" height="130px">
+            No Job Applied
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

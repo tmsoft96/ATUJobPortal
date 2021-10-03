@@ -17,6 +17,8 @@ def loginController(request):
             return HttpResponseRedirect("/customer/dashboard")
         elif auth.authMap.get("userType") == constants.userType[1]:
             return HttpResponseRedirect("/employer/dashboard")
+        elif auth.authMap.get("userType") == constants.userType[2]:
+            return HttpResponseRedirect("/alumina/dashboard")
 
     
     if request.method == "GET":
@@ -68,6 +70,10 @@ def loginController(request):
                 request.session["userType"] = constants.userType[1]
                 request.session["authorize"] = True
                 return HttpResponseRedirect("/employer/dashboard")
+            elif userType == constants.userType[2]:
+                request.session["userType"] = constants.userType[2]
+                request.session["authorize"] = True
+                return HttpResponseRedirect("/alumina/dashboard")
             else:
                 return render(request, 'login.html',
                               {"heading": "login",

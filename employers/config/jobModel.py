@@ -31,6 +31,7 @@ class JobModel:
                 "companyName": value.get("companyName"),
                 "companyLogo": value.get("companyLogo"),
                 "yearExperience": value.get("yearExperience"),
+                "status": value.get("status"),
             }
             allJobsList.append(jobDic)
 
@@ -72,5 +73,6 @@ class JobModel:
             "editDate": str(jobDictConvert.get("editDate")).split(" ")[0],
             "delete": jobDictConvert.get("delete"),
             "time": timeago.format(postDate, now),
+            "status": jobDictConvert.get("status"),
         }
         return jobDict
