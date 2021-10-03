@@ -17,14 +17,19 @@
 <div class="row" style="margin: 0px 10px 20px 10px">
     <div class="col-auto side">
         <br>
-        <a href="#" class="btn post-btn sideActive">
+        <a href="{% url 'aluminaDashboard' %}" class="btn post-btn sideActive">
             <i class="fas fa-home"></i>
             Dashboard
         </a>
         <br><br>
-        <a href="#" class="btn post-btn sideNotActive">
+        <a href="{% url 'aluminaApplication' %}" class="btn post-btn sideNotActive">
             <i class="fas fa-list"></i>
             Applications
+        </a>
+        <br><br>
+        <a href="{% url 'aluminaApplication' %}" class="btn post-btn sideNotActive">
+            <i class="fas fa-user-md"></i>
+            Jobs
         </a>
         <br><br>
         <a href="#" class="btn post-btn sideNotActive">

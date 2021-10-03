@@ -1,0 +1,67 @@
+{% extends 'sideBar.html' %}
+
+{% load static %}
+
+{% block body2 %}
+<div class="card">
+    <div class="card-body">
+        <div class="alert alert-primary noStyle" role="alert">
+            <div class="row">
+                <div class="col">
+                    Recent Job Applications
+                </div>
+                <div class="col-auto">
+                    <!-- <a href="{% url 'employerViewAllApplication' %}" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a> -->
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="btn-group">
+            <a href="/alumina/application?sort=pending" class="btn" {% if sort != 'pending' %} style="background-color: white; color: black;"{% endif %}>Pending</a>
+            <a href="/alumina/application?sort=accepted" class="btn" {% if sort != 'accepted' %} style="background-color: white; color: black;"{% endif %}>Accepted</a>
+            <a href="/alumina/application?sort=declined" class="btn" {% if sort != 'declined' %} style="background-color: white; color: black;"{% endif %}>Declined</a>
+        </div>
+        <br><br>
+        {% if noApplication %}
+        <div class="text-center">
+            <img src="{% static 'img/icon/empty.png' %}" alt="empty" width="130px" height="130px">
+            No {{ sort }} application
+        </div>
+        {% endif %}
+        {% if userDetails.allApplicationsList %}
+        {% for application in userDetails.allApplicationsList %}
+        {% if application.status == sort %}
+        <div class="single-job-items mb-30">
+            <div class="job-items">
+                <div class="company-img">
+                    <a href="/customer/application/details?action=job&jobId={{ application.jobId }}&companyId={{ application.companyId }}&fromAdmin=1"><img src="{{ application.profilePicture }}"
+                            alt="Profile picture" height="100px" width="100px"
+                            class="border border-2 border-warning rounded-circle"
+                            style="border-color: #11467f !important;" /></a>
+                </div>
+                <div class="job-tittle job-tittle2">
+                    <a href="/customer/application/details?action=job&jobId={{ application.jobId }}&companyId={{ application.companyId }}&fromAdmin=1">
+                        <h4>{{ application.fname }} {{ application.lname }}</h4>
+                    </a>
+                    <ul>
+                        <li>{{ application.phone }}</li>
+                        <li>Year Experience: &nbsp; {{ application.yearExperience }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="items-link items-link2 f-right">
+                <a href="/customer/application/details?action=job&jobId={{ application.jobId }}&companyId={{ application.companyId }}&fromAdmin=1">{{ application.status }}</a>
+                <span>{{ application.time }}</span>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <div class="text-center">
+            <img src="{% static 'img/icon/empty.png' %}" alt="empty" width="130px" height="130px">
+            No Job Applied
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
