@@ -42,4 +42,5 @@ def aluminaApplicationController(request):
                    "userDetails": userDetails,
                    "errorMessage": errorMessage, 
                    "sort": sort,
-                   "noApplication": noApplication})
+                   "noApplication": noApplication,
+                   "tabName": "application"})

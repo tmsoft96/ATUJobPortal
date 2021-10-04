@@ -17,32 +17,32 @@
 <div class="row" style="margin: 0px 10px 20px 10px">
     <div class="col-auto side">
         <br>
-        <a href="{% url 'aluminaDashboard' %}" class="btn post-btn sideActive">
+        <a href="{% url 'aluminaDashboard' %}" class="btn post-btn {% if tabName == 'dashboard' %} sideActive {% else%} sideNotActive {% endif %}">
             <i class="fas fa-home"></i>
             Dashboard
         </a>
         <br><br>
-        <a href="{% url 'aluminaApplication' %}" class="btn post-btn sideNotActive">
+        <a href="{% url 'aluminaApplication' %}" class="btn post-btn {% if tabName == 'application' %} sideActive {% else%} sideNotActive {% endif %}">
             <i class="fas fa-list"></i>
             Applications
         </a>
         <br><br>
-        <a href="{% url 'aluminaJob' %}" class="btn post-btn sideNotActive">
+        <a href="{% url 'aluminaJob' %}" class="btn post-btn {% if tabName == 'jobs' %} sideActive {% else%} sideNotActive {% endif %}">
             <i class="fas fa-user-md"></i>
             Jobs
         </a>
         <br><br>
-        <a href="#" class="btn post-btn sideNotActive">
+        <a href="{% url 'aluminaCustomer' %}" class="btn post-btn {% if tabName == 'customers' %} sideActive {% else%} sideNotActive {% endif %}">
             <i class="fas fa-users"></i>
             Customers
         </a>
         <br><br>
-        <a href="#" class="btn post-btn sideNotActive">
+        <a href="{% url 'aluminaEmployer' %}" class="btn post-btn {% if tabName == 'employers' %} sideActive {% else%} sideNotActive {% endif %}">
             <i class="fas fa-user-md"></i>
             Employers
         </a>
         <br><br>
-        <a href="#" class="btn post-btn sideNotActive">
+        <a href="#" class="btn post-btn {% if tabName == 'settings' %} sideActive {% else%} sideNotActive {% endif %}">
             <i class="fas fa-cog"></i>
             settings
         </a>

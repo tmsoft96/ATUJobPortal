@@ -22,6 +22,8 @@ class AluminaUserModel:
 
         allApplicationsList = []
         jobList = []
+        employersList = []
+        customersList = []
 
         # getting all applications
         applications = firebase.db.child("Application").get().val().items()
@@ -41,8 +43,10 @@ class AluminaUserModel:
         for userKey, value in users:
             if value.get("userType") == constants.userType[0]:
                 noOfCustomers += 1
+                customersList.append(value)
             elif value.get("userType") == constants.userType[1]:
                 noOfEmployers += 1
+                employersList.append(value)
 
 
         userDetail = {
@@ -63,5 +67,7 @@ class AluminaUserModel:
             "noOfEmployers": noOfEmployers,
             "allApplicationsList": allApplicationsList,
             "jobList": jobList,
+            "customersList": customersList,
+            "employersList": employersList,
         }
         return userDetail

@@ -58,4 +58,5 @@ def aluminaJobsController(request):
                    "jobs": jobList if len(jobList) > 0 else None,
                    "status": status,
                    "noJob": noJob,
-                   "sort": sort})
+                   "sort": sort,
+                   "tabName": "jobs"})

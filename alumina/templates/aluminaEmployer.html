@@ -1,0 +1,56 @@
+{% extends 'sideBar.html' %}
+
+{% load static %}
+
+{% block body2 %}
+<div class="card">
+    <div class="card-body">
+        <div class="alert alert-primary noStyle" role="alert">
+            <div class="row">
+                <div class="col">
+                    All Employers
+                </div>
+                <div class="col-auto">
+                    <!-- <a href="{% url 'employerViewAllApplication' %}" style="font-size: medium; color: #DBD81A;">VIEW ALL ></a> -->
+                </div>
+            </div>
+        </div>
+        <br>
+        {% for user in userDetails.employersList %}
+        <div class="single-job-items mb-30">
+            <div class="job-items">
+                <div class="company-img">
+                    <a href="#"><img src="{{ user.logo }}"
+                            alt="Profile picture" height="100px" width="100px"
+                            class="border border-2 border-warning rounded-circle"
+                            style="border-color: #11467f !important;" /></a>
+                </div>
+                <div class="job-tittle job-tittle2">
+                    <a href="#">
+                        <h4>{{ user.fname }} {{ user.lname }}</h4>
+                    </a>
+                    {{ user.email }}
+                    <ul>
+                        <li>Phone: &nbsp; {{ user.phone }}</li>
+                        <li>Company Name: &nbsp; {{ user.companyName }}</li>
+                    </ul>
+                    <ul>
+                        <li>Industry: &nbsp; {{ user.industry }}</li>
+                    </ul>
+                    <ul>
+                        <li>{{ user.address }}</li>
+                    </ul>
+                </div>
+                &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; 
+                <div class="items-link items-link2 f-right">
+                    <a href="{{ user.website }}" target="_blank">Visit Site</a>
+                    <span>No. of Jobs: {{ user.noOfJobs }}</span>
+                    <span>No. of Application: {{ user.noOfApplication }}</span>
+                    <span>No. of Views: {{ user.noOfViews }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
