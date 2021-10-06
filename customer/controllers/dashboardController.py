@@ -39,7 +39,7 @@ def dashboardController(request):
             profilePicture = model.get("profilePicture")
             name = model.get("fname")
             testimony = {
-                "testimony": userId,
+                "testimony": request.POST.get("note"),
                 "id": auth.authMap["userId"],
                 "name": name,
                 "profilePicture": profilePicture,

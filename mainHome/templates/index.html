@@ -245,7 +245,7 @@
                         </div>
                         <div class="process-cap">
                             <h5>1. Search a job</h5>
-                            <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.
+                            <p>Search endless jobs according to categories.
                             </p>
                         </div>
                     </div>
@@ -257,7 +257,7 @@
                         </div>
                         <div class="process-cap">
                             <h5>2. Apply for job</h5>
-                            <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.
+                            <p>Candidate can upload their resumes for free and apply for jobs across any fields.
                             </p>
                         </div>
                     </div>
@@ -269,7 +269,7 @@
                         </div>
                         <div class="process-cap">
                             <h5>3. Get your job</h5>
-                            <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.
+                            <p>All job notifications are mail to you on regular basis.
                             </p>
                         </div>
                     </div>
@@ -286,62 +286,24 @@
                 <div class="col-xl-8 col-lg-8 col-md-10">
                     <div class="h1-testimonial-active dot-style">
                         <!-- Single Testimonial -->
+                        {% for testimony in testimonies %}
                         <div class="single-testimonial text-center">
                             <!-- Testimonial Content -->
                             <div class="testimonial-caption ">
                                 <!-- founder -->
-                                <div class="testimonial-founder  ">
+                                <div class="testimonial-founder">
                                     <div class="founder-img mb-30">
-                                        <img src="{% static 'img/testmonial/testimonial-founder.png' %}" alt="">
-                                        <span>Margaret Lawson</span>
-                                        <p>Creative Director</p>
+                                        <img src="{{ testimony.profilePicture }}" alt="" height="150px" width="150px" class="border border-2 border-warning rounded-circle">
+                                        <span>{{ testimony.name }}</span>
+                                        <!-- <p>Creative Director</p> -->
                                     </div>
                                 </div>
                                 <div class="testimonial-top-cap">
-                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our
-                                        responsibility! So start caring for your body and it will care for you. Eat
-                                        clean it will care for you and workout hard.”</p>
+                                    <p>“{{ testimony.testimony }}”</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial text-center">
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-caption ">
-                                <!-- founder -->
-                                <div class="testimonial-founder  ">
-                                    <div class="founder-img mb-30">
-                                        <img src="{% static 'img/testmonial/testimonial-founder.png' %}" alt="">
-                                        <span>Margaret Lawson</span>
-                                        <p>Creative Director</p>
-                                    </div>
-                                </div>
-                                <div class="testimonial-top-cap">
-                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our
-                                        responsibility! So start caring for your body and it will care for you. Eat
-                                        clean it will care for you and workout hard.”</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial text-center">
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-caption ">
-                                <!-- founder -->
-                                <div class="testimonial-founder  ">
-                                    <div class="founder-img mb-30">
-                                        <img src="{% static 'img/testmonial/testimonial-founder.png' %}" alt="">
-                                        <span>Margaret Lawson</span>
-                                        <p>Creative Director</p>
-                                    </div>
-                                </div>
-                                <div class="testimonial-top-cap">
-                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our
-                                        responsibility! So start caring for your body and it will care for you. Eat
-                                        clean it will care for you and workout hard.”</p>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -360,12 +322,8 @@
                             <h2>24k Talented people are getting Jobs</h2>
                         </div>
                         <div class="support-caption">
-                            <p class="pera-top">Mollit anim laborum duis au dolor in voluptate velit ess cillum dolore
-                                eu lore dsu quality mollit anim laborumuis au dolor in voluptate velit cillum.</p>
-                            <p>Mollit anim laborum.Duis aute irufg dhjkolohr in re voluptate velit esscillumlore eu
-                                quife nrulla parihatur. Excghcepteur signjnt occa cupidatat non inulpadeserunt mollit
-                                aboru. temnthp incididbnt ut labore mollit anim laborum
-                                suis aute.</p>
+                            <p class="pera-top">Providing online job offer services is one technique to increase employee mobility</p>
+                            <p>Job searchers might benefit from online job portals since they provide all necessary information about open positions in one place.</p>
                             <a href="{% url  'employerDashboard' %}" class="btn post-btn">Post a job</a>
                         </div>
                     </div>
@@ -375,7 +333,7 @@
                         <img src="{% static 'img/service/support-img.jpg' %}" alt="">
                         <div class="support-img-cap text-center">
                             <p>Since</p>
-                            <span>1994</span>
+                            <span>2021</span>
                         </div>
                     </div>
                 </div>

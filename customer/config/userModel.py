@@ -55,6 +55,9 @@ class CustomerUserModel:
                 oneAppliedJob = value
                 break
 
+        dob = str(userDictConvert.get("dob"))
+        dobSplit = dob.split("/")
+
         userDetail = {
             "id": userId,
             "userType": userDictConvert.get("userType"),
@@ -62,7 +65,10 @@ class CustomerUserModel:
             "fname": userDictConvert.get("fname"),
             "gender": userDictConvert.get("gender"),
             "email": userDictConvert.get("email"),
-            "dob": userDictConvert.get("dob"),
+            "dob": dob,
+            "dobDay": dobSplit[0],
+            "dobMonth": dobSplit[1],
+            "dobYear": dobSplit[2],
             "nationality": userDictConvert.get("nationality"),
             "location": userDictConvert.get("location"),
             "phone": userDictConvert.get("phone"),

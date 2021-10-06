@@ -74,7 +74,7 @@ def employerDashboardController(request):
             profilePicture = model.get("logo")
             name = model.get("companyName")
             testimony = {
-                "testimony": userId,
+                "testimony": request.POST.get("note"),
                 "id": auth.authMap["userId"],
                 "name": name,
                 "profilePicture": profilePicture,

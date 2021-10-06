@@ -1,5 +1,4 @@
-from django.http.response import HttpResponseRedirect
-from ATUJobPortal.config.firebase import Firebase
+from customer.config.testimonyModel import TestimonyModel
 from employers.config.jobModel import JobModel
 from ATUJobPortal.config.constant import Constants
 from customer.config.userModel import CustomerUserModel
@@ -12,7 +11,7 @@ def indexController(request):
     auth = Authentication(request)
     constants = Constants()
     jobs = JobModel.allJob()
-    firebase = Firebase()
+    testimonies = TestimonyModel.allTestimony()
 
     userDetails = None
     regions = []
@@ -38,4 +37,5 @@ def indexController(request):
                    "auth": auth.authMap,
                    "userDetails": userDetails,
                    "jobs": jobs if len(jobs) <= 7 else jobs[:7],
-                   "regions": regions})
+                   "regions": regions,
+                   "testimonies": testimonies})

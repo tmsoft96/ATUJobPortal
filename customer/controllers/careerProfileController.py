@@ -34,6 +34,9 @@ def careerProfileController(request):
         elif request.GET.get("action") == "cvSuccess":
             msg = "CV updated successfully"
 
+        elif request.GET.get("action") == "updateSuccess":
+            msg = "Profile updated successfully"
+
     return render(request,
                   'customerCareerProfile.html',
                   {"heading": "Job Seeker Profile | ATU Job Portal",
