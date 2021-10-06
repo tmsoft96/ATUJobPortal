@@ -16,6 +16,11 @@
     <p class="mb-0">A verification link has been sent to {{ email }}, please verify.</p>
 </div>
 {% endif %}
+{% if msg %}
+<div class="alert alert-success text-center" role="alert">
+    {{ msg }}
+</div>
+{% endif %}
 <table width="100%" id="loginTable">
     <tr>
         <td id="tableData1">
@@ -43,7 +48,7 @@
                     </div>
                     <br>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="" style="color: red; font-size: medium;">Forget Password?</a>
+                        <a href="{% url 'forgetPsssword' %}" style="color: red; font-size: medium;">Forget Password?</a>
                     </div>
                     <br><br>
                     <input type="hidden" name="button" value="logIn">

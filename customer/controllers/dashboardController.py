@@ -33,6 +33,20 @@ def dashboardController(request):
         elif request.GET.get("action") == "applySuccess":
             msg = "Job applied successfully"
 
+    if request.method == "POST":
+        if request.POST.get("button") == "testimony":
+            model = CustomerUserModel.userModel(userId)
+            profilePicture = model.get("profilePicture")
+            name = model.get("fname")
+            testimony = {
+                "testimony": userId,
+                "id": auth.authMap["userId"],
+                "name": name,
+                "profilePicture": profilePicture,
+            }
+            firebase.db.child("Testimony").child(userId).set(testimony)
+            msg = "Testimony added successfully"
+
     return render(request,
                   'customerDashboard.html',
                   {"heading": "Job Seeker Profile | ATU Job Portal",
@@ -40,4 +54,5 @@ def dashboardController(request):
                    "msg": msg,
                    "userDetails": userDetails,
                    "errorMessage": errorMessage,
-                   "jobs": jobs})
+                   "jobs": jobs,
+                   "showTestimonyButton": True})

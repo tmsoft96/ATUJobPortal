@@ -1,3 +1,5 @@
+from django.http.response import HttpResponseRedirect
+from ATUJobPortal.config.firebase import Firebase
 from employers.config.jobModel import JobModel
 from ATUJobPortal.config.constant import Constants
 from customer.config.userModel import CustomerUserModel
@@ -10,6 +12,7 @@ def indexController(request):
     auth = Authentication(request)
     constants = Constants()
     jobs = JobModel.allJob()
+    firebase = Firebase()
 
     userDetails = None
     regions = []
@@ -28,6 +31,7 @@ def indexController(request):
                 regions.append(job.get("region"))
 
     regions.sort()
+
 
     return render(request, 'index.html',
                   {'heading': 'Home',

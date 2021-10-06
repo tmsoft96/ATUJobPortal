@@ -78,6 +78,12 @@
                                             <li><a href="{% url 'about' %}">About</a></li>
                                             <li><a href="{% url 'contact' %}">Contact</a></li>
                                             {% endif %}
+
+                                            {% if showTestimonyButton %}
+                                            <li><button class="btn head-btn2 removeButtonStyle" id="myBtn"
+                                                    style="background-color: white; color: #11467f; border-color: white; font-weight: bold;">Testimony</button>
+                                            </li>
+                                            {% endif %}
                                         </ul>
                                     </nav>
                                 </div>
@@ -90,8 +96,8 @@
                                     <div class="dropdown">
                                         <a href="#" class="dropbtn">
                                             {% if auth.userType == "employer" %}
-                                            <img src="{{ userDetails.logo }}" alt="Profile picture"
-                                                height="50px" class="border border-2 border-warning rounded-circle"
+                                            <img src="{{ userDetails.logo }}" alt="Profile picture" height="50px"
+                                                class="border border-2 border-warning rounded-circle"
                                                 style="border-color: #11467f !important;" />
                                             {% else %}
                                             <img src="{{ userDetails.profilePicture }}" alt="Profile picture"
@@ -100,7 +106,7 @@
                                             {% endif %}
                                             <span style="font-size: larger; margin-left: 10px; color: #11467f;">Hi,
                                                 {{ userDetails.fname }}</span>
-                                                &nbsp; &nbsp;
+                                            &nbsp; &nbsp;
                                             <img src="{% static 'img/icon/arrow-down.png' %}" height="10px" width="10px"/>
                                         </a>
                                         <div class="dropdown-content">
@@ -135,7 +141,6 @@
     <!-- body -->
     {% block body %}
     {% endblock %}
-
     <footer>
         <!-- Footer Start-->
         <div class="footer-area footer-bg footer-padding">
@@ -147,7 +152,8 @@
                                 <div class="footer-tittle">
                                     <h4>About Us</h4>
                                     <div class="footer-pera">
-                                        <p>A Technical University of global excellence in competency based and practice-oriented training, applied research and technology transfer.
+                                        <p>A Technical University of global excellence in competency based and
+                                            practice-oriented training, applied research and technology transfer.
                                         </p>
                                     </div>
                                 </div>
@@ -161,7 +167,8 @@
                                 <h4>Contact Info</h4>
                                 <ul>
                                     <li>
-                                        <p>Address : Accra Technical University, P.O. Box GP 561, Barnes road, Accra. Digital</p>
+                                        <p>Address : Accra Technical University, P.O. Box GP 561, Barnes road, Accra.
+                                            Digital</p>
                                         <p>Digital Address : GA-106-2535</p>
                                     </li>
                                     <li><a href="tel:+233332095371">Phone : +233 33 209 5371</a></li>
@@ -192,8 +199,8 @@
                                 <div class="footer-pera footer-pera2">
                                     <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
                                 </div> -->
-                                <!-- Form -->
-                                <!-- <div class="footer-form">
+                    <!-- Form -->
+                    <!-- <div class="footer-form">
                                     <div id="mc_embed_signup">
                                         <form target="_blank" action="" method="get"
                                             class="subscribe_form relative mail_part">
@@ -210,15 +217,15 @@
                                         </form>
                                     </div>
                                 </div> -->
-                            <!-- </div>
+                    <!-- </div>
                         </div>
                     </div> -->
                 </div>
                 <!--  -->
                 <!-- <div class="row footer-wejed justify-content-between">
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6"> -->
-                        <!-- logo -->
-                        <!-- <div class="footer-logo mb-20">
+                <!-- logo -->
+                <!-- <div class="footer-logo mb-20">
                             <a href=""><img src="{% static 'img/logo/logo2_footer.png' %}" alt=""></a>
                         </div>
                     </div>
@@ -235,8 +242,8 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5"> -->
-                        <!-- Footer Bottom Tittle -->
-                        <!-- <div class="footer-tittle-bottom">
+                <!-- Footer Bottom Tittle -->
+                <!-- <div class="footer-tittle-bottom">
                             <span>568</span>
                             <p>Talented Hunter</p>
                         </div>
@@ -258,16 +265,18 @@
                                     <script>
                                         document.write(new Date().getFullYear());
                                     </script> All rights reserved | This template is made with <i class="fa fa-heart"
-                                        aria-hidden="true"></i> by <a href="#"
-                                        target="_blank">Final Year Project (Group 11)</a>
+                                        aria-hidden="true"></i> by <a href="#" target="_blank">Final Year Project (Group
+                                        11)</a>
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </p>
                             </div>
                         </div>
                         <div class="col-xl-2 col-lg-2">
                             <div class="footer-social f-right">
-                                <a href="https://web.facebook.com/atuXpress" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://twitter.com/ATUghana" target="_blank"><i class="fab fa-twitter"></i></a>
+                                <a href="https://web.facebook.com/atuXpress" target="_blank"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a href="https://twitter.com/ATUghana" target="_blank"><i
+                                        class="fab fa-twitter"></i></a>
                                 <a href="https://atu.edu.gh" target="_blank"><i class="fas fa-globe"></i></a>
                             </div>
                         </div>

@@ -68,6 +68,20 @@ def employerDashboardController(request):
         elif request.GET.get("action") == "applicationSuccess":
             msg = "Application completed successfully"
 
+    if request.method == "POST":
+        if request.POST.get("button") == "testimony":
+            model = EmployerUserModel.userModel(userId)
+            profilePicture = model.get("logo")
+            name = model.get("companyName")
+            testimony = {
+                "testimony": userId,
+                "id": auth.authMap["userId"],
+                "name": name,
+                "profilePicture": profilePicture,
+            }
+            firebase.db.child("Testimony").child(userId).set(testimony)
+            msg = "Testimony added successfully"
+
     return render(request,
                   'employerDashboard.html',
                   {"heading": "Welcome | ATU Job Portal",
@@ -76,4 +90,5 @@ def employerDashboardController(request):
                    "userDetails": userDetails,
                    "errorMessage": errorMessage,
                    "jobs": jobList if len(jobList) > 0 else None,
-                   "applications": applicationList if len(applicationList) > 0 else None})
+                   "applications": applicationList if len(applicationList) > 0 else None,
+                   "showTestimonyButton": True})

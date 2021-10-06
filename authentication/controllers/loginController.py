@@ -10,6 +10,9 @@ def loginController(request):
     constants = Constants()
     firebase = Firebase()
 
+    msg = None
+    errorMessage = None
+
     # checking if user sign in already
     auth = Authentication(request)
     if auth.authMap.get("authorize"):
@@ -28,6 +31,8 @@ def loginController(request):
                         "emailVerify": True,
                         "email": request.session["email"],
                         'auth': auth.authMap})
+        elif request.GET.get("action") == "actionSuccess":
+            msg = "Passord reset email send successfully"
 
 
     if request.method == "POST":
@@ -82,4 +87,6 @@ def loginController(request):
        
     return render(request, 'login.html',
                     {"heading": "login",
-                    'auth': auth.authMap})
+                    'auth': auth.authMap,
+                    "msg": msg,
+                    "errorMessage":  errorMessage})
