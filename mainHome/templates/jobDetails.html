@@ -65,7 +65,7 @@
                             <div class="small-section-tittle">
                                 <h4>Job Summary</h4>
                             </div>
-                            <p>{{ jobDict.jobSummary }}</p>
+                            <p>{% autoescape off %}{{ jobDict.jobSummary }}{% endautoescape %}</p>
                             <ul>
                                 <li>Minimum Qualification: &nbsp;<b>{{ jobDict.qualification }}</b></li>
                                 <li>Experience Level: &nbsp;<b>{{ jobDict.jobLevel }}</b></li>
@@ -79,7 +79,7 @@
                             <div class="small-section-tittle">
                                 <h4>Job Description</h4>
                             </div>
-                            <p>{{ jobDict.jobDescription }}</p>
+                            <p>{% autoescape off %}{{ jobDict.jobDescription }}{% endautoescape %}</p>
                         </div>
                     </div>
                     {% endif %}
